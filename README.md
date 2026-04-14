@@ -1,0 +1,5953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coreus</title>
+    <meta name="description" content="Coreus is the truly completely unblockable unblocked browser game (UBG). Play 500+ games, browse the web with proxy, chat with friends, earn achievements, and more. No ads, beautiful UI.">
+    <meta name="keywords" content="unblocked games, UBG, proxy, browser games, free games, multiplayer chat, achievements, unblockable, Coreus">
+    <meta name="author" content="n00dle">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Coreus">
+    <meta property="og:description" content="Play 500+ unblocked games, browse the web with proxy, chat with friends, earn achievements. The most feature-rich unblocked games site.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://noodlelover1.github.io/coreus/">
+    <meta property="og:image" content="https://raw.githubusercontent.com/noodlelover1/coreus/main/icon.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Coreus">
+    <meta name="twitter:description" content="Play 500+ unblocked games, browse the web with proxy, chat with friends, earn achievements. No ads, beautiful UI.">
+    <link rel="canonical" href="https://noodlelover1.github.io/coreus/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><circle cx='30' cy='30' r='15' fill='%23fff'/><circle cx='70' cy='70' r='15' fill='%23fff'/><path d='M35 35 L65 65' stroke='%23fff' stroke-width='5'/></svg>" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #0d0d0d;
+            --tertiary-bg: #1a1a1a;
+            --primary-text: #ffffff;
+            --secondary-text: #aaaaaa;
+            --border-color: #262626;
+            --accent-color: #4CAF50;
+            --accent-light: #22c55e;
+            --navbar-bg: rgba(0, 0, 0, 0.95);
+            --card-bg: #0d0d0d;
+        }
+
+        body.theme-blue {
+            --primary-bg: #000d1a;
+            --secondary-bg: #00152d;
+            --tertiary-bg: #001d40;
+            --primary-text: #e0f0ff;
+            --secondary-text: #a0c0e0;
+            --border-color: #003366;
+            --accent-color: #4da6ff;
+            --accent-light: #80c7ff;
+            --navbar-bg: rgba(0, 5, 15, 0.80);
+            --card-bg: #00152d;
+        }
+
+        body.theme-purple {
+            --primary-bg: #150029;
+            --secondary-bg: #220040;
+            --tertiary-bg: #2d0052;
+            --primary-text: #f0e0ff;
+            --secondary-text: #d4a0ff;
+            --border-color: #4a0080;
+            --accent-color: #b366ff;
+            --accent-light: #cc99ff;
+            --navbar-bg: rgba(15, 0, 25, 0.80);
+            --card-bg: #220040;
+        }
+
+        body.theme-green {
+            --primary-bg: #000d06;
+            --secondary-bg: #001a0d;
+            --tertiary-bg: #002614;
+            --primary-text: #e0ffe0;
+            --secondary-text: #a0ffa0;
+            --border-color: #006600;
+            --accent-color: #4dff4d;
+            --accent-light: #99ff99;
+            --navbar-bg: rgba(0, 10, 5, 0.80);
+            --card-bg: #001a0d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none !important;
+        }
+
+        body {
+            cursor: none !important;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 2px solid #000;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 2147483647;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 8px rgba(0,0,0,0.3);
+        }
+
+        .terminal, .terminal * {
+            cursor: text !important;
+            color: #7CFC00 !important;
+            font-family: 'Courier New', Courier, monospace !important;
+            background: #000 !important;
+        }
+
+        .terminal .command, .terminal .echo, .terminal .prompt, .terminal .output, .terminal .history {
+            color: #7CFC00 !important;
+        }
+
+        .terminal .cursor {
+            display: inline-block;
+            width: 8px;
+            background: #7CFC00;
+            animation: terminal-cursor 1s step-end infinite;
+        }
+
+        @keyframes terminal-cursor {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        .cursor-dot.rainbow {
+            background: conic-gradient(#ff0000 0deg 51.42857deg, #ff7f00 51.42857deg 102.85714deg, #ffff00 102.85714deg 154.28571deg, #00ff00 154.28571deg 205.71428deg, #0000ff 205.71428deg 257.14285deg, #4b0082 257.14285deg 308.57142deg, #9400d3 308.57142deg 360deg);
+            border: none;
+        }
+
+        
+        .cursor-dot.neon {
+            background: #0ff;
+            border: 2px solid #0ff;
+            box-shadow: 0 0 15px #0ff, 0 0 30px #0ff;
+        }
+        
+        .cursor-dot.fire {
+            background: linear-gradient(45deg, #ff4500, #ff8c00);
+            border: none;
+            box-shadow: 0 0 10px #ff4500;
+        }
+        
+        .cursor-dot.ice {
+            background: linear-gradient(45deg, #00ffff, #0099ff);
+            border: none;
+            box-shadow: 0 0 10px #00ffff;
+        }
+        
+        .cursor-dot.gold {
+            background: linear-gradient(45deg, #ffd700, #ffaa00);
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 10px #ffd700;
+        }
+        
+        .cursor-dot.geek {
+            width: 16px;
+            height: 16px;
+            background: #00ff00;
+            border: 2px solid #00ff00;
+            border-radius: 3px;
+            box-shadow: 0 0 8px #00ff00;
+        }
+        
+        .cursor-dot.pink {
+            background: #ff69b4;
+            border: 2px solid #ff1493;
+            box-shadow: 0 0 10px #ff69b4;
+        }
+        
+        .cursor-dot.dark {
+            background: #333;
+            border: 2px solid #666;
+        }
+        
+        .cursor-dot.red {
+            background: #ff3333;
+            border: 2px solid #cc0000;
+            box-shadow: 0 0 10px #ff3333;
+        }
+        
+        .cursor-dot.purple {
+            background: #9933ff;
+            border: 2px solid #6600cc;
+            box-shadow: 0 0 10px #9933ff;
+        }
+        
+        .cursor-dot.matrix {
+            width: 16px;
+            height: 16px;
+            background: #003300;
+            border: 2px solid #00ff00;
+            border-radius: 3px;
+            box-shadow: 0 0 8px #00ff00;
+        }
+        
+        .cursor-option.locked {
+            opacity: 0.45;
+            border-color: #555 !important;
+            cursor: pointer;
+        }
+
+        .cursor-option.locked .lock-label {
+            display: block;
+        }
+
+        .cursor-option.locked span {
+            color: #666 !important;
+        }
+
+        .cursor-option:hover {
+            border-color: #7c4dff !important;
+            transform: scale(1.05);
+        }
+        
+        .cursor-option.selected {
+            border-color: #7c4dff;
+            background: #252525;
+        }
+
+        /* Games UI Enhancements */
+        .featured-slide {
+            min-width: 100%;
+            height: 430px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .featured-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        #prevFeatured, #nextFeatured {
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 1.8rem !important;
+            padding: 0 !important;
+            line-height: 1 !important;
+            min-width: 50px !important;
+            min-height: 50px !important;
+            border-radius: 50% !important;
+            background: rgba(255,255,255,0.25) !important;
+            color: #fff !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            border: 2px solid rgba(255,255,255,0.6) !important;
+        }
+
+        #prevFeatured:hover, #nextFeatured:hover {
+            background: rgba(255,255,255,0.45) !important;
+        }
+
+        .featured-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .featured-play-btn {
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 15px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .featured-play-btn:hover {
+            background: #f2f2f2;
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        .category-btn:hover {
+            background: #ffffff !important;
+            color: #000 !important;
+            border-color: #ffffff !important;
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: #ffffff !important;
+            color: #000 !important;
+            border-color: #ffffff !important;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: var(--accent-color);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .game-card-content {
+            padding: 15px;
+        }
+
+        .game-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-text);
+            margin-bottom: 5px;
+        }
+
+        .game-card-category {
+            font-size: 0.85rem;
+            color: var(--secondary-text);
+            background: var(--secondary-bg);
+            padding: 4px 8px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .game-card-favorite {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.65);
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 0 rgba(255,215,0,0); 
+        }
+
+        .game-card-favorite:hover {
+            background: rgba(255, 255, 255, 0.85);
+            color: #000;
+            transform: scale(1.08);
+            border-color: #ffd700;
+        }
+
+        .game-card-favorite.active {
+            background: linear-gradient(135deg, #ffd700, #ffcb00);
+            color: #000;
+            border-color: #ffaa00;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+            transform: scale(1.12);
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+        }
+
+        #favoriteZone {
+            max-width: 1200px;
+            width: calc(100% - 40px);
+            margin: 0 auto 20px;
+        }
+
+        .favorite-slot {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            padding: 12px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 255, 255, 0.05));
+            border: 2px dashed rgba(255, 215, 0, 0.7);
+            border-radius: 15px;
+            min-height: 110px;
+        }
+
+        .favorite-slot-card {
+            border: 2px solid #FFD700;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.25);
+            transform: translateY(0);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .favorite-slot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(255, 215, 0, 0.35);
+        }
+
+        .favorite-slot-title {
+            grid-column: 1 / -1;
+            color: #ffeb8a;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            margin-bottom: 8px;
+        }
+
+        /* Click Ripple Effect */
+        .click-ripple {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple-out 0.5s ease-out forwards;
+        }
+
+        @keyframes ripple-out {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            background-image: radial-gradient(circle, #333 1px, transparent 1px);
+            background-size: 40px 40px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--primary-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 80px;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .title {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+            color: var(--primary-text);
+            text-transform: lowercase;
+            margin-right: 0px;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3rem;
+            font-size: 1.1rem;
+            background-color: var(--tertiary-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--primary-text);
+            outline: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .search-input:focus {
+            background-color: var(--secondary-bg);
+            box-shadow: 0 0 0 2px var(--border-color);
+        }
+
+        .search-input::placeholder {
+            color: var(--secondary-text);
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .search-container::before {
+            content: '\f002';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-text);
+            font-size: 1rem;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        #gamesSearchInput, #toolsSearchInput {
+            transition: all 0.3s ease !important;
+        }
+
+        #gamesSearchInput:focus, #toolsSearchInput:focus {
+            border-color: var(--accent-color) !important;
+            background-color: var(--secondary-bg) !important;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.2) !important;
+        }
+
+        .proxy-btn {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            background: linear-gradient(45deg, var(--tertiary-bg), var(--secondary-bg));
+            border: none;
+            border-radius: 25px;
+            color: var(--primary-text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .proxy-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-bg), var(--card-bg));
+            transform: translateY(-1px);
+        }
+
+        .proxy-btn:disabled {
+            background: var(--secondary-bg);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .status {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .status.success {
+            background-color: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+        }
+
+        .status.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+
+        .status.loading {
+            background-color: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+        }
+
+        .status.warning {
+        	background-color: rgba(251, 191, 36, 0.1);
+        	border: 1px solid rgba(251, 191, 36, 0.3);
+        	color: #fbbf24;
+        }
+
+        .proxy-frame {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background: var(--primary-bg);
+        }
+
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-bg);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--accent-color);
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: var(--primary-text);
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .frame-header {
+            background: var(--secondary-bg);
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .frame-url {
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+            font-family: monospace;
+        }
+
+        .close-btn {
+            background: #ff4444;
+            border: none;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .close-btn:hover {
+            background: #ff6666;
+        }
+
+        .proxy-iframe {
+            width: 100%;
+            height: calc(100% - 50px);
+            border: none;
+            background: var(--primary-text);
+        }
+
+        .proxy-iframe::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            pointer-events: none;
+        }
+
+        .extra-style {
+            margin: 10px;
+            padding: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .search-input {
+                font-size: 1rem;
+                padding: 0.8rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="achievementsCard" onclick="showAchievementsView()" style="position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); border: 2px solid #333; border-radius: 12px; padding: 12px 18px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">🏆</span>
+            <span id="achievementsCount" style="color: #fff; font-size: 1rem; font-weight: 600;">0/18</span>
+        </div>
+        <div id="profileCard" onclick="showAccountView()" style="position: absolute; top: 20px; left: 20px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); border: 2px solid #333; border-radius: 12px; padding: 12px 18px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.5rem;">👤</span>
+            <span id="profileName" style="color: #fff; font-size: 1rem; font-weight: 600;">Log in</span>
+        </div>
+        <div id="backendSelector" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); border: 2px solid #333; border-radius: 12px; padding: 8px 14px; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+            <span style="color: var(--secondary-text); font-size: 0.7rem; opacity: 0.7;">backend</span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i id="vrtxIcon" class="fas fa-cube" style="color: var(--accent-color); font-size: 1.2rem; cursor: pointer; transition: all 0.3s;" onclick="setGameBackend('vrtx')"></i>
+                <div id="backendSwitch" style="width: 36px; height: 20px; background: var(--accent-color); border-radius: 10px; position: relative; cursor: pointer; transition: all 0.3s;" onclick="toggleBackend()">
+                    <div id="switchKnob" style="width: 16px; height: 16px; background: #fff; border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: all 0.3s; box-shadow: 0 1px 3px rgba(0,0,0,0.3);"></div>
+                </div>
+                <i id="seleniteIcon" class="fas fa-moon" style="color: #666; font-size: 1.1rem; cursor: pointer; transition: all 0.3s;" onclick="setGameBackend('selenite')"></i>
+            </div>
+            <i class="fas fa-question-circle" style="position: absolute; top: 4px; right: 6px; font-size: 0.7rem; color: var(--secondary-text); cursor: pointer; opacity: 0.6;" onclick="showBackendInfoPopup()"></i>
+        </div>
+
+        <div id="backendInfoPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 5000; justify-content: center; align-items: center;" onclick="closeBackendInfoPopup(event)">
+            <div style="background: #111; border-radius: 16px; padding: 30px; max-width: 450px; width: 90%; border: 2px solid #333; box-shadow: 0 20px 60px rgba(0,0,0,0.8);" onclick="event.stopPropagation()">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                    <h2 style="color: #fff; font-size: 1.4rem; margin: 0;">Backend Info</h2>
+                    <i class="fas fa-times" style="color: #666; font-size: 1.2rem; cursor: pointer;" onclick="closeBackendInfoPopup()"></i>
+                </div>
+                <div style="background: #1a1a1a; border-radius: 12px; padding: 20px; margin-bottom: 15px; border: 1px solid var(--accent-color);">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fas fa-cube" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+                        <span style="color: #fff; font-size: 1.2rem; font-weight: 600;">VRTX</span>
+                    </div>
+                    <p style="color: var(--secondary-text); font-size: 0.9rem; line-height: 1.5; margin: 0;">Local backend with 100+ games. All games are mobile-friendly and load instantly.</p>
+                </div>
+                <div style="background: #1a1a1a; border-radius: 12px; padding: 20px; border: 1px solid #9d4edd;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fas fa-moon" style="color: #9d4edd; font-size: 1.5rem;"></i>
+                        <span style="color: #fff; font-size: 1.2rem; font-weight: 600;">Selenite</span>
+                    </div>
+                    <p style="color: var(--secondary-text); font-size: 0.9rem; line-height: 1.5; margin: 0;">External backend with 500+ games. Games load from external servers.</p>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative; width: 100%;">
+            <h1 class="title">coreus</h1>
+        </div>
+
+        <div class="search-container">
+            <input
+                type="text"
+                class="search-input"
+                id="urlInput"
+            />
+        </div>
+
+        <div class="status" id="statusDiv"></div>
+        
+        <div id="visitorCounter" style="text-align: center; color: var(--secondary-text); font-size: 0.9rem; margin-top: 15px;">
+            <i class="fas fa-users" style="margin-right: 8px; color: var(--primary-text);"></i>
+            <span id="visitorCountText">Loading...</span>
+        </div>
+        
+        <div id="extra-div" style="display:none;">
+            <p>This is extra content</p>
+        </div>
+    </div>
+
+    <div id="proxyView" style="display: none; position: fixed; top: 10px; left: 10px; right: 10px; bottom: 90px; background: #1a1a1a; background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow: hidden; border-radius: 12px;">
+        
+        <div style="background: #2d2d2d; border-radius: 12px 12px 0 0; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid #3d3d3d;">
+            
+            <div style="display: flex; align-items: center; gap: 8px; background: #1a1a1a; border-radius: 8px; padding: 6px 10px;">
+                <div id="proxyTab" style="flex: 1; background: #3d3d3d; border-radius: 6px; padding: 8px 12px; display: flex; align-items: center; gap: 8px; max-width: 300px;">
+                    <i class="fas fa-globe" style="color: #28c840; font-size: 12px;"></i>
+                    <span id="proxyTabTitle" style="color: #fff; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1;">New Tab</span>
+                    <i class="fas fa-times" style="color: #888; font-size: 10px; cursor: pointer;" onclick="proxyClearUrl()"></i>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px;">
+                
+                <button onclick="proxyGoBack()" style="background: none; border: none; color: #fff; padding: 6px 10px; border-radius: 6px; cursor: pointer; transition: background 0.2s;">
+                    <i class="fas fa-arrow-left" style="font-size: 14px;"></i>
+                </button>
+                
+                <button onclick="proxyGoForward()" style="background: none; border: none; color: #fff; padding: 6px 10px; border-radius: 6px; cursor: pointer; transition: background 0.2s;">
+                    <i class="fas fa-arrow-right" style="font-size: 14px;"></i>
+                </button>
+                
+                <button onclick="proxyReload()" style="background: none; border: none; color: #fff; padding: 6px 10px; border-radius: 6px; cursor: pointer; transition: background 0.2s;">
+                    <i class="fas fa-redo" style="font-size: 14px;"></i>
+                </button>
+
+                <button onclick="openProxyHome()" style="background: none; border: none; color: #fff; padding: 6px 10px; border-radius: 6px; cursor: pointer; transition: background 0.2s;" title="Home">
+                    <i class="fas fa-home" style="font-size: 14px;"></i>
+                </button>
+
+                <div style="flex: 1; background: #1a1a1a; border-radius: 20px; padding: 8px 14px; display: flex; align-items: center; gap: 8px; border: 1px solid #3d3d3d;">
+                    <i id="proxyLockIcon" class="fas fa-lock" style="color: #28c840; font-size: 11px;"></i>
+                    <input type="text" id="proxyUrlInput" placeholder="Search or enter URL..." style="background: transparent; border: none; color: #fff; width: 100%; font-size: 13px; outline: none;" onkeypress="if(event.key==='Enter'){proxyNavigate();}">
+                </div>
+
+                <button onclick="proxyNavigate()" style="background: #3d3d3d; border: none; color: #fff; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 13px;">Go</button>
+            </div>
+        </div>
+
+        <div id="proxyBrowserFrame" style="width: 100%; height: 100%; background: #fff; border-radius: 0 0 12px 12px; overflow: hidden; position: relative;">
+            <iframe id="proxyIframe" style="width: 100%; height: 100%; border: none;" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"></iframe>
+            <div id="proxyLoading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; background: rgba(0,0,0,0.8); padding: 20px 30px; border-radius: 10px;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 24px; color: #fff;"></i>
+            </div>
+            
+            <div id="proxyEmptyState" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #666;">
+                <i class="fas fa-globe" style="font-size: 48px; margin-bottom: 15px; color: #888;"></i>
+                <p style="font-size: 14px;">Enter a URL to browse the web</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="proxyHomeView" style="display: none; position: fixed; top: 10px; left: 10px; right: 10px; bottom: 90px; background: #0a0a0a; background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; border-radius: 12px; padding: 40px 20px;">
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <div style="font-size: 3rem; font-weight: 300; letter-spacing: 0.1em; margin-bottom: 10px; color: #fff;">
+                <i class="fas fa-globe" style="margin-right: 10px;"></i>Coreus Proxy
+            </div>
+            <div style="color: #666; font-size: 0.85rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 0.1em;">Your Gateway to the Web</div>
+
+            <div style="position: relative; margin-bottom: 50px;">
+                <i class="fas fa-search" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #555; font-size: 1rem;"></i>
+                <input type="text" id="proxyHomeSearch" placeholder="Search the web..." style="width: 100%; padding: 16px 50px 16px 50px; font-size: 1rem; background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1); border-radius: 50px; color: #fff; outline: none; transition: all 0.3s;" onkeypress="if(event.key==='Enter'){proxyHomeSearch()}">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 0 10px;">
+                <span style="color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;">Bookmarks</span>
+                <button onclick="showAddProxyBookmarkModal()" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #888; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; transition: all 0.3s;"><i class="fas fa-plus" style="margin-right: 5px;"></i>Add</button>
+            </div>
+
+            <div id="proxyBookmarksGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; margin-bottom: 30px;"></div>
+
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://youtube.com" onclick="proxyOpenUrl(this.href); return false;" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 25px; color: #888; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; text-decoration: none;"><i class="fab fa-youtube" style="margin-right: 6px;"></i>YouTube</a>
+                <a href="https://reddit.com" onclick="proxyOpenUrl(this.href); return false;" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 25px; color: #888; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; text-decoration: none;"><i class="fab fa-reddit" style="margin-right: 6px;"></i>Reddit</a>
+                <a href="https://discord.com" onclick="proxyOpenUrl(this.href); return false;" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 25px; color: #888; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; text-decoration: none;"><i class="fab fa-discord" style="margin-right: 6px;"></i>Discord</a>
+                <a href="https://github.com" onclick="proxyOpenUrl(this.href); return false;" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 25px; color: #888; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; text-decoration: none;"><i class="fab fa-github" style="margin-right: 6px;"></i>GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="proxyBookmarkModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; justify-content: center; align-items: center;">
+        <div style="background: #111; border-radius: 20px; padding: 30px; width: 90%; max-width: 350px; border: 1px solid #333;">
+            <div style="font-size: 1.2rem; color: #fff; margin-bottom: 20px;">Add Bookmark</div>
+            <input type="text" id="proxyBookmarkTitle" placeholder="Title (e.g. YouTube)" style="width: 100%; padding: 12px 14px; background: #0a0a0a; border: 2px solid #333; border-radius: 10px; color: #fff; font-size: 0.95rem; margin-bottom: 12px; outline: none;">
+            <input type="text" id="proxyBookmarkUrl" placeholder="URL (e.g. https://youtube.com)" style="width: 100%; padding: 12px 14px; background: #0a0a0a; border: 2px solid #333; border-radius: 10px; color: #fff; font-size: 0.95rem; margin-bottom: 20px; outline: none;">
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button onclick="closeProxyBookmarkModal()" style="background: transparent; border: 1px solid #333; color: #888; padding: 10px 20px; border-radius: 10px; cursor: pointer;">Cancel</button>
+                <button onclick="saveProxyBookmark()" style="background: #4CAF50; border: none; color: #fff; padding: 10px 20px; border-radius: 10px; cursor: pointer;">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cursorLockModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999999; justify-content: center; align-items: center;">
+        <div style="background: #111; border-radius: 18px; padding: 24px; width: 90%; max-width: 420px; border: 1px solid #444;">
+            <h3 style="margin: 0 0 12px; color: #fff; font-size: 1.2rem;">Cursor Locked</h3>
+            <p id="cursorLockText" style="color: #ccc; font-size: 0.95rem; margin-bottom: 20px;">This cursor is locked. Unlock it by achieving the requirements.</p>
+            <button onclick="closeCursorLockModal()" style="width: 100%; padding: 10px 14px; border: none; border-radius: 10px; background: #888; color: #fff; font-weight: 600; cursor: pointer;">Close</button>
+        </div>
+    </div>
+
+
+    <div class="bottom-navbar" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); border-radius: 50px; padding: 10px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 4000; border: 1px solid rgba(255,255,255,0.1);">
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="location.reload()">
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='30' cy='30' r='15' fill='%23fff'/><circle cx='70' cy='70' r='15' fill='%23fff'/><path d='M35 35 L65 65' stroke='%23fff' stroke-width='5'/></svg>" alt="Home" style="width: 24px; height: 24px;">
+        </button>
+        <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.2); margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="location.reload()">
+            <i class="fas fa-home" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showProxyView()">
+            <i class="fas fa-globe" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showGamesView()">
+            <i class="fas fa-gamepad" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showToolsView()">
+            <i class="fas fa-tools" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showAnimeView()">
+            <i class="fas fa-film" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showAiView()">
+            <i class="fas fa-robot" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showChatView()">
+            <i class="fas fa-comment-alt" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showRandomThingsView()">
+            <i class="fas fa-link" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showTerminalView()" title="Terminal">
+            <i class="fas fa-terminal" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showAboutView()">
+            <i class="fas fa-info-circle" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showAchievementsView()">
+            <i class="fas fa-trophy" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showStatsView()">
+            <i class="fas fa-chart-line" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; margin: 0 10px;"></div>
+        <button class="nav-icon-btn" style="background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="showSettingsView()">
+            <i class="fas fa-cog" style="color: white; font-size: 20px;"></i>
+        </button>
+        <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.2); margin: 0 10px;"></div>
+        <span class="navbar-time" style="color: #fff; font-size: 0.85rem; font-family: monospace; min-width: 50px; text-align: right; margin-right: 10px;">00:00:00</span>
+    </div>
+
+    <div class="modal" id="settingsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center;">
+        <div class="modal-content" style="background: #111; padding: 2rem; border-radius: 15px; width: 90%; max-width: 500px; position: relative; border: 2px solid #333; box-shadow: 0 20px 60px rgba(0,0,0,0.8);">
+            <h2 style="color: #fff; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 700; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Proxy Settings</h2>
+
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; color: #fff; margin-bottom: 0.5rem; font-weight: 600;">Proxy Mode:</label>
+                <div style="display: flex; gap: 1.5rem; margin-bottom: 1rem;">
+                    <label style="color: #fff; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="radio" name="proxyMode" value="fallback" checked onchange="setProxyMode('fallback')" style="width: 16px; height: 16px; accent-color: #fff;"> Auto Fallback
+                    </label>
+                    <label style="color: #fff; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="radio" name="proxyMode" value="single" onchange="setProxyMode('single')" style="width: 16px; height: 16px; accent-color: #fff;"> Single Proxy
+                    </label>
+                </div>
+            </div>
+
+            <div id="singleProxySelection" style="margin-bottom: 1.5rem;">
+                <label style="display: block; color: #fff; margin-bottom: 0.5rem; font-weight: 600;">Select Proxy:</label>
+                <select id="proxySelect" style="width: 100%; padding: 0.8rem; background: #000; color: #fff; border: 2px solid #333; border-radius: 8px; font-size: 1rem; outline: none; transition: border-color 0.3s;">
+                    <option value="https://embeddr.rhw.one/embed#">embeddr.rhw.one</option>
+                    <option value="https://embeddr.pages.dev/embed#">embeddr.pages.dev</option>
+                    <option value="https://ev2.rhw.one/active/embed#">ev2.rhw.one</option>
+                    <option value="https://api.allorigins.win/raw?url=">api.allorigins.win</option>
+                    <option value="https://api.cors.lol/?url=">api.cors.lol</option>
+                    <option value="https://yacdn.org/proxy/">yacdn.org</option>
+                </select>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem;">
+                <button class="proxy-btn" onclick="toggleSettingsModal()" style="background: #000; color: #fff; border: 2px solid #333; border-radius: 8px;">Cancel</button>
+                <button class="proxy-btn" onclick="saveSettings()" style="background: #fff; color: #000; border: 2px solid #fff; border-radius: 8px;">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="puterLoginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; justify-content: center; align-items: center;">
+        <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 15px; width: 90%; max-width: 400px; text-align: center; border: 1px solid var(--border-color); position: relative;">
+            <button style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--secondary-text); font-size: 1.5rem; cursor: pointer; transition: color 0.3s;" onclick="closePuterLoginModal()" title="Close">
+                ✕
+            </button>
+            <i class="fas fa-robot" style="font-size: 3rem; color: white; margin-bottom: 1rem; display: block;"></i>
+            <h2 style="color: var(--primary-text); margin-bottom: 1rem; font-size: 1.5rem;">Sign in to Puter AI</h2>
+            <p style="color: var(--secondary-text); margin-bottom: 2rem; line-height: 1.6;">You will need to login with Puter to use AI chat features.</p>
+            <button id="puterSignInBtn" style="width: 100%; padding: 1rem; background: white; border: none; color: #000; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 255, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 255, 255, 0.2)';">
+                <i class="fas fa-sign-in-alt" style="margin-right: 0.5rem;"></i> Login with Puter
+            </button>
+        </div>
+    </div>
+
+    <div class="proxy-frame" id="proxyFrame">
+        <div class="frame-header">
+            <span class="frame-url" id="frameUrl"></span>
+            <button class="close-btn" onclick="closeProxy()">✕ Close</button>
+        </div>
+        <iframe class="proxy-iframe" id="proxyIframe" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        <div class="loading-overlay" id="proxyLoadingOverlay">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading content...</div>
+        </div>
+    </div>
+
+    <div id="gamePopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary-bg); background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 3000; overflow-y: auto;">
+        <div id="gameContainer" style="width: 80%; margin: 20px auto; background: #111; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 2px solid #333; padding-bottom: 80px;">
+            <div id="gameHeader" style="background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333;">
+                <div style="display: flex; align-items: center; flex-shrink: 1; overflow: hidden;">
+                    <span id="gameUrlDisplay" style="color: #fff; font-size: 1.1rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></span><span id="hackedIndicator" style="color: #ff4444; font-size: 0.85rem; font-weight: 600; display: none; margin-left: 8px; flex-shrink: 0;">[HACKED]</span>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <div id="fpsCounter" style="background: rgba(0,0,0,0.5); padding: 6px 12px; border-radius: 20px; color: #4CAF50; font-size: 0.85rem; font-family: monospace; font-weight: 600;">0 FPS</div>
+                    <button id="fullscreenBtn" onclick="toggleGameFullscreen()" style="background: rgba(255,255,255,0.1); border: none; color: #fff; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s;"><i class="fas fa-expand"></i></button>
+                    <button onclick="closeGamePopup()" style="background: #ff4444; border: none; color: #fff; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.3s;">✕</button>
+                </div>
+            </div>
+            <div id="gameIframeContainer" style="position: relative; background: #000;">
+                <iframe class="proxy-iframe" id="gameIframe" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox" style="width: 100%; height: 70vh; border: none;"></iframe>
+                <div class="loading-overlay" id="gameLoadingOverlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Loading content...</div>
+                    <div id="currentLoadUrl" style="margin-top: 10px; font-size: 0.85rem; color: var(--secondary-text); word-break: break-all; max-width: 400px;"></div>
+                </div>
+            </div>
+            <div id="gameHackSection" style="display: none; padding: 20px; background: linear-gradient(180deg, #1a1a1a 0%, #252525 100%); border-top: 1px solid #444; border-bottom: 1px solid #444;">
+                <div style="display: flex; align-items: center; margin-bottom: 18px;">
+                    <div style="background: linear-gradient(135deg, #ff6b35, #ff9a44); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                        <i class="fas fa-hack" style="color: #fff; font-size: 1rem;"></i>
+                    </div>
+                    <h3 style="color: #fff; margin: 0; font-size: 1.15rem; font-weight: 600;">Game Hacks</h3>
+                    <span id="hackGameBadge" style="background: #ff6b35; color: #fff; font-size: 0.7rem; padding: 3px 8px; border-radius: 10px; margin-left: 10px; font-weight: 600;"></span>
+                </div>
+                <div id="driftBossHacks" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 200px; background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px;">
+                        <div style="color: #ff6b35; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; display: flex; align-items: center;">
+                            <i class="fas fa-coins" style="margin-right: 8px;"></i> Coins
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="number" id="hackCoinsInput" placeholder="Amount" style="flex: 1; padding: 12px 15px; background: #0a0a0a; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: all 0.2s;" onfocus="this.style.borderColor='#ff6b35'" onblur="this.style.borderColor='#333'">
+                            <button onclick="applyDriftBossCoinsHack()" style="background: linear-gradient(135deg, #ff6b35, #ff9a44); border: none; color: #fff; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.3s; white-space: nowrap;" onmouseenter="this.style.transform='scale(1.02)'" onmouseleave="this.style.transform='scale(1)'">Apply</button>
+                        </div>
+                    </div>
+                    <div style="flex: 1; min-width: 200px; background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px;">
+                        <div style="color: #7c4dff; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; display: flex; align-items: center;">
+                            <i class="fas fa-trophy" style="margin-right: 8px;"></i> Score
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="number" id="hackScoreInput" placeholder="Amount" style="flex: 1; padding: 12px 15px; background: #0a0a0a; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: all 0.2s;" onfocus="this.style.borderColor='#7c4dff'" onblur="this.style.borderColor='#333'">
+                            <button onclick="applyDriftBossScoreHack()" style="background: linear-gradient(135deg, #7c4dff, #e040fb); border: none; color: #fff; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.3s; white-space: nowrap;" onmouseenter="this.style.transform='scale(1.02)'" onmouseleave="this.style.transform='scale(1)'">Apply</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="drivenWildHacks" style="display: none; background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px;">
+                    <div style="color: #00e5ff; font-size: 0.85rem; font-weight: 600; margin-bottom: 10px; display: flex; align-items: center;">
+                        <i class="fas fa-road" style="margin-right: 8px;"></i> Best Distance
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <input type="number" id="hackDistanceInput" placeholder="Distance" style="flex: 1; min-width: 120px; padding: 12px 15px; background: #0a0a0a; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: all 0.2s;" onfocus="this.style.borderColor='#00e5ff'" onblur="this.style.borderColor='#333'">
+                        <button onclick="applyDrivenWildHack()" style="background: linear-gradient(135deg, #00e5ff, #00b8d4); border: none; color: #000; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.3s; white-space: nowrap;" onmouseenter="this.style.transform='scale(1.02)'" onmouseleave="this.style.transform='scale(1)'">Apply</button>
+                    </div>
+                </div>
+                <p id="hackStatus" style="color: #666; font-size: 0.85rem; margin-top: 12px; text-align: center;"></p>
+            </div>
+            <div style="padding: 20px;">
+                <h3 style="color: #fff; margin-bottom: 15px; font-size: 1.2rem;">More Games</h3>
+                <div id="randomGamesGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let fpsInterval = null;
+        let lastFrameTime = performance.now();
+        let frameCount = 0;
+        let currentFps = 0;
+
+        function startFpsCounter() {
+            if (fpsInterval) return;
+            frameCount = 0;
+            lastFrameTime = performance.now();
+            
+            fpsInterval = setInterval(() => {
+                const now = performance.now();
+                currentFps = Math.round(frameCount * 1000 / (now - lastFrameTime));
+                frameCount = 0;
+                lastFrameTime = now;
+                const fpsEl = document.getElementById('fpsCounter');
+                if (fpsEl) {
+                    fpsEl.textContent = currentFps + ' FPS';
+                    fpsEl.style.color = currentFps >= 55 ? '#4CAF50' : currentFps >= 30 ? '#FFC107' : '#ff4444';
+                }
+            }, 1000);
+        }
+
+        function stopFpsCounter() {
+            if (fpsInterval) {
+                clearInterval(fpsInterval);
+                fpsInterval = null;
+            }
+        }
+
+        function trackFrame() {
+            frameCount++;
+            requestAnimationFrame(trackFrame);
+        }
+
+        function toggleGameFullscreen() {
+            const iframe = document.getElementById('gameIframe');
+            if (!document.fullscreenElement) {
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen().catch(err => {});
+                } else if (iframe.webkitRequestFullscreen) {
+                    iframe.webkitRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            }
+        }
+
+        async function loadRandomGames() {
+            const grid = document.getElementById('randomGamesGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            
+            const currentGame = document.getElementById('gameUrlDisplay').textContent;
+            
+            try {
+                let games = [];
+                if (gameBackend === 'selenite') {
+                    const response = await fetch(seleniteConfig.baseUrl + seleniteConfig.gamesManifest);
+                    const data = await response.json();
+                    games = data.map(g => ({ title: g.name, image: seleniteConfig.gameFolderBase + '/' + g.directory + '/' + g.image, path: seleniteConfig.gameFolderBase + '/' + g.directory + '/index.html' }));
+                } else {
+                    const response = await fetch('./games.json');
+                    games = await response.json();
+                }
+                
+                const shuffled = games.sort(() => 0.5 - Math.random()).slice(0, 8);
+                
+                shuffled.forEach(game => {
+                    const title = game.title || game.name || 'Unknown';
+                    if (title === currentGame) return;
+                    const image = game.image || game.img || '';
+                    const path = game.gamePath || game.href || game.path || game.url || '';
+                    const imageSrc = (gameBackend === 'selenite' ? seleniteConfig.baseUrl : './') + image;
+                    
+                    const card = document.createElement('div');
+                    card.style.cssText = 'background: #1a1a1a; border-radius: 12px; padding: 10px; cursor: pointer; transition: transform 0.3s; text-align: center;';
+                    card.innerHTML = `
+                        <img src="${imageSrc}" alt="${title}" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; margin-bottom: 8px; background: linear-gradient(135deg, #333, #222);" onerror="this.style.display='none'">
+                        <div style="color: #fff; font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${title}</div>
+                    `;
+                    card.onclick = () => showGamePopup(path, title, gameBackend === 'selenite');
+                    card.onmouseenter = () => card.style.transform = 'scale(1.05)';
+                    card.onmouseleave = () => card.style.transform = 'scale(1)';
+                    grid.appendChild(card);
+                });
+            } catch(e) {}
+        }
+
+        document.addEventListener('fullscreenchange', () => {
+            const btn = document.getElementById('fullscreenBtn');
+            if (btn) {
+                btn.innerHTML = document.fullscreenElement ? '<i class="fas fa-compress"></i>' : '<i class="fas fa-expand"></i>';
+            }
+        });
+    </script>
+
+    <div id="chatView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary-bg); background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 3000; overflow-y: auto;">
+        <style>
+            .chat-container {
+                display: flex;
+                flex-direction: column;
+                min-height: 60vh;
+                padding: 0;
+            }
+
+            .chat-header {
+                padding: 18px;
+                text-align: center;
+                font-size: 1.2rem;
+                font-weight: 700;
+                border-bottom: 1px solid #222;
+                background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
+                letter-spacing: 0.1em;
+                color: #fff;
+                flex-shrink: 0;
+            }
+
+            .chat-iframe-wrapper {
+                flex: 1;
+                overflow: hidden;
+                border-radius: 0 0 12px 12px;
+            }
+
+            .chat-iframe-wrapper iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                background: #0a0a0a;
+            }
+        </style>
+
+        <div class="chat-container" style="position: relative; max-width: 800px; margin: 50px auto; background: #0a0a0a; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid #333;">
+            <div class="chat-iframe-wrapper">
+                <script src="https://minnit.chat/js/embed.js?c=1772345192" defer></script>
+                <span style="display: none;" class="minnit-chat-sembed" data-chatname="https://organizations.minnit.chat/495986791376958/c/Website?embed" data-style="width:100%; height:100%; min-height:500px;" data-version="1.55">Chat</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="settingsView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <h2 class="title" style="font-size: 4rem; margin-bottom: 0; flex-grow: 1; text-align: center; color: #fff;">Settings</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; background: #111111; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(255,255,255,0.1); border: 2px solid #333;">
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #fff; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Proxy Settings</h3>
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; color: #fff; margin-bottom: 0.5rem; font-weight: 600;">Proxy Mode:</label>
+                    <div style="display: flex; gap: 1.5rem; margin-bottom: 1rem;">
+                        <label style="color: #fff; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="radio" name="proxyModeSettings" value="fallback" checked onchange="setProxyMode('fallback')" style="width: 16px; height: 16px; accent-color: #fff;"> Auto Fallback
+                        </label>
+                        <label style="color: #fff; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="radio" name="proxyModeSettings" value="single" onchange="setProxyMode('single')" style="width: 16px; height: 16px; accent-color: #fff;"> Single Proxy
+                        </label>
+                    </div>
+                </div>
+
+                <div id="singleProxySelectionSettings" style="margin-bottom: 1rem;">
+                    <label style="display: block; color: #fff; margin-bottom: 0.5rem; font-weight: 600;">Select Proxy:</label>
+                    <select id="proxySelectSettings" style="width: 100%; padding: 0.8rem; background: #000; color: #fff; border: 2px solid #333; border-radius: 8px; font-size: 1rem; outline: none; transition: border-color 0.3s;">
+                        <option value="https://embeddr.rhw.one/embed#">embeddr.rhw.one</option>
+                        <option value="https://embeddr.pages.dev/embed#">embeddr.pages.dev</option>
+                        <option value="https://ev2.rhw.one/active/embed#">ev2.rhw.one</option>
+                        <option value="https://api.allorigins.win/raw?url=">api.allorigins.win</option>
+                        <option value="https://api.cors.lol/?url=">api.cors.lol</option>
+                        <option value="https://yacdn.org/proxy/">yacdn.org</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #fff; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Game Backend</h3>
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; color: #fff; margin-bottom: 0.5rem; font-weight: 600;">Backend:</label>
+                    <select id="gameBackendSelect" onchange="setGameBackend(this.value)" style="width: 100%; padding: 0.8rem; background: #000; color: #fff; border: 2px solid #333; border-radius: 8px; font-size: 1rem; outline: none; transition: border-color 0.3s;">
+                        <option value="auto">Auto fallback (VRTX)</option>
+                        <option value="default">Default (local only)</option>
+                        <option value="selenite">Selenite (External)</option>
+                        <option value="https://coreus-assets-g6kx36vv0.vercel.app/">Vercel Mirror</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #fff; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Cloaking</h3>
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; color: #fff; margin-bottom: 0.5rem; font-weight: 600;">Tab cloaking:</label>
+                    <select id="cloakingSelectSettings" style="width: 100%; padding: 0.8rem; background: #000; color: #fff; border: 2px solid #333; border-radius: 8px; font-size: 1rem; outline: none; transition: border-color 0.3s;">
+                        <option value="No" selected>No</option>
+                        <option value="Google">Google</option>
+                        <option value="Google Classroom">Google Classroom</option>
+                        <option value="EcoleDirecte">EcoleDirecte</option>
+                    </select>
+                </div>
+                <div style="margin-top: 1.5rem; border-top: 2px solid #333; padding-top: 1rem;">
+  <h4 style="color: #fff; margin-bottom: 0.8rem; font-weight: 600;">Panic Key</h4>
+
+  <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+    <input id="panicKeyInput"
+      placeholder="Key (e.g. \ or F1 or Escape)"
+      style="width: 100%; padding: 0.8rem; background: #000; color: #fff; border: 2px solid #333; border-radius: 8px; font-size: 1rem; outline: none;">
+
+    <input id="panicUrlInput"
+      placeholder="Panic URL (https://classroom.google.com)"
+      style="width: 100%; padding: 0.8rem; background: #000; color: #fff; border: 2px solid #333; border-radius: 8px; font-size: 1rem; outline: none;">
+
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button onclick="savePanicSettings()"
+        class="proxy-btn"
+        style="padding: 0.7rem 2.2rem; background: #fff; color: #000; font-weight: 600; font-size: 1.05rem; border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(255,255,255,0.1); transition: all 0.2s;">
+        Save Panic Key
+      </button>
+    </div>
+  </div>
+</div>
+
+                <div style="margin-top: 1rem; border-top: 2px solid #333; padding-top: 1rem;">
+                    <h4 style="color: #fff; margin-bottom: 0.5rem; font-weight: 600;">about:blank cloaking</h4>
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <button id="aboutBlankBtn" title="Open the current page inside an iframe on an about:blank tab" class="proxy-btn" style="padding: 0.7rem 2.2rem; background: #fff; color: #000; font-weight: 600; font-size: 1.08rem; border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(255,255,255,0.1); transition: all 0.2s;">Open in about:blank</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: #fff; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700; border-bottom: 2px solid #333; padding-bottom: 0.5rem;">Cursor Skin</h3>
+                <div id="cursorOptions" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 12px;">
+                    <div onclick="setCursor('default')" class="cursor-option" data-cursor="default" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: white; border: 2px solid black; border-radius: 50%; margin: 0 auto 8px;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Default</span>
+                    </div>
+                    <div onclick="setCursor('fire')" class="cursor-option" data-cursor="fire" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: linear-gradient(45deg, #ff4500, #ff8c00); border-radius: 50%; margin: 0 auto 8px;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Fire</span>
+                    </div>
+                    <div onclick="setCursor('ice')" class="cursor-option" data-cursor="ice" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: linear-gradient(45deg, #00ffff, #0099ff); border-radius: 50%; margin: 0 auto 8px;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Ice</span>
+                    </div>
+                    <div onclick="setCursor('gold')" class="cursor-option" data-cursor="gold" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: linear-gradient(45deg, #ffd700, #ffaa00); border: 2px solid #ffd700; border-radius: 50%; margin: 0 auto 8px;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Gold</span>
+                    </div>
+                    <div onclick="setCursor('geek')" class="cursor-option" data-cursor="geek" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: #00ff00; border: 2px solid #00ff00; border-radius: 3px; margin: 0 auto 8px; box-shadow: 0 0 5px #00ff00;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Geek</span>
+                    </div>
+                    <div onclick="setCursor('pink')" class="cursor-option" data-cursor="pink" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: #ff69b4; border: 2px solid #ff1493; border-radius: 50%; margin: 0 auto 8px;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Pink</span>
+                    </div>
+                    <div onclick="setCursor('dark')" class="cursor-option" data-cursor="dark" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: #333; border: 2px solid #666; border-radius: 50%; margin: 0 auto 8px;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Dark</span>
+                    </div>
+                    <div onclick="setCursor('red')" class="cursor-option" data-cursor="red" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: #ff3333; border: 2px solid #cc0000; border-radius: 50%; margin: 0 auto 8px;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Red</span>
+                    </div>
+                    <div onclick="setCursor('purple')" class="cursor-option" data-cursor="purple" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: #9933ff; border: 2px solid #6600cc; border-radius: 50%; margin: 0 auto 8px;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Purple</span>
+                    </div>
+                    <div onclick="setCursor('rainbow')" class="cursor-option" data-cursor="rainbow" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: linear-gradient(45deg, red, orange, yellow, green, blue, purple); border-radius: 50%; margin: 0 auto 8px;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Rainbow</span>
+                    </div>
+                    <div onclick="setCursor('neon')" class="cursor-option" data-cursor="neon" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: #0ff; border: 2px solid #0ff; border-radius: 50%; box-shadow: 0 0 10px #0ff; margin: 0 auto 8px;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Neon</span>
+                    </div>
+                    <div onclick="setCursor('matrix')" class="cursor-option" data-cursor="matrix" style="background: #1a1a1a; border: 2px solid #333; border-radius: 12px; padding: 12px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                        <div style="width: 20px; height: 20px; background: #003300; border: 2px solid #00ff00; border-radius: 3px; margin: 0 auto 8px; box-shadow: 0 0 3px #00ff00;"></div>
+                        <span style="color: #888; font-size: 0.75rem;">Matrix</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="gamesView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary-bg); background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <h2 class="title" style="font-size: 4rem; margin-bottom: 0; flex-grow: 1; text-align: center;">Coreus games</h2>
+        </div>
+
+        <!-- Featured Games Carousel -->
+        <div id="featuredGames" style="max-width: 1200px; margin: 0 auto 50px; position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+            <div id="featuredCarousel" style="display: flex; transition: transform 0.5s ease; width: 100%;">
+                <!-- Featured games will be inserted here -->
+            </div>
+            <button id="prevFeatured" onclick="goToFeaturedSlide(currentFeaturedIndex - 1)" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.7); border: none; color: white; font-size: 2rem; padding: 10px; border-radius: 50%; cursor: pointer; z-index: 10;">‹</button>
+            <button id="nextFeatured" onclick="goToFeaturedSlide(currentFeaturedIndex + 1)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.7); border: none; color: white; font-size: 2rem; padding: 10px; border-radius: 50%; cursor: pointer; z-index: 10;">›</button>
+            <div id="featuredIndicators" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px;"></div>
+        </div>
+
+        <!-- Categories -->
+        <div id="categoriesSection" style="max-width: 1200px; margin: 0 auto 30px; text-align: center;">
+            <div id="categoryButtons" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px;">
+                <button class="category-btn active" data-category="all" onclick="filterByCategory('all')" style="padding: 10px 20px; background: var(--accent-color); color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">All Games</button>
+                <button class="category-btn" data-category="Action" onclick="filterByCategory('Action')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Action</button>
+                <button class="category-btn" data-category="Puzzle" onclick="filterByCategory('Puzzle')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Puzzle</button>
+                <button class="category-btn" data-category="Racing" onclick="filterByCategory('Racing')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Racing</button>
+                <button class="category-btn" data-category="Idle" onclick="filterByCategory('Idle')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Idle</button>
+                <button class="category-btn" data-category="Sports" onclick="filterByCategory('Sports')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Sports</button>
+                <button class="category-btn" data-category="Strategy" onclick="filterByCategory('Strategy')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Strategy</button>
+                <button class="category-btn" data-category="Adventure" onclick="filterByCategory('Adventure')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Adventure</button>
+                <button class="category-btn" data-category="Rhythm" onclick="filterByCategory('Rhythm')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Rhythm</button>
+                <button class="category-btn" data-category="Simulation" onclick="filterByCategory('Simulation')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Simulation</button>
+                <button class="category-btn" data-category="Casual" onclick="filterByCategory('Casual')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Casual</button>
+                <button class="category-btn" data-category="Social" onclick="filterByCategory('Social')" style="padding: 10px 20px; background: var(--secondary-bg); color: var(--primary-text); border: 2px solid var(--border-color); border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s;">Social</button>
+            </div>
+        </div>
+
+        <!-- Last played games -->
+        <div id="lastPlayedSection" style="max-width: 1200px; margin: 0 auto 20px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: #ffffff;">Last played games</h3>
+                <button id="clearLastPlayedBtn" style="background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.35); padding: 4px 10px; border-radius: 10px; cursor: pointer; font-size: 0.8rem;">Clear</button>
+            </div>
+            <div id="lastPlayedList" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;"></div>
+        </div>
+
+        <!-- Search -->
+        <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+            <input type="text" id="gamesSearchInput" placeholder="Search games..." style="width: 100%; max-width: 500px; padding: 12px 20px; font-size: 1rem; background-color: var(--secondary-bg); border: 2px solid var(--border-color); border-radius: 25px; color: var(--primary-text); outline: none; transition: all 0.3s ease;" />
+        </div>
+
+        <!-- Golden Zone Favorites -->
+        <div id="favoriteZone"></div>
+
+        <!-- Games Grid -->
+        <div id="gamesGrid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 25px; padding: 10px;"></div>
+
+    </div>
+
+    <div id="toolsView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary-bg); background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <h2 class="title" style="font-size: 4rem; margin-bottom: 0; flex-grow: 1; text-align: center;">Coreus tools</h2>
+        </div>
+        <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+            <input type="text" id="toolsSearchInput" placeholder="Search tools..." style="width: 100%; max-width: 500px; padding: 12px 20px; font-size: 1rem; background-color: var(--secondary-bg); border: 2px solid var(--border-color); border-radius: 25px; color: var(--primary-text); outline: none; transition: all 0.3s ease;" />
+        </div>
+        <div id="toolsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; padding: 10px;"></div>
+
+    </div>
+    </div>
+
+    <div id="toolsView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary-bg); background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <h2 class="title" style="font-size: 4rem; margin-bottom: 0; flex-grow: 1; text-align: center;">Coreus tools</h2>
+        </div>
+        <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+            <input type="text" id="toolsSearchInput" placeholder="Search tools..." style="width: 100%; max-width: 500px; padding: 12px 20px; font-size: 1rem; background-color: var(--secondary-bg); border: 2px solid var(--border-color); border-radius: 25px; color: var(--primary-text); outline: none; transition: all 0.3s ease;" />
+        </div>
+        <div id="toolsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; padding: 10px;"></div>
+ 
+    </div>
+
+    <div id="terminalView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); background-image: radial-gradient(circle, #222 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow: hidden; padding: 12px 10px 20px 10px;">
+        <div style="text-align: center; margin-bottom: 10px;">
+            <h2 style="color: #7CFC00; margin-bottom: 4px; font-size: 1.7rem;">Coreus Terminal</h2>
+            <p style="color: #9cff9c; font-size: 0.92rem; margin: 0;">Pseudo-shell in browser. Type <strong>help</strong> to get started.</p>
+        </div>
+        <div id="terminalContainer" style="width: 95%; max-width: 95%; height: 70vh; min-height: 300px; max-height: 75vh; margin: 0 auto; border: 1px solid rgba(124,252,0,0.25); border-radius: 12px; background: #000; box-shadow: 0 0 30px rgba(0,255,0,0.25); overflow: hidden;"></div>
+    </div>
+
+    <div id="animeView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0a0a0a; z-index: 2000; overflow-y: auto; padding: 30px 20px 100px 20px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h2 style="font-size: 2.8rem; font-weight: 700; color: #fff; margin: 0 0 10px 0; letter-spacing: -0.5px;">
+                <i class="fas fa-film" style="margin-right: 12px; color: #7c4dff;"></i>Anime
+            </h2>
+            <p style="color: #666; font-size: 0.95rem; margin: 0;">Stream your favorite anime for free</p>
+        </div>
+        
+        <div style="display: flex; justify-content: center; margin-bottom: 25px;">
+            <div style="position: relative; width: 100%; max-width: 550px;">
+                <i class="fas fa-search" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #666;"></i>
+                <input type="text" id="animeSearchInput" placeholder="Search anime..." style="width: 100%; padding: 16px 20px 16px 50px; font-size: 1rem; background: #151515; border: 2px solid #252525; border-radius: 30px; color: #fff; outline: none; transition: all 0.3s;" onkeypress="if(event.key==='Enter'){searchAnime()}" onfocus="this.style.borderColor='#7c4dff';this.style.boxShadow='0 0 0 3px rgba(124,77,255,0.1)'" onblur="this.style.borderColor='#252525';this.style.boxShadow='none'">
+            </div>
+        </div>
+
+        <div id="animeCategories" style="display: flex; gap: 8px; justify-content: center; margin-bottom: 25px; flex-wrap: wrap;">
+            <button onclick="loadAnimeHome()" class="animeCatBtn active" style="background: #7c4dff; border: none; color: #fff; padding: 10px 24px; border-radius: 25px; cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: all 0.3s;">Top Anime</button>
+            <button onclick="loadAnimeCategory('airing')" class="animeCatBtn" style="background: #1a1a1a; border: 1px solid #333; color: #888; padding: 10px 24px; border-radius: 25px; cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: all 0.3s;">Airing</button>
+            <button onclick="loadAnimeCategory('movies')" class="animeCatBtn" style="background: #1a1a1a; border: 1px solid #333; color: #888; padding: 10px 24px; border-radius: 25px; cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: all 0.3s;">Movies</button>
+        </div>
+
+        <div id="animeLoading" style="text-align: center; padding: 60px 20px; color: #666;">
+            <i class="fas fa-spinner fa-spin" style="font-size: 2.5rem; margin-bottom: 15px; color: #7c4dff;"></i>
+            <p style="font-size: 1.1rem;">Loading anime...</p>
+        </div>
+
+        <div id="animeSpotlight" style="margin-bottom: 30px; display: none;"></div>
+
+        <div id="animeContent" style="display: none;">
+            <h3 id="animeSectionTitle" style="color: #fff; font-size: 1.4rem; margin-bottom: 25px; padding-left: 15px; border-left: 4px solid #7c4dff; font-weight: 600;"></h3>
+            <div id="animeGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px;"></div>
+            <div id="animePagination" style="display: flex; justify-content: center; gap: 10px; margin-top: 40px;"></div>
+        </div>
+    </div>
+
+    <div id="animePlayerView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0a0a0a; z-index: 2500; overflow-y: auto; padding: 70px 0 120px 0; box-sizing: border-box;">
+        <div style="position: sticky; top: 0; height: 70px; background: linear-gradient(#0a0a0a 0%, transparent 100%); display: flex; align-items: center; padding: 0 20px; z-index: 20;">
+            <button onclick="closeAnimePlayer()" style="background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 1.1rem; cursor: pointer; padding: 12px 16px; border-radius: 10px; transition: all 0.2s;">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <span id="animePlayerTitle" style="color: #fff; font-size: 1.15rem; margin-left: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; font-weight: 500;"></span>
+            <span id="currentEpDisplay" style="color: #7c4dff; font-size: 0.9rem; font-weight: 600; margin-right: 15px;"></span>
+        </div>
+        <div style="width: 100%; aspect-ratio: 16/9; max-height: 60vh; background: #000;">
+            <iframe id="animeIframe" style="width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+        </div>
+        <div style="background: #111; border-top: 1px solid #222;">
+            <div style="padding: 10px 20px 8px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #222;">
+                <span style="color: #fff; font-size: 1rem; font-weight: 600;"><i class="fas fa-list" style="margin-right: 8px; color: #7c4dff;"></i>Episodes</span>
+                <div style="display: flex; gap: 8px;">
+                    <button onclick="changeDubSub('sub')" id="subBtn" style="background: #7c4dff; border: none; color: #fff; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 600;">Sub</button>
+                    <button onclick="changeDubSub('dub')" id="dubBtn" style="background: #222; border: 1px solid #333; color: #888; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 600;">Dub</button>
+                </div>
+            </div>
+            <div id="animeEpisodeList" style="max-height: 150px; overflow-y: auto; padding: 10px 15px; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start;"></div>
+        </div>
+    </div>
+
+    <div id="randomThingsView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary-bg); background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <h2 class="title" style="font-size: 4rem; margin-bottom: 0; flex-grow: 1; text-align: center;">Random Things</h2>
+        </div>
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; padding: 10px;">
+            <!-- Example items - easily add more -->
+            <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 15px; padding: 20px; text-align: center; transition: all 0.3s;">
+                <i class="fas fa-sticky-note" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                <h3 style="color: var(--primary-text); margin-bottom: 10px;">dev</h3>
+                <p style="color: var(--secondary-text); line-height: 1.6;">hello yall make sure to suggest anything for the website on the chat #dev channel</p>
+            </div>
+            <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 15px; padding: 20px; text-align: center; transition: all 0.3s;">
+                <i class="fas fa-link" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                <h3 style="color: var(--primary-text); margin-bottom: 10px;">kyten13's stream</h3>
+                <p style="color: var(--secondary-text); margin-bottom: 15px;">cool bro twitch have fun</p>
+                <a href="https://m.twitch.tv/kyten13" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">enjoy you pig</a>
+            </div>
+           <!-- <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 15px; padding: 20px; text-align: center; transition: all 0.3s;">
+                <i class="fas fa-image" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                <h3 style="color: var(--primary-text); margin-bottom: 10px;">Image Example</h3>
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><rect width='100' height='100' fill='%23ccc'/><text x='50' y='50' text-anchor='middle' dy='.3em' fill='%23000'>Image</text></svg>" alt="Example Image" style="width: 100px; height: 100px; border-radius: 10px; margin-bottom: 15px;">
+                <p style="color: var(--secondary-text);">Placeholder for an image.</p>
+            </div>
+            <div style="background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 15px; padding: 20px; text-align: center; transition: all 0.3s;">
+                <i class="fas fa-sticky-note" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                <h3 style="color: var(--primary-text); margin-bottom: 10px;">Text Note</h3>
+                <p style="color: var(--secondary-text); line-height: 1.6;">This is a sample text note. You can add any text content here. It's easy to customize and add more cards like this.</p>
+            </div> -->
+        </div>
+    </div>
+
+    <div id="aboutView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+            <button onclick="showPrivacyPolicyView()" style="background: rgba(0,0,0,0.8); border: 2px solid #333; color: #fff; padding: 12px 24px; border-radius: 25px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s; backdrop-filter: blur(10px);">
+                <i class="fas fa-shield-alt" style="margin-right: 8px;"></i> Privacy Policy
+            </button>
+            <button onclick="showDisclaimerView()" style="background: rgba(0,0,0,0.8); border: 2px solid #333; color: #fff; padding: 12px 24px; border-radius: 25px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s; backdrop-filter: blur(10px);">
+                <i class="fas fa-exclamation-triangle" style="margin-right: 8px;"></i> Disclaimer
+            </button>
+            <button onclick="showDmcaView()" style="background: rgba(0,0,0,0.8); border: 2px solid #333; color: #fff; padding: 12px 24px; border-radius: 25px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s; backdrop-filter: blur(10px);">
+                <i class="fas fa-copyright" style="margin-right: 8px;"></i> DMCA
+            </button>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <h2 class="title" style="font-size: 4rem; margin-bottom: 0; flex-grow: 1; text-align: center; color: #fff;">About Coreus</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; background: #111111; padding: 2.5rem; border-radius: 15px; border: 2px solid #333; box-shadow: 0 10px 40px rgba(255,255,255,0.05);">
+            <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 2px solid #333;">
+                <p style="color: #fff; font-size: 1.15rem; line-height: 1.7; margin-bottom: 15px;">
+                    This is a deployment of Coreus (not the singlefile version). Get the singlefile here:
+                </p>
+                <a href="/coreus-onefile.html" download="coreus-onefile.html" style="display: inline-block; padding: 0.8rem 2rem; background: #fff; color: #000; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s;">
+                    <i class="fas fa-download" style="margin-right: 8px;"></i> Download
+                </a>
+            </div>
+            
+            <div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 2px solid #333;">
+                <p style="color: #fff; font-size: 1.15rem; line-height: 1.7; margin-bottom: 15px;">
+                    Coreus is a complete unblocked browser game (UBG) with an Ultraviolet proxy, 100+ games, and tools — all in a single HTML file.
+                </p>
+                <p style="color: #aaa; font-size: 1rem; line-height: 1.6;">
+                    Made by <a href="https://github.com/noodlelover1" style="color: #fff; text-decoration: none; font-weight: 600;">n00dle</a> with contributions from <a href="https://github.com/CoderandHacker69" style="color: #fff; text-decoration: none; font-weight: 600;">@CoderandHacker69</a> and <a href="https://github.com/paulcalatayud35" style="color: #fff; text-decoration: none; font-weight: 600;">@paulcalatayud35</a>
+                </p>
+            </div>
+            
+            <div>
+                <p style="color: #fff; font-size: 1.15rem; line-height: 1.7; margin-bottom: 15px;">
+                    Since it's a single HTML file, it's completely unblockable. Paste the code in a code editor, deploy using Vercel, Netlify, Surge, or any static host — even convert it to a permanent "data:" URL.
+                </p>
+                <a href="https://github.com/noodlelover1/coreus" target="_blank" style="display: inline-block; padding: 0.8rem 2rem; background: #333; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 600; border: 2px solid #555; transition: all 0.3s;">
+                    <i class="fab fa-github" style="margin-right: 8px;"></i> View on GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="privacyPolicyView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <button onclick="showAboutView()" style="background: rgba(0,0,0,0.8); border: 2px solid #333; color: #fff; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; backdrop-filter: blur(10px); position: absolute; left: 20px;">
+                <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back
+            </button>
+            <h2 class="title" style="font-size: 3rem; margin-bottom: 0; flex-grow: 1; text-align: center; color: #fff;">Privacy Policy</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; background: #111111; padding: 2.5rem; border-radius: 15px; border: 2px solid #333; box-shadow: 0 10px 40px rgba(255,255,255,0.05);">
+            <div style="color: #fff; font-size: 1.15rem; line-height: 1.7; margin-bottom: 20px;">
+                <p style="margin-bottom: 15px;">
+                    When you visit the website, we may collect:
+                </p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Your country (IP based)</li>
+                    <li>What page you visited</li>
+                    <li>How many time did you spend on the page</li>
+                    <li>The numbers of visits</li>
+                </ul>
+                <p style="margin-bottom: 15px;">
+                    We use Simple Analytics for that, that is a privacy-focused analytics service.
+                </p>
+                <p style="margin-bottom: 15px;">
+                    <strong>We do not use cookies.</strong>
+                </p>
+                <p style="color: #aaa;">
+                    For questions or concerns about this privacy policy, please contact us through GitHub.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="disclaimerView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <button onclick="showAboutView()" style="background: rgba(0,0,0,0.8); border: 2px solid #333; color: #fff; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; backdrop-filter: blur(10px); position: absolute; left: 20px;">
+                <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back
+            </button>
+            <h2 class="title" style="font-size: 3rem; margin-bottom: 0; flex-grow: 1; text-align: center; color: #fff;">Disclaimer</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; background: #111111; padding: 2.5rem; border-radius: 15px; border: 2px solid #333; box-shadow: 0 10px 40px rgba(255,255,255,0.05);">
+            <div style="color: #fff; font-size: 1.15rem; line-height: 1.7;">
+                <p style="margin-bottom: 20px;">
+                    The content and services provided on this website are offered for informational and entertainment purposes only. By accessing or using this website, you acknowledge and agree that you do so at your own risk. The website owner, administrators, and affiliates make no representations or warranties of any kind, express or implied, regarding the accuracy, reliability, availability, or completeness of any content or services provided.
+                </p>
+                <p style="margin-bottom: 20px;">
+                    Under no circumstances shall the website owner, operators, or affiliates be held responsible or liable for any direct, indirect, incidental, consequential, or special damages arising from or related to the use of, or inability to use, this website. This includes but is not limited to damages resulting from loss of data, service interruptions, device damage, or any other technical or non-technical issues.
+                </p>
+                <p style="margin-bottom: 20px;">
+                    Users are solely responsible for how they access, use, or interact with the website and its content. The website owner assumes no responsibility for user behavior, including but not limited to actions taken based on information found on this site or the manner in which the site is accessed (e.g., on school, workplace, or restricted networks).
+                </p>
+                <h3 style="color: #fff; margin-top: 30px; margin-bottom: 15px;">User Responsibility</h3>
+                <p style="margin-bottom: 20px;">
+                    It is the responsibility of each user to ensure that their use of this website complies with all applicable local, state, federal, institutional, and international laws, rules, and policies. This includes, but is not limited to, rules enforced by schools, workplaces, internet service providers, or network administrators.
+                </p>
+                <p style="color: #aaa;">
+                    The website owner does not encourage or endorse bypassing network restrictions, content filters, or administrative policies. Any such actions are performed solely at the discretion and risk of the user.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="dmcaView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <button onclick="showAboutView()" style="background: rgba(0,0,0,0.8); border: 2px solid #333; color: #fff; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.3s; backdrop-filter: blur(10px); position: absolute; left: 20px;">
+                <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back
+            </button>
+            <h2 class="title" style="font-size: 3rem; margin-bottom: 0; flex-grow: 1; text-align: center; color: #fff;">DMCA Policy</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; background: #111111; padding: 2.5rem; border-radius: 15px; border: 2px solid #333; box-shadow: 0 10px 40px rgba(255,255,255,0.05);">
+            <div style="color: #fff; font-size: 1.15rem; line-height: 1.7;">
+                <p style="margin-bottom: 20px;">
+                    Coreus respects intellectual property rights and complies with the Digital Millennium Copyright Act (DMCA). We are committed to responding promptly to any valid copyright infringement notices.
+                </p>
+                <h3 style="color: #fff; margin-top: 30px; margin-bottom: 15px;">Content Ownership</h3>
+                <p style="margin-bottom: 20px;">
+                    <strong>Games:</strong> All games hosted on Coreus are the intellectual property of their respective owners. Coreus does not claim ownership of any games displayed on this platform. Game files are hosted locally on our servers for user convenience.
+                </p>
+                <p style="margin-bottom: 20px;">
+                    <strong>Anime Streaming:</strong> Coreus does <strong>NOT</strong> host, store, or distribute any anime content. Anime streams are fetched directly from third-party external sources via embedded players. We merely provide a convenient interface to access content that is already available on the internet.
+                </p>
+                <h3 style="color: #fff; margin-top: 30px; margin-bottom: 15px;">Takedown Requests</h3>
+                <p style="margin-bottom: 20px;">
+                    If you believe that your copyrighted work has been infringed upon, please submit a takedown request by opening an issue on our GitHub repository:
+                </p>
+                <p style="margin-bottom: 20px;">
+                    <a href="https://github.com/noodlelover1/coreus/issues" target="_blank" style="color: #7c4dff; text-decoration: underline; font-weight: 600;">https://github.com/noodlelover1/coreus/issues</a>
+                </p>
+                <p style="margin-bottom: 20px;">
+                    Your takedown request must include:
+                </p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li style="margin-bottom: 10px;">A description of the copyrighted work you claim has been infringed</li>
+                    <li style="margin-bottom: 10px;">The location of the infringing material (URL)</li>
+                    <li style="margin-bottom: 10px;">Your contact information (email address)</li>
+                    <li style="margin-bottom: 10px;">A statement that you have a good faith belief that the use is not authorized</li>
+                    <li style="margin-bottom: 10px;">A statement that the information in your notice is accurate</li>
+                    <li>A statement, under penalty of perjury, that you are the copyright owner or authorized to act on behalf of the owner</li>
+                </ul>
+                <h3 style="color: #fff; margin-top: 30px; margin-bottom: 15px;">Counter-Notification</h3>
+                <p style="margin-bottom: 20px;">
+                    If you believe that your content was removed in error, you may submit a counter-notification. Please include:
+                </p>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li style="margin-bottom: 10px;">Your contact information</li>
+                    <li style="margin-bottom: 10px;">Identification of the removed material</li>
+                    <li style="margin-bottom: 10px;">A statement under penalty of perjury that you believe the material was removed by mistake</li>
+                    <li>Your consent to jurisdiction</li>
+                </ul>
+                <p style="margin-bottom: 20px; color: #aaa;">
+                    Please note that we cannot respond to general inquiries. All DMCA-related communications must be sent through GitHub issues.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="achievementsView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 40px;">
+            <h2 class="title" style="font-size: 4rem; margin-bottom: 0; flex-grow: 1; text-align: center; color: #fff;">Achievements</h2>
+        </div>
+        <div id="achievements-list" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+        </div>
+    </div>
+
+    <div id="achievement-notification" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%); border: 2px solid #444; border-radius: 12px; padding: 15px 25px; z-index: 9999; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <span id="achievement-emoji" style="font-size: 2rem;"></span>
+            <div>
+                <div style="color: #fff; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Achievement Unlocked!</div>
+                <div id="achievement-name" style="color: #fff; font-size: 1.1rem; font-weight: 600;"></div>
+                <div id="achievement-subtext" style="color: #ccc; font-size: 0.85rem; margin-top: 2px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+  function savePanicSettings() {
+    const key = document.getElementById("panicKeyInput").value.trim();
+    const url = document.getElementById("panicUrlInput").value.trim();
+
+    if (!key || !url) {
+      alert("Fill in both fields.");
+      return;
+    }
+
+    localStorage.setItem("panicKey", key);
+    localStorage.setItem("panicUrl", url);
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const k = localStorage.getItem("panicKey");
+    const u = localStorage.getItem("panicUrl");
+    if (k && document.getElementById("panicKeyInput")) {
+      document.getElementById("panicKeyInput").value = k;
+    }
+    if (u && document.getElementById("panicUrlInput")) {
+      document.getElementById("panicUrlInput").value = u;
+    }
+    checkFirstVisit();
+    trackFirstVisitAndVeteran();
+    updateAchievementsCount();
+    updateProfileCard();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    const panicKey = localStorage.getItem("panicKey");
+    const panicUrl = localStorage.getItem("panicUrl");
+    if (!panicKey || !panicUrl) return;
+
+    const tag = document.activeElement?.tagName?.toLowerCase();
+    if (tag === "input" || tag === "textarea") return;
+
+    const wanted = panicKey.toLowerCase();
+
+    const pressedKey = e.key.toLowerCase();
+    const pressedCode = e.code.toLowerCase();
+
+    if (pressedKey === wanted || pressedCode === wanted) {
+      e.preventDefault(); // stop things like F1 opening help
+      window.location.replace(panicUrl);
+    }
+  });
+</script>
+
+    <script>
+        let currentProxyIndex = 0;
+        let targetUrl = '';
+
+        function showStatus(message, type = 'loading') {
+            const statusDiv = document.getElementById('statusDiv');
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+            statusDiv.style.display = 'block';
+        }
+
+        function hideStatus() {
+            document.getElementById('statusDiv').style.display = 'none';
+        }
+
+        function isValidUrl(string) {
+            try {
+
+                if (!string.startsWith('http://') && !string.startsWith('https://')) {
+                    string = 'https://' + string;
+                }
+                new URL(string);
+                return string;
+            } catch (_) {
+                return false;
+            }
+        }
+
+        function encodeUrl(url) {
+            return url;
+        }
+
+        async function testProxy(proxyUrl, targetUrl) {
+            return new Promise((resolve) => {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = proxyUrl + encodeUrl(targetUrl);
+
+                const timeout = setTimeout(() => {
+                    document.body.removeChild(iframe);
+                    resolve(false);
+                }, 5000);
+
+                iframe.onload = () => {
+                    clearTimeout(timeout);
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        if (iframeDoc && !iframeDoc.location.href.includes('about:blank')) {
+                            document.body.removeChild(iframe);
+                            resolve(true);
+                        } else {
+                            document.body.removeChild(iframe);
+                            resolve(false);
+                        }
+                    } catch (e) {
+                        document.body.removeChild(iframe);
+                        resolve(true);
+                    }
+                };
+
+                iframe.onerror = () => {
+                    clearTimeout(timeout);
+                    document.body.removeChild(iframe);
+                    resolve(false);
+                };
+
+                document.body.appendChild(iframe);
+            });
+        }
+
+        async function tryProxies() {
+            const proxyBtn = document.getElementById('proxyBtn');
+            proxyBtn.disabled = true;
+            proxyBtn.textContent = 'Connecting...';
+
+            if (proxyMode === 'single') {
+
+                showStatus(`Using selected proxy: ${selectedProxy}`, 'loading');
+
+                const works = await testProxy(selectedProxy, targetUrl);
+
+                if (works) {
+                    showStatus('Connected via selected proxy', 'success');
+                    setTimeout(() => {
+                        openProxy(selectedProxy + encodeUrl(targetUrl));
+                    }, 1000);
+                    return;
+                } else {
+                    showStatus('Selected proxy is currently unavailable. Please try another proxy or switch to Auto Fallback mode.', 'error');
+                    proxyBtn.disabled = false;
+                    proxyBtn.textContent = 'Access via Proxy';
+                    return;
+                }
+            } else {
+
+                for (let i = 0; i < proxyAPIs.length; i++) {
+                    const proxyUrl = proxyAPIs[i];
+                    showStatus(`Trying proxy ${i + 1}/${proxyAPIs.length}: ${proxyUrl}`, 'loading');
+
+                    const works = await testProxy(proxyUrl, targetUrl);
+
+                    if (works) {
+                        showStatus(`Connected via proxy ${i + 1}`, 'success');
+                        setTimeout(() => {
+                            openProxy(proxyUrl + encodeUrl(targetUrl));
+                        }, 1000);
+                        return;
+                    }
+                }
+
+                showStatus('All proxy services are currently unavailable. Please try again later.', 'error');
+                proxyBtn.disabled = false;
+                proxyBtn.textContent = 'Access via Proxy';
+            }
+        }
+
+        function injectIframeStyles(iframe) {
+            try {
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                if (iframeDoc) {
+                    const style = iframeDoc.createElement('style');
+                    style.textContent = `
+                        body {
+                            background-color: var(--primary-bg) !important;
+                            color: var(--primary-text) !important;
+                        }
+                        * {
+                            color: var(--primary-text) !important;
+                        }
+                        p, div, span, h1, h2, h3, h4, h5, h6, li, td, th, a {
+                            color: var(--primary-text) !important;
+                        }
+                        a:visited {
+                            color: var(--secondary-text) !important;
+                        }
+                        input, textarea, select {
+                            background-color: var(--secondary-bg) !important;
+                            color: var(--primary-text) !important;
+                            border: 1px solid var(--border-color) !important;
+                        }
+                    `;
+
+                    const head = iframeDoc.head || iframeDoc.getElementsByTagName('head')[0];
+                    if (head) {
+                        head.appendChild(style);
+                    } else {
+                        const body = iframeDoc.body || iframeDoc.getElementsByTagName('body')[0];
+                        if (body) {
+                            body.appendChild(style);
+                        }
+                    }
+                }
+            } catch (e) {
+                console.log('Cannot inject styles due to cross-origin restrictions');
+            }
+        }
+
+        function openProxy(proxyUrl) {
+            const proxyFrame = document.getElementById('proxyFrame');
+            const proxyIframe = document.getElementById('proxyIframe');
+            const frameUrl = document.getElementById('frameUrl');
+            const proxyLoadingOverlay = document.getElementById('proxyLoadingOverlay');
+
+            frameUrl.textContent = targetUrl;
+
+            proxyLoadingOverlay.classList.remove('hidden');
+
+            proxyFrame.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            proxyIframe.src = proxyUrl;
+
+            proxyIframe.onload = function() {
+                setTimeout(() => {
+                    injectIframeStyles(proxyIframe);
+
+                    proxyLoadingOverlay.classList.add('hidden');
+                }, 5000);
+            };
+
+            const proxyBtn = document.getElementById('proxyBtn');
+            proxyBtn.disabled = false;
+            proxyBtn.textContent = 'Access via Proxy';
+            hideStatus();
+        }
+
+        function closeProxy() {
+            const proxyFrame = document.getElementById('proxyFrame');
+            const proxyIframe = document.getElementById('proxyIframe');
+
+            proxyFrame.style.display = 'none';
+            proxyIframe.src = 'about:blank';
+            document.body.style.overflow = 'auto';
+        }
+
+        function startProxy() {
+            const urlInput = document.getElementById('urlInput');
+            const inputUrl = urlInput.value.trim();
+
+            if (!inputUrl) {
+                showStatus('Please enter a URL', 'error');
+                setTimeout(hideStatus, 3000);
+                return;
+            }
+
+            const domainPattern = /\.(com|org|net|io|gov|edu|int|mil|arpa|co|uk|de|jp|fr|au|ca|ru|br|in|it|nl|se|no|dk|fi|es|pl|be|ch|at|cz|ie|pt|hu|gr|il|cn|hk|kr|sg|mx|ar|cl|pe|ve|uy|py|bo|ec|gt|hn|sv|ni|cr|pa|do|cu|jm|ht|bs|bz|sr|gy|fk|gg|je|im|ai|bm|ky|lc|vc|ag|gd|kn|ms|tc|vg|vi|pr|as|gu|mp|pw|fm|mh|ws|to|vu|sb|nc|pf|wf|ck|nu|tk|pn|nf|cc|cx|hm|aq|gs|fun|lol|tf)$/i;
+            
+            if (domainPattern.test(inputUrl)) {
+
+                if (!inputUrl.startsWith('http://') && !inputUrl.startsWith('https://')) {
+                    targetUrl = 'https://' + inputUrl;
+                } else {
+                    targetUrl = inputUrl;
+                }
+            } else {
+
+                targetUrl = 'https://duckduckgo.com/?q=' + encodeURIComponent(inputUrl);
+                trackSearch();
+            }
+
+            showProxyViewDirect(targetUrl);
+        }
+
+        function showProxyViewDirect(url) {
+            previousView = 'proxy';
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('gamesView').style.display = 'none';
+            document.getElementById('toolsView').style.display = 'none';
+            document.getElementById('aboutView').style.display = 'none';
+            document.getElementById('chatView').style.display = 'none';
+            document.getElementById('settingsView').style.display = 'none';
+            document.getElementById('aiView').style.display = 'none';
+            document.getElementById('accountView').style.display = 'none';
+            document.getElementById('proxyView').style.display = 'block';
+
+            trackProxyVisit(url);
+
+            setTimeout(() => {
+
+                if (proxyHistoryIndex < proxyHistory.length - 1) {
+                    proxyHistory = proxyHistory.slice(0, proxyHistoryIndex + 1);
+                }
+                proxyHistory.push(url);
+                proxyHistoryIndex = proxyHistory.length - 1;
+                proxyLoadUrl(url);
+            }, 100);
+        }
+        
+        function validateAndStart() {
+            const urlInput = document.getElementById('urlInput');
+            const inputUrl = urlInput.value.trim();
+            
+            if (!inputUrl) {
+                alert('URL is required!');
+                return false;
+            }
+            
+            if(!checkUrlFormat(inputUrl)) {
+                alert('Invalid URL format!');
+                return false;
+            }
+            
+            startProxy();
+            return true;
+        }
+
+        document.getElementById('urlInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                startProxy();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProxy();
+            }
+        });
+
+        const proxyAPIs = [
+            'https://embeddr.rhw.one/embed#',
+            'https://ev2.rhw.one/active/embed#',
+            'https://embeddr.pages.dev/embed#',
+            'https://api.allorigins.win/raw?url=',
+            'https://api.cors.lol/?url=',
+            'https://yacdn.org/proxy/'
+        ];
+
+        let proxyMode = 'fallback';
+        let selectedProxy = proxyAPIs[0];
+
+        const mirrorHosts = [
+            'https://coreus-assets-g6kx36vv0.vercel.app/'
+        ];
+
+        const seleniteConfig = {
+            baseUrl: 'https://noodlelover1alt.github.io',
+            gamesManifest: '/data/games.json',
+            gameFolderBase: '/semag'
+        };
+        
+        let gameBackend = localStorage.getItem('gameBackend') || 'https://noodlelover1.github.io/coreus-assets/';
+        let currentCategory = 'all';
+        let featuredGames = [];
+        let currentFeaturedIndex = 0;
+        let gamesCache = [];
+        let toolsBackend = localStorage.getItem('toolsBackend') || 'auto';
+
+        let cloakingOption = localStorage.getItem('cloakingOption') || 'No';
+        const cloakingMap = {
+            'Google': 'google.com',
+            'Google Classroom': 'cassroom.google.com',
+            'EcoleDirecte': 'ecoledirecte.com'
+        };
+        let originalTitle = document.title || 'Coreus';
+        let originalFaviconHref = (document.querySelector('link[rel="icon"]') || {}).href;
+
+        var debugMode = false;
+        const maxRetries = 3;
+
+        function showBackendSelectModal() {
+            const modal = document.getElementById('backendSelectModal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+
+        function closeBackendSelectModal() {
+            const modal = document.getElementById('backendSelectModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function selectBackend(backend) {
+            if (backend === 'selenite') {
+                localStorage.setItem('gameBackend', 'selenite');
+                localStorage.setItem('gameBackendChoice', 'selenite');
+                localStorage.setItem('toolsBackend', 'fallback');
+                toolsBackend = 'fallback';
+                gameBackend = 'selenite';
+            } else {
+                localStorage.setItem('gameBackend', 'auto');
+                localStorage.setItem('gameBackendChoice', 'vrtx');
+                gameBackend = 'auto';
+            }
+            closeBackendSelectModal();
+        }
+
+        function checkFirstVisit() {
+            const savedChoice = localStorage.getItem('gameBackendChoice');
+            if (savedChoice === 'selenite') {
+                gameBackend = 'selenite';
+                toolsBackend = 'fallback';
+            } else {
+                gameBackend = 'auto';
+            }
+
+            setGameBackend(gameBackend === 'selenite' ? 'selenite' : 'vrtx');
+        }
+
+        async function applyCloaking(option) {
+            try {
+                let link = document.querySelector('link[rel="icon"]');
+                if (!link) {
+                    link = document.createElement('link');
+                    link.rel = 'icon';
+                    document.head.appendChild(link);
+                }
+
+                if (option === 'No') {
+                    document.title = originalTitle;
+                    if (originalFaviconHref) link.href = originalFaviconHref;
+                    return;
+                }
+
+                document.title = option;
+                const domain = cloakingMap[option];
+                const url = `https://favicon.im/${domain}`;
+                const cacheKey = `cloakingFavicon:${domain}`;
+                const TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
+                const now = Date.now();
+
+                try {
+                    const cachedRaw = localStorage.getItem(cacheKey);
+                    if (cachedRaw) {
+                        const cached = JSON.parse(cachedRaw);
+                        if (cached && cached.data && cached.ts && (now - cached.ts) < TTL) {
+                            link.href = cached.data;
+                            return;
+                        }
+                    }
+                } catch (e) {
+                    console.warn('favicon cache read error', e);
+                }
+
+                try {
+                    const res = await fetch(url, { mode: 'cors' });
+                    if (res.ok) {
+                        const blob = await res.blob();
+                        if (blob && blob.type && blob.type.startsWith('image')) {
+                            const dataUrl = await new Promise((resolve, reject) => {
+                                const reader = new FileReader();
+                                reader.onloadend = () => resolve(reader.result);
+                                reader.onerror = reject;
+                                reader.readAsDataURL(blob);
+                            });
+
+                            link.href = dataUrl;
+
+                            try {
+                                localStorage.setItem(cacheKey, JSON.stringify({ data: dataUrl, ts: now }));
+                            } catch (e) {
+                                console.warn('favicon cache write failed', e);
+                            }
+
+                            return;
+                        }
+                    }
+
+                    link.href = url;
+                } catch (err) {
+                    link.href = url;
+                }
+            } catch (e) {
+                console.error('Cloaking apply error', e);
+            }
+        }
+
+        function openAboutBlankWithIframe() {
+            try {
+
+                let iframeSrc = window.location.href;
+
+                const safeSrc = iframeSrc.replace(/"/g, '&quot;');
+
+                const html = `<!doctype html><html><head><title>about:blank</title><meta name="referrer" content="no-referrer"><meta name="viewport" content="width=device-width,initial-scale=1"><style>html,body{margin:0;height:100%;background:#000}iframe{width:100%;height:100%;border:0;}</style></head><body><iframe src="${safeSrc}" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe></body></html>`;
+
+                let newWin = window.open('about:blank', '_blank');
+                if (!newWin) {
+                    alert('Popup blocked. Please allow popups for this site.');
+                    return;
+                }
+
+                try {
+                    newWin.document.open();
+                    newWin.document.write(html);
+                    newWin.document.close();
+                    try { newWin.focus(); } catch(e) {}
+                } catch (writeErr) {
+
+                    try {
+                        const dataUrl = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
+                        const newWin2 = window.open(dataUrl, '_blank');
+                        if (!newWin2) {
+                            alert('Popup blocked. Please allow popups for this site.');
+                            return;
+                        }
+                        try { newWin2.focus(); } catch(e) {}
+                        return;
+                    } catch (e) {
+                        console.error('Fallback open failed', e);
+                        alert('Failed to open about:blank view.');
+                        return;
+                    }
+                }
+
+                setTimeout(() => {
+                    try {
+                        if (!newWin || newWin.closed) return;
+                        const body = newWin.document && newWin.document.body;
+                        const iframe = body && body.querySelector && body.querySelector('iframe');
+                        if (!iframe) {
+                            const dataUrl = 'data:text/html;charset=utf-8,' + encodeURIComponent(html);
+                            try { newWin.location.href = dataUrl; } catch (navErr) { console.warn('Could not navigate fallback', navErr); }
+                        }
+                    } catch (e) {
+
+                    }
+                }, 200);
+            } catch (e) {
+                console.error('openAboutBlankWithIframe error', e);
+                alert('Failed to open about:blank view.');
+            }
+        }
+
+        function toggleSettingsModal() {
+            const modal = document.getElementById('settingsModal');
+            if (modal.style.display === 'none') {
+                loadCurrentSettings();
+                modal.style.display = 'flex';
+            } else {
+                modal.style.display = 'none';
+            }
+        }
+        
+        function toggleExtraModal(){
+            console.log("Toggling extra modal");
+        }
+
+        function loadCurrentSettings() {
+
+            const modalRadio = document.querySelector(`input[name="proxyMode"][value="${proxyMode}"]`);
+            if (modalRadio) modalRadio.checked = true;
+
+            const settingsRadio = document.querySelector(`input[name="proxyModeSettings"][value="${proxyMode}"]`);
+            if (settingsRadio) settingsRadio.checked = true;
+
+            const modalSel = document.getElementById('singleProxySelection');
+            const settingsSel = document.getElementById('singleProxySelectionSettings');
+            if (modalSel) modalSel.style.display = proxyMode === 'single' ? 'block' : 'none';
+            if (settingsSel) settingsSel.style.display = proxyMode === 'single' ? 'block' : 'none';
+
+            const proxySelectModal = document.getElementById('proxySelect');
+            const proxySelectSettings = document.getElementById('proxySelectSettings');
+            if (proxySelectModal) proxySelectModal.value = selectedProxy;
+            if (proxySelectSettings) proxySelectSettings.value = selectedProxy;
+
+            const storedBackend = localStorage.getItem('gameBackend') || gameBackend || 'auto';
+            gameBackend = storedBackend;
+            const backendSelect = document.getElementById('gameBackendSelect');
+            if (backendSelect) {
+
+                const validOptions = ['auto', 'default', 'selenite', 
+                    'https://coreus-assets-g6kx36vv0.vercel.app/'
+                ];
+                if (validOptions.includes(gameBackend)) {
+                    backendSelect.value = gameBackend;
+                } else {
+                    backendSelect.value = 'auto';
+                }
+            }
+
+            const storedCloak = localStorage.getItem('cloakingOption') || cloakingOption || 'No';
+            cloakingOption = storedCloak;
+            const cloakingSelectSettings = document.getElementById('cloakingSelectSettings');
+            if (cloakingSelectSettings) cloakingSelectSettings.value = cloakingOption;
+            applyCloaking(cloakingOption);
+        }
+
+        function setProxyMode(mode) {
+            proxyMode = mode;
+
+            const modalSel = document.getElementById('singleProxySelection');
+            const settingsSel = document.getElementById('singleProxySelectionSettings');
+            if (modalSel) modalSel.style.display = mode === 'single' ? 'block' : 'none';
+            if (settingsSel) settingsSel.style.display = mode === 'single' ? 'block' : 'none';
+
+            const radioModal = document.querySelector(`input[name="proxyMode"][value="${mode}"]`);
+            const radioSettings = document.querySelector(`input[name="proxyModeSettings"][value="${mode}"]`);
+            if (radioModal) radioModal.checked = true;
+            if (radioSettings) radioSettings.checked = true;
+
+            showStatus(`Proxy mode set to ${mode}`, 'success');
+            setTimeout(hideStatus, 1200);
+        }
+
+        function setGameBackend(backend) {
+            gameBackend = backend;
+            localStorage.setItem('gameBackend', gameBackend);
+
+            const vrtxIcon = document.getElementById('vrtxIcon');
+            const seleniteIcon = document.getElementById('seleniteIcon');
+            const switchEl = document.getElementById('backendSwitch');
+            const knob = document.getElementById('switchKnob');
+
+            if (backend === 'selenite') {
+                localStorage.setItem('toolsBackend', 'fallback');
+                toolsBackend = 'fallback';
+                localStorage.setItem('gameBackendChoice', 'selenite');
+                vrtxIcon.style.color = '#666';
+                seleniteIcon.style.color = '#9d4edd';
+                switchEl.style.background = '#9d4edd';
+                knob.style.left = '18px';
+            } else {
+                localStorage.setItem('gameBackendChoice', 'vrtx');
+                vrtxIcon.style.color = 'var(--accent-color)';
+                seleniteIcon.style.color = '#666';
+                switchEl.style.background = 'var(--accent-color)';
+                knob.style.left = '2px';
+            }
+        }
+
+        function toggleBackend() {
+            if (gameBackend === 'selenite') {
+                setGameBackend('vrtx');
+            } else {
+                setGameBackend('selenite');
+            }
+        }
+
+        function showBackendInfoPopup() {
+            document.getElementById('backendInfoPopup').style.display = 'flex';
+        }
+
+        function closeBackendInfoPopup(event) {
+            if (!event || event.target.id === 'backendInfoPopup') {
+                document.getElementById('backendInfoPopup').style.display = 'none';
+            }
+        }
+
+        function saveSettings() {
+            proxyMode = document.querySelector('input[name="proxyMode"]:checked').value;
+            selectedProxy = document.getElementById('proxySelect').value;
+
+            const cloakSelSettings = document.getElementById('cloakingSelectSettings');
+            const chosen = (cloakSelSettings && cloakSelSettings.value) || 'No';
+            cloakingOption = chosen;
+            localStorage.setItem('cloakingOption', cloakingOption);
+            applyCloaking(cloakingOption);
+
+            document.getElementById('settingsModal').style.display = 'none';
+        }
+
+        async function showGamesView() {
+            hideAllViews();
+            document.getElementById('gamesView').style.display = 'block';
+            await loadGames();
+        }
+
+        let coreusTerminalInstance = null;
+        function showTerminalView() {
+            hideAllViews();
+            document.getElementById('terminalView').style.display = 'block';
+            previousView = 'terminal';
+
+            const userPrefix = (currentAccount && currentAccount.username) ? currentAccount.username : 'user';
+            const promptText = `${userPrefix}@coreus$ `;
+
+            if (!coreusTerminalInstance && window.jQuery && $.terminal) {
+                coreusTerminalInstance = $('#terminalContainer').terminal(function(command, term) {
+                    const input = (command || '').trim();
+                    if (!input) return;
+
+                    const parts = input.split(' ').filter(Boolean);
+                    const cmd = parts[0].toLowerCase();
+                    const args = parts.slice(1);
+
+                    const fakeFs = ['assets', 'games', 'tools', 'index.html', 'README.md', 'LICENSE'];
+
+                    switch (cmd) {
+                        case 'help':
+                            term.echo('Commands: help, echo, date, time, clear, ls, pwd, whoami, cat, about, exit', {color: '#7CFC00'});
+                            break;
+                        case 'echo':
+                            term.echo(args.join(' '), {color: '#7CFC00'});
+                            break;
+                        case 'date':
+                            term.echo(new Date().toUTCString(), {color: '#7CFC00'});
+                            break;
+                        case 'time':
+                            term.echo(new Date().toLocaleTimeString(), {color: '#7CFC00'});
+                            break;
+                        case 'pwd':
+                            term.echo('/home/coreus', {color: '#7CFC00'});
+                            break;
+                        case 'ls':
+                            term.echo(fakeFs.join('  '), {color: '#7CFC00'});
+                            break;
+                        case 'whoami':
+                            term.echo(userPrefix, {color: '#7CFC00'});
+                            break;
+                        case 'cat':
+                            if (args.length === 0) {
+                                term.echo('Usage: cat <filename>', {color: '#7CFC00'});
+                            } else {
+                                const file = args.join(' ');
+                                if (file === 'README.md') {
+                                    term.echo('Coreus is a portable unblocked games platform with games, tools, proxy, chat, and more.', {color: '#7CFC00'});
+                                } else if (file === 'LICENSE') {
+                                    term.echo('AGPL v3.0 License (coreus).', {color: '#7CFC00'});
+                                } else if (file === 'index.html') {
+                                    term.echo('This is the main app file for Coreus (HTML/CSS/JS).', {color: '#7CFC00'});
+                                } else {
+                                    term.echo('cat: ' + file + ': No such file or directory', {color: '#7CFC00'});
+                                }
+                            }
+                            break;
+                        case 'about':
+                            term.echo('Coreus is the truly unblockable browser games platform with 500+ games, proxy browsing, tools, anime streaming, chat, and achievements. This terminal is a local emulator and not a real shell.', {color: '#7CFC00'});
+                            break;
+                        case 'exit':
+                            showGamesView();
+                            break;
+                        default:
+                            term.echo('Command not found: ' + cmd, {color: '#7CFC00'});
+                            break;
+                    }
+                }, {
+                    greetings: 'Coreus pseudo-terminal. Type help for commands.',
+                    prompt: promptText,
+                    onBlur: function() { return true; }
+                });
+
+                setTimeout(() => {
+                    if (coreusTerminalInstance && coreusTerminalInstance.focus) {
+                        coreusTerminalInstance.focus();
+                    }
+                }, 100);
+            } else if (coreusTerminalInstance) {
+                coreusTerminalInstance.set_prompt(promptText);
+                if (coreusTerminalInstance.focus) {
+                    setTimeout(() => coreusTerminalInstance.focus(), 100);
+                }
+            }
+        }
+
+        const jikanAPI = 'https://api.jikan.moe/v4';
+        let animeCurrentCategory = 'top';
+
+        async function showAnimeView() {
+            hideAllViews();
+            document.getElementById('animeView').style.display = 'block';
+            previousView = 'anime';
+            loadAnimeHome();
+        }
+
+        async function loadAnimeHome() {
+            animeCurrentCategory = 'top';
+            document.getElementById('animeLoading').style.display = 'block';
+            document.getElementById('animeContent').style.display = 'none';
+            document.getElementById('animeSpotlight').style.display = 'none';
+
+            try {
+                const res = await fetch(jikanAPI + '/top/anime?filter=bypopularity&limit=24');
+                const data = await res.json();
+
+                document.getElementById('animeLoading').style.display = 'none';
+                document.getElementById('animeContent').style.display = 'block';
+
+                renderAnimeGrid(data.data || [], 'Top Anime');
+            } catch (e) {
+                console.error(e);
+                document.getElementById('animeLoading').innerHTML = '<p style="color: #fff;">Failed to load anime. Please try again.</p>';
+            }
+        }
+
+        async function loadAnimeCategory(category) {
+            animeCurrentCategory = category;
+            document.getElementById('animeLoading').style.display = 'block';
+            document.getElementById('animeContent').style.display = 'none';
+            document.getElementById('animeSpotlight').style.display = 'none';
+
+            let endpoint = '';
+            let title = 'Anime';
+
+            if (category === 'movies') {
+                endpoint = '/top/anime?type=movie&filter=bypopularity&limit=24';
+                title = 'Top Movies';
+            } else if (category === 'airing') {
+                endpoint = '/seasons/now?limit=24';
+                title = 'Currently Airing';
+            } else if (category === 'popular') {
+                endpoint = '/top/anime?filter=bypopularity&limit=24';
+                title = 'Most Popular';
+            }
+
+            try {
+                const res = await fetch(jikanAPI + endpoint);
+                const data = await res.json();
+
+                document.getElementById('animeLoading').style.display = 'none';
+                document.getElementById('animeContent').style.display = 'block';
+
+                renderAnimeGrid(data.data || [], title);
+            } catch (e) {
+                document.getElementById('animeLoading').innerHTML = '<p style="color: #fff;">Failed to load anime. Please try again.</p>';
+            }
+        }
+
+        async function searchAnime() {
+            const query = document.getElementById('animeSearchInput').value.trim();
+            if (!query) return;
+
+            animeCurrentCategory = 'search';
+            document.getElementById('animeLoading').style.display = 'block';
+            document.getElementById('animeContent').style.display = 'none';
+            document.getElementById('animeSpotlight').style.display = 'none';
+
+            try {
+                const res = await fetch(jikanAPI + '/anime?q=' + encodeURIComponent(query) + '&limit=24&sfw=true');
+                const data = await res.json();
+                document.getElementById('animeLoading').style.display = 'none';
+                document.getElementById('animeContent').style.display = 'block';
+                renderAnimeGrid(data.data || [], 'Search: ' + query);
+            } catch (e) {
+                document.getElementById('animeLoading').innerHTML = '<p style="color: #fff;">Search failed. Please try again.</p>';
+            }
+        }
+
+        function renderAnimeGrid(animes, title) {
+            document.getElementById('animeSectionTitle').textContent = title;
+            const grid = document.getElementById('animeGrid');
+            grid.innerHTML = '';
+
+            if (!animes || animes.length === 0) {
+                grid.innerHTML = '<p style="color: #666; grid-column: 1/-1; text-align: center;">No anime found</p>';
+                return;
+            }
+
+            animes.forEach(anime => {
+                const card = document.createElement('div');
+                card.style.cssText = 'background: #151515; border: 1px solid #252525; border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);';
+                
+                const animeId = anime.mal_id || '';
+                const animeName = anime.title_english || anime.title || 'Unknown';
+                const animeSlug = anime.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+                const animeImage = anime.images?.jpg?.large_image_url || anime.images?.jpg?.image_url || '';
+                const episodeCount = anime.episodes || 0;
+                
+                card.onclick = () => openAnime(animeId, animeName, animeSlug, episodeCount);
+                card.onmouseenter = () => { card.style.transform = 'translateY(-8px)'; card.style.boxShadow = '0 12px 30px rgba(124,77,255,0.2)'; card.style.borderColor = '#7c4dff'; };
+                card.onmouseleave = () => { card.style.transform = 'translateY(0)'; card.style.boxShadow = '0 4px 15px rgba(0,0,0,0.3)'; card.style.borderColor = '#252525'; };
+
+                const imgContainer = document.createElement('div');
+                imgContainer.style.cssText = 'width: 100%; aspect-ratio: 2/3; background: linear-gradient(135deg, hsl(' + Math.floor(Math.random() * 360) + ', 70%, 50%) 0%, hsl(' + Math.floor(Math.random() * 360) + ', 80%, 60%) 100%);';
+                
+                const img = document.createElement('img');
+                img.src = animeImage;
+                img.style.cssText = 'width: 100%; height: 100%; object-fit: cover;';
+                img.onerror = function() {
+                    this.style.display = 'none';
+                };
+                
+                imgContainer.appendChild(img);
+
+                const info = document.createElement('div');
+                info.style.cssText = 'padding: 14px;';
+
+                const name = document.createElement('div');
+                name.style.cssText = 'color: #fff; font-size: 0.9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 8px; line-height: 1.3;';
+                name.textContent = animeName;
+
+                const meta = document.createElement('div');
+                meta.style.cssText = 'color: #7c4dff; font-size: 0.75rem; font-weight: 500;';
+                meta.innerHTML = `<i class="fas fa-play-circle"></i> ${episodeCount || '?'} eps`;
+
+                info.appendChild(name);
+                info.appendChild(meta);
+                card.appendChild(imgContainer);
+                card.appendChild(info);
+                grid.appendChild(card);
+            });
+        }
+
+        let currentAnimeId = 0;
+        let currentAnimeSlug = '';
+        let currentAnimeName = '';
+        let currentDubSub = 'sub';
+        let currentTotalEpisodes = 0;
+
+        function openAnime(animeId, animeName, animeSlug, episodeCount) {
+            currentAnimeId = animeId;
+            currentAnimeSlug = animeSlug;
+            currentAnimeName = animeName;
+            currentDubSub = 'sub';
+            currentTotalEpisodes = episodeCount || 24;
+            
+            document.getElementById('animePlayerTitle').textContent = animeName || 'Loading...';
+            document.getElementById('animeEpisodeList').innerHTML = '<p style="color: #666; text-align: center; padding: 20px;"><i class="fas fa-spinner fa-spin"></i> Loading...</p>';
+            document.getElementById('animePlayerView').style.display = 'block';
+            document.getElementById('animeIframe').src = 'about:blank';
+            
+            document.getElementById('subBtn').style.background = '#7c4dff';
+            document.getElementById('subBtn').style.color = '#fff';
+            document.getElementById('dubBtn').style.background = '#222';
+            document.getElementById('dubBtn').style.color = '#888';
+            
+            renderAnimeEpisodes();
+            playAnimeEpisode(1);
+        }
+
+        function playAnimeEpisode(episodeNum) {
+            const streamUrl = 'https://megaplay.buzz/stream/mal/' + currentAnimeId + '/' + episodeNum + '/' + currentDubSub;
+            document.getElementById('animeIframe').src = streamUrl;
+            document.getElementById('currentEpDisplay').textContent = 'Ep ' + episodeNum;
+            
+            document.querySelectorAll('#animeEpisodeList button').forEach((btn, idx) => {
+                if (idx + 1 === episodeNum) {
+                    btn.style.background = '#7c4dff';
+                    btn.style.borderColor = '#7c4dff';
+                    btn.querySelector('span').style.color = '#fff';
+                } else {
+                    btn.style.background = '#1a1a1a';
+                    btn.style.borderColor = '#333';
+                    btn.querySelector('span').style.color = '#7c4dff';
+                }
+            });
+        }
+
+        function renderAnimeEpisodes() {
+            const container = document.getElementById('animeEpisodeList');
+            container.innerHTML = '';
+            
+            const maxEps = currentTotalEpisodes > 0 ? currentTotalEpisodes : 24;
+            for (let i = 1; i <= maxEps; i++) {
+                const btn = document.createElement('button');
+                btn.style.cssText = 'background: #1a1a1a; border: 1px solid #333; color: #ccc; padding: 10px 14px; margin: 3px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; display: inline-block; font-weight: 500;';
+                btn.innerHTML = `<span style="color: #7c4dff;">Ep ${i}</span>`;
+                btn.onclick = () => playAnimeEpisode(i);
+                btn.onmouseenter = () => { btn.style.background = '#7c4dff'; btn.style.borderColor = '#7c4dff'; btn.querySelector('span').style.color = '#fff'; };
+                btn.onmouseleave = () => { btn.style.background = '#1a1a1a'; btn.style.borderColor = '#333'; btn.querySelector('span').style.color = '#7c4dff'; };
+                container.appendChild(btn);
+            }
+        }
+
+        function changeDubSub(type) {
+            currentDubSub = type;
+            
+            if (type === 'sub') {
+                document.getElementById('subBtn').style.background = '#7c4dff';
+                document.getElementById('subBtn').style.color = '#fff';
+                document.getElementById('dubBtn').style.background = '#222';
+                document.getElementById('dubBtn').style.color = '#888';
+            } else {
+                document.getElementById('subBtn').style.background = '#222';
+                document.getElementById('subBtn').style.color = '#888';
+                document.getElementById('dubBtn').style.background = '#7c4dff';
+                document.getElementById('dubBtn').style.color = '#fff';
+            }
+            
+            playAnimeEpisode(1);
+        }
+
+        function toggleDubSub() {
+            changeDubSub(currentDubSub === 'sub' ? 'dub' : 'sub');
+        }
+
+        function closeAnimePlayer() {
+            document.getElementById('animeIframe').src = 'about:blank';
+            document.getElementById('animePlayerView').style.display = 'none';
+            showAnimeView();
+        }
+
+        function hideGamesView() {
+            document.getElementById('gamesView').style.display = 'none';
+            document.getElementById('toolsView').style.display = 'none';
+            document.getElementById('aboutView').style.display = 'none';
+            document.getElementById('chatView').style.display = 'none';
+            document.getElementById('settingsView').style.display = 'none';
+            document.getElementById('aiView').style.display = 'none';
+            document.getElementById('accountView').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+        }
+
+        function showGamePopup(gamePath, popupTitle, isSelenite = false, gameImage = '') {
+            previousView = 'games';
+            currentGamePath = gamePath;
+
+            document.getElementById('gamesView').style.display = 'none';
+
+            document.getElementById('gamePopup').style.display = 'block';
+
+            document.getElementById('gameUrlDisplay').textContent = popupTitle || gamePath;
+            
+            showGameHacks(gamePath);
+            
+            setTimeout(() => reapplyHacks(), 3000);
+
+            const backend = isSelenite ? 'selenite' : 'vrtx';
+            trackGamePlay(popupTitle, gamePath, gameImage, backend);
+
+            startFpsCounter();
+            trackFrame();
+            loadRandomGames();
+
+            const gameIframe = document.getElementById('gameIframe');
+            const gameLoadingOverlay = document.getElementById('gameLoadingOverlay');
+
+            gameLoadingOverlay.classList.remove('hidden');
+
+            gameIframe.onload = null;
+            gameIframe.onerror = null;
+
+            const handleLoadCompletion = function() {
+                gameLoadingOverlay.classList.add('hidden');
+            };
+
+            let hostList = [];
+            
+            if (isSelenite || gameBackend === 'selenite') {
+
+                hostList = [seleniteConfig.baseUrl];
+            } else if (gameBackend === 'auto') {
+
+                hostList = ['./', ...mirrorHosts];
+            } else if (gameBackend === 'default' || gameBackend === 'vrtx') {
+
+                hostList = ['./'];
+            } else {
+
+                hostList = [gameBackend, './'];
+            }
+            
+            let currentIndex = 0;
+
+            function handleError() {
+                if (currentIndex < hostList.length) {
+                    const currentHost = hostList[currentIndex++];
+                    const nextUrl = currentHost.endsWith('/') ? currentHost + gamePath : currentHost + '/' + gamePath;
+                    console.log('attempting to load from:', nextUrl);
+                    document.getElementById('currentLoadUrl').textContent = `Trying: ${nextUrl}`;
+                    gameIframe.src = nextUrl;
+                } else {
+                    console.log('all hosts failed; no further fallback configured');
+
+                    gameLoadingOverlay.classList.add('hidden');
+                }
+            }
+
+            gameIframe.onload = handleLoadCompletion;
+            gameIframe.onerror = handleError;
+
+            if (hostList.length > 0) {
+                const firstHost = hostList[currentIndex++];
+                const firstUrl = firstHost.endsWith('/') ? firstHost + gamePath : firstHost + '/' + gamePath;
+                console.log('loading game from:', firstUrl);
+                document.getElementById('currentLoadUrl').textContent = `Trying: ${firstUrl}`;
+                gameIframe.src = firstUrl;
+            }
+        }
+
+        let previousView = 'main';
+        let currentGamePath = '';
+
+        function markGameAsHacked(gamePath) {
+            const gameKey = gamePath.split('/').pop() || gamePath;
+            const hackedGames = JSON.parse(localStorage.getItem('coreus_hacked_games') || '[]');
+            
+            if (!hackedGames.includes(gameKey)) {
+                hackedGames.push(gameKey);
+                localStorage.setItem('coreus_hacked_games', JSON.stringify(hackedGames));
+            }
+            
+            document.getElementById('hackedIndicator').style.display = 'inline';
+        }
+
+        function reapplyHacks() {
+            const gameKey = currentGamePath.split('/').pop() || currentGamePath;
+            const hackedGames = JSON.parse(localStorage.getItem('coreus_hacked_games') || '[]');
+            const isHacked = hackedGames.includes(gameKey);
+            
+            if (!isHacked) return;
+            
+            const hackData = JSON.parse(localStorage.getItem('coreus_hack_data') || '{}');
+            const savedHack = hackData[gameKey];
+            
+            if (!savedHack) return;
+            
+            try {
+                const gameIframe = document.getElementById('gameIframe');
+                const iframeDoc = gameIframe.contentDocument || gameIframe.contentWindow.document;
+                const localStorage = iframeDoc.defaultView.localStorage;
+                
+                const saveKeys = ['btcClickerSave', 'btcclicker', 'bitcoinClickerSave', 'gameSave'];
+                let usedKey = '';
+                
+                for (let key of saveKeys) {
+                    const savedData = localStorage.getItem(key);
+                    if (savedData) {
+                        usedKey = key;
+                        break;
+                    }
+                }
+                
+                if (usedKey) {
+                    localStorage.setItem(usedKey, JSON.stringify(savedHack.value));
+                    console.log('Hack re-applied for', gameKey);
+                }
+            } catch (e) {
+                console.error('Failed to reapply hack:', e);
+            }
+        }
+
+        function showGameHacks(gamePath) {
+            const hackSection = document.getElementById('gameHackSection');
+            const driftBossHacks = document.getElementById('driftBossHacks');
+            const drivenWildHacks = document.getElementById('drivenWildHacks');
+            const hackBadge = document.getElementById('hackGameBadge');
+            
+            currentGamePath = gamePath;
+            
+            const hackedGames = JSON.parse(localStorage.getItem('coreus_hacked_games') || '[]');
+            const gameKey = gamePath.split('/').pop() || gamePath;
+            const isHacked = hackedGames.includes(gameKey) || hackedGames.some(g => gamePath.includes(g));
+            
+            document.getElementById('hackedIndicator').style.display = isHacked ? 'inline' : 'none';
+            
+const isDriftBoss = gamePath.includes('driftboss') || gamePath.includes('drift-boss') || gamePath.includes('drift_boss');
+            const isDrivenWild = gamePath.includes('drivenwild') || gamePath.includes('driven-wild') || gamePath.includes('driven_wild') || gamePath.includes('driven');
+            
+            if (isDriftBoss) {
+                hackSection.style.display = 'block';
+                driftBossHacks.style.display = 'flex';
+                drivenWildHacks.style.display = 'none';
+                hackBadge.textContent = 'DRIFT BOSS';
+                hackBadge.style.background = '#ff6b35';
+                hackBadge.style.color = '#fff';
+            } else if (isDrivenWild) {
+                hackSection.style.display = 'block';
+                driftBossHacks.style.display = 'none';
+                drivenWildHacks.style.display = 'block';
+                hackBadge.textContent = 'DRIVEN WILD';
+                hackBadge.style.background = '#00e5ff';
+                hackBadge.style.color = '#000';
+            } else {
+                hackSection.style.display = 'none';
+            }
+        }
+
+        function applyDriftBossCoinsHack() {
+            const coins = document.getElementById('hackCoinsInput').value;
+            const status = document.getElementById('hackStatus');
+            
+            if (!coins || isNaN(coins) || parseInt(coins) < 0) {
+                status.textContent = 'Please enter a valid number of coins.';
+                status.style.color = '#ff4444';
+                return;
+            }
+            
+            try {
+                const gameIframe = document.getElementById('gameIframe');
+                const iframeDoc = gameIframe.contentDocument || gameIframe.contentWindow.document;
+                const localStorage = iframeDoc.defaultView.localStorage;
+                
+                let gameData = {};
+                const savedData = localStorage.getItem('mjs-drift-boss-game-v1.0.2-dailyreward');
+                
+                if (savedData) {
+                    gameData = JSON.parse(savedData);
+                }
+                
+                gameData.collectedCoin = parseInt(coins);
+                localStorage.setItem('mjs-drift-boss-game-v1.0.2-dailyreward', JSON.stringify(gameData));
+                
+                markGameAsHacked(currentGamePath);
+                
+                status.textContent = `Coins hack applied! Coins set to ${coins}. Refresh the game to see changes.`;
+                status.style.color = '#4CAF50';
+            } catch (e) {
+                status.textContent = 'Error: Could not access game data. Make sure the game is loaded.';
+                status.style.color = '#ff4444';
+                console.error('Hack error:', e);
+            }
+        }
+
+        function applyDriftBossScoreHack() {
+            const score = document.getElementById('hackScoreInput').value;
+            const status = document.getElementById('hackStatus');
+            
+            if (!score || isNaN(score) || parseInt(score) < 0) {
+                status.textContent = 'Please enter a valid score.';
+                status.style.color = '#ff4444';
+                return;
+            }
+            
+            try {
+                const gameIframe = document.getElementById('gameIframe');
+                const iframeDoc = gameIframe.contentDocument || gameIframe.contentWindow.document;
+                const localStorage = iframeDoc.defaultView.localStorage;
+                
+                let gameData = {};
+                const savedData = localStorage.getItem('mjs-drift-boss-game-v1.0.2-dailyreward');
+                
+                if (savedData) {
+                    gameData = JSON.parse(savedData);
+                }
+                
+                gameData.score = parseInt(score);
+                localStorage.setItem('mjs-drift-boss-game-v1.0.2-dailyreward', JSON.stringify(gameData));
+                
+                markGameAsHacked(currentGamePath);
+                
+                status.textContent = `Score hack applied! Score set to ${score}. Refresh the game to see changes.`;
+                status.style.color = '#4CAF50';
+            } catch (e) {
+                status.textContent = 'Error: Could not access game data. Make sure the game is loaded.';
+                status.style.color = '#ff4444';
+                console.error('Hack error:', e);
+            }
+        }
+
+        function applyDrivenWildHack() {
+            const distance = document.getElementById('hackDistanceInput').value;
+            const status = document.getElementById('hackStatus');
+            
+            if (!distance || isNaN(distance) || parseInt(distance) < 0) {
+                status.textContent = 'Please enter a valid distance.';
+                status.style.color = '#ff4444';
+                return;
+            }
+            
+            try {
+                const gameIframe = document.getElementById('gameIframe');
+                const iframeDoc = gameIframe.contentDocument || gameIframe.contentWindow.document;
+                const localStorage = iframeDoc.defaultView.localStorage;
+                
+                let gameData = {};
+                const savedData = localStorage.getItem('DrivenWild');
+                
+                if (savedData) {
+                    gameData = JSON.parse(savedData);
+                }
+                
+                gameData.bestDistance = parseInt(distance);
+                localStorage.setItem('DrivenWild', JSON.stringify(gameData));
+                
+                markGameAsHacked(currentGamePath);
+                
+                status.textContent = `Best Distance hack applied! Distance set to ${distance}. Refresh the game to see changes.`;
+                status.style.color = '#4CAF50';
+            } catch (e) {
+                status.textContent = 'Error: Could not access game data. Make sure the game is loaded.';
+                status.style.color = '#ff4444';
+                console.error('Hack error:', e);
+            }
+        }
+
+        function applyBitcoinClickerHack(type) {
+            let value;
+            let status = document.getElementById('hackStatus');
+            
+            if (type === 'btc') {
+                value = document.getElementById('hackBtcInput').value;
+            } else if (type === 'btcPerClick') {
+                value = document.getElementById('hackBtcPerClickInput').value;
+            } else if (type === 'btcPerSec') {
+                value = document.getElementById('hackBtcPerSecInput').value;
+            } else if (type === 'prestige') {
+                value = document.getElementById('hackPrestigeInput').value;
+            }
+            
+            if (!value || isNaN(value) || parseInt(value) < 0) {
+                status.textContent = 'Please enter a valid number.';
+                status.style.color = '#ff4444';
+                return;
+            }
+            
+            try {
+                const gameIframe = document.getElementById('gameIframe');
+                let localStorage;
+                
+                try {
+                    const iframeDoc = gameIframe.contentDocument || gameIframe.contentWindow.document;
+                    localStorage = iframeDoc.defaultView.localStorage;
+                } catch (e) {
+                    localStorage = gameIframe.contentWindow.localStorage;
+                }
+                
+                let gameData = {};
+                const saveKeys = ['btcClickerSave', 'btcclicker', 'bitcoinClickerSave', 'gameSave'];
+                let usedKey = '';
+                
+                for (let key of saveKeys) {
+                    const savedData = localStorage.getItem(key);
+                    if (savedData) {
+                        try {
+                            gameData = JSON.parse(savedData);
+                            usedKey = key;
+                            break;
+                        } catch (e) {}
+                    }
+                }
+                
+                if (type === 'btc') {
+                    gameData.btc = parseInt(value);
+                    status.textContent = `BTC set to ${value}. Refresh game to see changes.`;
+                } else if (type === 'btcPerClick') {
+                    gameData.btcPerClick = parseInt(value);
+                    status.textContent = `BTC/Click set to ${value}. Refresh game to see changes.`;
+                } else if (type === 'btcPerSec') {
+                    gameData.btcPerSec = parseInt(value);
+                    status.textContent = `BTC/Second set to ${value}. Refresh game to see changes.`;
+                } else if (type === 'prestige') {
+                    gameData.prestigeCount = parseInt(value);
+                    gameData.prestigeMultiplier = 1 + (parseInt(value) * 0.1);
+                    status.textContent = `Prestige set to ${value}. Refresh game to see changes.`;
+                }
+                
+                localStorage.setItem(usedKey || 'btcClickerSave', JSON.stringify(gameData));
+                
+                markGameAsHacked(currentGamePath);
+                
+                const gameKey = currentGamePath.split('/').pop() || currentGamePath;
+                const hackData = JSON.parse(localStorage.getItem('coreus_hack_data') || '{}');
+                hackData[gameKey] = { type: 'bitcoinClicker', value: gameData };
+                localStorage.setItem('coreus_hack_data', JSON.stringify(hackData));
+                
+                status.textContent = `Hack applied! Refresh game to see changes.`;
+                status.style.color = '#4CAF50';
+            } catch (e) {
+                status.textContent = 'Error: ' + e.message + '. Make sure the game is loaded.';
+                status.style.color = '#ff4444';
+                console.error('Hack error:', e);
+            }
+        }
+
+        function closeGamePopup() {
+            stopFpsCounter();
+            document.getElementById('gamePopup').style.display = 'none';
+
+            const gameLoadingOverlay = document.getElementById('gameLoadingOverlay');
+            gameLoadingOverlay.classList.add('hidden');
+
+            document.getElementById('gamesView').style.display = 'none';
+            document.getElementById('toolsView').style.display = 'none';
+            document.getElementById('aboutView').style.display = 'none';
+            document.getElementById('chatView').style.display = 'none';
+            document.getElementById('settingsView').style.display = 'none';
+            document.querySelector('.container').style.display = 'none';
+
+            if (previousView === 'games') {
+                document.getElementById('gamesView').style.display = 'block';
+    } else if (previousView === 'tools') {
+        document.getElementById('toolsView').style.display = 'block';
+    } else if (previousView === 'about') {
+        document.getElementById('aboutView').style.display = 'block';
+    } else if (previousView === 'chat') {
+        document.getElementById('chatView').style.display = 'block';
+    } else if (previousView === 'settings') {
+        document.getElementById('settingsView').style.display = 'block';
+    } else {
+        document.querySelector('.container').style.display = 'block';
+    }
+
+    document.getElementById('gameIframe').src = 'about:blank';
+}
+
+        function showAboutView() {
+            hideAllViews();
+            document.getElementById('aboutView').style.display = 'block';
+            previousView = 'about';
+        }
+
+        function showPrivacyPolicyView() {
+            hideAllViews();
+            document.getElementById('privacyPolicyView').style.display = 'block';
+            previousView = 'about';
+        }
+
+        function showDisclaimerView() {
+            hideAllViews();
+            document.getElementById('disclaimerView').style.display = 'block';
+            previousView = 'about';
+        }
+
+        function showDmcaView() {
+            hideAllViews();
+            document.getElementById('dmcaView').style.display = 'block';
+            previousView = 'about';
+        }
+
+        function hideAboutView() {
+            document.getElementById('aboutView').style.display = 'none';
+            document.getElementById('gamesView').style.display = 'none';
+            document.getElementById('toolsView').style.display = 'none';
+            document.getElementById('chatView').style.display = 'none';
+            document.getElementById('settingsView').style.display = 'none';
+            document.getElementById('aiView').style.display = 'none';
+            document.getElementById('accountView').style.display = 'none';
+            document.getElementById('achievementsView').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+        }
+
+        const achievements = [
+            { id: 'welcome', name: 'Welcome!', description: 'Open Coreus for the first time', icon: '🏆', unlocked: false },
+            { id: 'clicker_master', name: 'Click Click Click!', description: 'Play 2 different clicker games', icon: '💰', unlocked: false },
+            { id: 'game_explorer', name: 'Game Explorer', description: 'Play 5 different games', icon: '🎮', unlocked: false },
+            { id: 'game_enthusiast', name: 'Game Enthusiast', description: 'Play 10 different games', icon: '🌟', unlocked: false },
+            { id: 'master_gamer', name: 'Master Gamer', description: 'Play 50 different games', icon: '👑', unlocked: false },
+            { id: 'tool_user', name: 'Tool User', description: 'Use 3 different tools', icon: '🔧', unlocked: false },
+            { id: 'tool_master', name: 'Tool Master', description: 'Use 10 different tools', icon: '⚙️', unlocked: false },
+            { id: 'proxy_surfer', name: 'Proxy Surfer', description: 'Visit 3 different websites using the proxy', icon: '🌐', unlocked: false },
+            { id: 'globetrotter', name: 'Globetrotter', description: 'Visit 20 different websites', icon: '🗺️', unlocked: false },
+            { id: 'search_master', name: 'Search Master', description: 'Perform 5 searches', icon: '🔍', unlocked: false },
+            { id: 'speed_demon', name: 'Speed Demon', description: 'Perform 20 searches', icon: '⚡', unlocked: false },
+            { id: 'chatty', name: 'Getting Social', description: 'Visit the chat tab', icon: '💬', unlocked: false },
+            { id: 'social_butterfly', name: 'Social Butterfly', description: 'Visit chat 10 times', icon: '🦋', unlocked: false },
+            { id: 'bookmarker', name: 'Bookmark Master', description: 'Favorite 10 games', icon: '📌', unlocked: false },
+            { id: 'night_owl', name: 'Night Owl', description: 'Use Coreus after midnight', icon: '🦉', unlocked: false },
+            { id: 'early_bird', name: 'Early Bird', description: 'Use Coreus before 7am', icon: '🐦', unlocked: false },
+            { id: 'collector', name: 'Collector', description: 'Favorite 5 games', icon: '📚', unlocked: false },
+            { id: 'veteran', name: 'Veteran', description: 'Use Coreus for 7 days', icon: '🎖️', unlocked: false }
+        ];
+
+        function getUnlockedAchievements() {
+            const saved = localStorage.getItem('coreus_achievements');
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        function saveAchievements(unlocked) {
+            localStorage.setItem('coreus_achievements', JSON.stringify(unlocked));
+        }
+
+        function getGameFavorites() {
+            const backend = gameBackend || 'vrtx';
+            const key = 'coreus_game_favorites_' + backend;
+            const saved = localStorage.getItem(key);
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        function saveGameFavorites(favorites) {
+            const backend = gameBackend || 'vrtx';
+            const key = 'coreus_game_favorites_' + backend;
+            localStorage.setItem(key, JSON.stringify(favorites));
+            if (currentAccount) {
+                currentAccount.gameFavorites = getAllGameFavorites();
+                setCurrentAccount(currentAccount);
+            }
+        }
+
+        function getAllGameFavorites() {
+            return {
+                vrtx: JSON.parse(localStorage.getItem('coreus_game_favorites_vrtx') || '[]'),
+                selenite: JSON.parse(localStorage.getItem('coreus_game_favorites_selenite') || '[]')
+            };
+        }
+
+        function toggleGameFavorite(gameTitle) {
+            const favorites = getGameFavorites();
+            const index = favorites.indexOf(gameTitle);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                trackFavoriteRemove();
+            } else {
+                favorites.push(gameTitle);
+                trackFavoriteGame();
+            }
+            saveGameFavorites(favorites);
+            loadGames();
+        }
+
+        function getToolFavorites() {
+            const saved = localStorage.getItem('coreus_tool_favorites');
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        function saveToolFavorites(favorites) {
+            localStorage.setItem('coreus_tool_favorites', JSON.stringify(favorites));
+            if (currentAccount) {
+                currentAccount.toolFavorites = favorites;
+                setCurrentAccount(currentAccount);
+            }
+        }
+
+        function toggleToolFavorite(toolTitle) {
+            const favorites = getToolFavorites();
+            const index = favorites.indexOf(toolTitle);
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push(toolTitle);
+            }
+            saveToolFavorites(favorites);
+            loadTools();
+        }
+
+        function unlockAchievement(achievementId) {
+            const unlocked = getUnlockedAchievements();
+            if (!unlocked.includes(achievementId)) {
+                unlocked.push(achievementId);
+                saveAchievements(unlocked);
+                const achievement = achievements.find(a => a.id === achievementId);
+                showAchievementNotification(achievement);
+                updateAchievementsCount();
+                
+                if (currentAccount) {
+                    currentAccount.achievements = unlocked;
+                    setCurrentAccount(currentAccount);
+                }
+            }
+        }
+
+        function getCursorFromAchievement(achievementId) {
+            const mapping = {
+                master_gamer: 'Rainbow',
+                tool_master: 'Neon',
+                veteran: 'Matrix'
+            };
+            return mapping[achievementId] || null;
+        }
+
+        function showAchievementNotification(achievement) {
+            const notification = document.getElementById('achievement-notification');
+            document.getElementById('achievement-emoji').textContent = achievement.icon;
+            document.getElementById('achievement-name').textContent = achievement.name;
+
+            const cursorName = getCursorFromAchievement(achievement.id);
+            const subtextEl = document.getElementById('achievement-subtext');
+            if (cursorName) {
+                subtextEl.textContent = `${cursorName} cursor unlocked`; 
+            } else {
+                subtextEl.textContent = '';
+            }
+
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 4000);
+        }
+
+        function updateAchievementsCount() {
+            const unlocked = getUnlockedAchievements();
+            const total = achievements.length;
+            const count = unlocked.length;
+            const countEl = document.getElementById('achievementsCount');
+            if (countEl) {
+                countEl.textContent = count + '/' + total;
+            }
+        }
+
+        function updateProfileCard() {
+            const profileNameEl = document.getElementById('profileName');
+            if (profileNameEl) {
+                if (currentAccount && currentAccount.username) {
+                    profileNameEl.textContent = currentAccount.username;
+                } else {
+                    profileNameEl.textContent = 'Log in';
+                }
+            }
+        }
+
+        function renderAchievements() {
+            const container = document.getElementById('achievements-list');
+            const unlocked = getUnlockedAchievements();
+            container.innerHTML = '';
+            achievements.forEach(achievement => {
+                const isUnlocked = unlocked.includes(achievement.id);
+                const div = document.createElement('div');
+                div.style.cssText = 'background: #111111; padding: 20px; border-radius: 12px; border: 2px solid #333; display: flex; align-items: center; gap: 15px; transition: all 0.3s;';
+                div.innerHTML = `
+                    <div style="font-size: 2.5rem; ${isUnlocked ? '' : 'filter: grayscale(100%); opacity: 0.4;'}">${achievement.icon}</div>
+                    <div style="flex: 1;">
+                        <div style="color: ${isUnlocked ? '#fff' : '#666'}; font-size: 1.1rem; font-weight: 600;">${achievement.name}</div>
+                        <div style="color: ${isUnlocked ? '#aaa' : '#444'}; font-size: 0.95rem;">${isUnlocked ? achievement.description : '???'}</div>
+                    </div>
+                    ${isUnlocked ? '<div style="color: #4CAF50; font-size: 1.2rem;"><i class="fas fa-check-circle"></i></div>' : '<div style="color: #444; font-size: 1.2rem;"><i class="fas fa-lock"></i></div>'}
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function showAchievementsView() {
+            hideAllViews();
+            renderAchievements();
+            document.getElementById('achievementsView').style.display = 'block';
+            previousView = 'achievements';
+        }
+
+        function addLastPlayedGame(gameName, gamePath, gameImage, backend = 'vrtx') {
+            if (!gameName || !gamePath) return;
+
+            const finalImage = gameImage || getGameImageByPath(gamePath, gameName);
+            const key = getLastPlayedStorageKey(backend);
+            let lastPlayed = JSON.parse(localStorage.getItem(key) || '[]');
+            lastPlayed = lastPlayed.filter(item => item.name !== gameName);
+
+            lastPlayed.unshift({
+                name: gameName,
+                path: gamePath,
+                image: finalImage || '',
+                playedAt: Date.now()
+            });
+
+            if (lastPlayed.length > 5) lastPlayed = lastPlayed.slice(0, 5);
+            localStorage.setItem(key, JSON.stringify(lastPlayed));
+            renderLastPlayedGames(backend);
+        }
+
+        function createGameCard(game, isSelenite, isFavorite = false, isSlot = false) {
+            const title = game.title || game.name || 'Unknown Game';
+            const category = game.category || 'Casual';
+            const imagePath = game.image || game.img || '';
+            const gamePath = game.gamePath || game.href || game.path || game.url || '';
+            const imageSrc = isSelenite ? (seleniteConfig.baseUrl + imagePath) : ('./' + imagePath);
+
+            const card = document.createElement('div');
+            card.className = 'game-card' + (isSlot ? ' favorite-slot-card' : '');
+            card.setAttribute('data-game-name', title.toLowerCase());
+            card.setAttribute('data-category', category.toLowerCase());
+
+            const generatedCategory = isSlot ? 'Favorite' : category;
+
+            card.innerHTML = `
+                <div style="position: relative;">
+                    <img src="${imageSrc}" alt="${title}" onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22150%22><rect width=%22220%22 height=%22150%22 fill=%22%23333%22/></svg>';" />
+                    <button class="game-card-favorite ${isFavorite ? 'active' : ''}" data-title="${title}">
+                        ${isFavorite ? '★' : '☆'}
+                    </button>
+                </div>
+                <div class="game-card-content">
+                    <div class="game-card-title">${title}</div>
+                    <div class="game-card-category">${generatedCategory}</div>
+                </div>
+            `;
+
+            const favBtn = card.querySelector('.game-card-favorite');
+            favBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleGameFavorite(title);
+            });
+
+            card.addEventListener('click', () => {
+                if (gamePath) {
+                    showGamePopup(gamePath, title, isSelenite, imageSrc);
+                }
+            });
+
+            return card;
+        }
+
+        function getLastPlayedStorageKey(backend) {
+            const b = backend === 'selenite' ? 'selenite' : 'vrtx';
+            return `coreus_last_played_games_${b}`;
+        }
+
+        function getLastPlayedGames(backend) {
+            const key = getLastPlayedStorageKey(backend);
+            return JSON.parse(localStorage.getItem(key) || '[]');
+        }
+
+        function getGameImageByPath(gamePath, gameName = '') {
+            if (!gamesCache || !gamesCache.length) return '';
+            const pathLower = (gamePath || '').toLowerCase();
+            const nameLower = (gameName || '').toLowerCase();
+
+            let game = gamesCache.find(g => {
+                const candidatePath = (g.href || g.url || g.path || '').toLowerCase();
+                const candidateName = ((g.title || g.name || '')).toLowerCase();
+                return candidatePath && candidatePath === pathLower;
+            });
+
+            if (!game && nameLower) {
+                game = gamesCache.find(g => ((g.title || g.name || '')).toLowerCase() === nameLower);
+            }
+
+            if (game && game.image) {
+                if (game.image.startsWith('http') || game.image.startsWith('./') || game.image.startsWith('/')) {
+                    return game.image;
+                }
+                return './' + game.image;
+            }
+
+            return '';
+        }
+
+        function formatTimeAgo(timestamp) {            const diff = Date.now() - timestamp;
+            const minutes = Math.floor(diff / 60000);
+            if (minutes < 1) return 'just now';
+            if (minutes < 60) return `${minutes}m ago`;
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `${hours}h ago`;
+            const days = Math.floor(hours / 24);
+            return `${days}d ago`;
+        }
+
+        function renderLastPlayedGames(backend = 'vrtx') {
+            const container = document.getElementById('lastPlayedList');
+            if (!container) return;
+            const lastPlayed = getLastPlayedGames(backend);
+            container.innerHTML = '';
+
+            if (!lastPlayed.length) {
+                container.innerHTML = '<span style="color: #999; font-size: 0.95rem;">No recently played games yet.</span>';
+                return;
+            }
+
+            lastPlayed.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'game-card';
+                card.style.cursor = 'pointer';
+
+                const imageSrc = item.image || '';
+
+                card.innerHTML = `
+                    <div style="position: relative;">
+                        <img src="${imageSrc}" alt="${item.name}" onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22120%22><rect width=%22180%22 height=%22120%22 fill=%22%23333%22/></svg>'" />
+                    </div>
+                    <div class="game-card-content">
+                        <div class="game-card-title">${item.name}</div>
+                        <div class="game-card-category">Played ${formatTimeAgo(item.playedAt)}</div>
+                    </div>
+                `;
+
+                card.addEventListener('click', () => {
+                    showGamePopup(item.path, item.name, item.path.startsWith(seleniteConfig.baseUrl));
+                });
+
+                container.appendChild(card);
+            });
+        }
+
+        function searchGames(gameName) {
+            const gamesSearchInput = document.getElementById('gamesSearchInput');
+            if (gamesSearchInput) {
+                gamesSearchInput.value = gameName;
+            }
+            filterGameCards(gameName);
+        }
+
+        function trackGamePlay(gameName, gamePath, gameImage, backend = 'vrtx') {
+            if (!gameName || !gamePath) return;
+            addLastPlayedGame(gameName, gamePath, gameImage, backend);
+
+            const playedGames = JSON.parse(localStorage.getItem('coreus_played_games') || '[]');
+            if (!playedGames.includes(gameName)) {
+                playedGames.push(gameName);
+                localStorage.setItem('coreus_played_games', JSON.stringify(playedGames));
+            }
+            
+            const clickerGames = playedGames.filter(g => g.toLowerCase().includes('clicker'));
+            
+            const unlocked = getUnlockedAchievements();
+
+            if (playedGames.length >= 2 && clickerGames.length >= 2 && !unlocked.includes('clicker_master')) {
+                unlockAchievement('clicker_master');
+            }
+
+            if (playedGames.length >= 5 && !unlocked.includes('game_explorer')) {
+                unlockAchievement('game_explorer');
+            }
+
+            if (playedGames.length >= 10 && !unlocked.includes('game_enthusiast')) {
+                unlockAchievement('game_enthusiast');
+            }
+
+            if (playedGames.length >= 50 && !unlocked.includes('master_gamer')) {
+                unlockAchievement('master_gamer');
+            }
+            
+            if (currentAccount) {
+                currentAccount.playedGames = playedGames;
+                setCurrentAccount(currentAccount);
+            }
+        }
+
+        function trackProxyVisit(url) {
+            if (!url) return;
+            
+            try {
+                const domain = new URL(url).hostname;
+                if (!domain) return;
+                
+                const visitedUrls = JSON.parse(localStorage.getItem('coreus_proxy_visits') || '[]');
+                if (!visitedUrls.includes(domain)) {
+                    visitedUrls.push(domain);
+                    localStorage.setItem('coreus_proxy_visits', JSON.stringify(visitedUrls));
+                }
+                
+                const unlocked = getUnlockedAchievements();
+                if (visitedUrls.length >= 3 && !unlocked.includes('proxy_surfer')) {
+                    unlockAchievement('proxy_surfer');
+                }
+                if (visitedUrls.length >= 20 && !unlocked.includes('globetrotter')) {
+                    unlockAchievement('globetrotter');
+                }
+                
+                if (currentAccount) {
+                    currentAccount.proxyVisits = visitedUrls;
+                    setCurrentAccount(currentAccount);
+                }
+            } catch(e) {}
+        }
+
+        function trackSearch() {
+            const searchCount = parseInt(localStorage.getItem('coreus_search_count') || '0') + 1;
+            localStorage.setItem('coreus_search_count', searchCount.toString());
+            
+            const unlocked = getUnlockedAchievements();
+            if (searchCount >= 5 && !unlocked.includes('search_master')) {
+                unlockAchievement('search_master');
+            }
+            if (searchCount >= 20 && !unlocked.includes('speed_demon')) {
+                unlockAchievement('speed_demon');
+            }
+            
+            if (currentAccount) {
+                currentAccount.searchCount = searchCount;
+                setCurrentAccount(currentAccount);
+            }
+        }
+
+        function trackChatVisit() {
+            const chatVisits = parseInt(localStorage.getItem('coreus_chat_visits') || '0') + 1;
+            localStorage.setItem('coreus_chat_visits', chatVisits.toString());
+            
+            const unlocked = getUnlockedAchievements();
+            if (!unlocked.includes('chatty')) {
+                unlockAchievement('chatty');
+            }
+            if (chatVisits >= 10 && !unlocked.includes('social_butterfly')) {
+                unlockAchievement('social_butterfly');
+            }
+            
+            if (currentAccount) {
+                currentAccount.chatVisits = chatVisits;
+                setCurrentAccount(currentAccount);
+            }
+        }
+
+        function trackToolUse(toolName) {
+            if (!toolName) return;
+            
+            const usedTools = JSON.parse(localStorage.getItem('coreus_used_tools') || '[]');
+            if (!usedTools.includes(toolName)) {
+                usedTools.push(toolName);
+                localStorage.setItem('coreus_used_tools', JSON.stringify(usedTools));
+            }
+            
+            const unlocked = getUnlockedAchievements();
+            if (usedTools.length >= 3 && !unlocked.includes('tool_user')) {
+                unlockAchievement('tool_user');
+            }
+            if (usedTools.length >= 10 && !unlocked.includes('tool_master')) {
+                unlockAchievement('tool_master');
+            }
+            
+            if (currentAccount) {
+                currentAccount.usedTools = usedTools;
+                setCurrentAccount(currentAccount);
+            }
+        }
+
+        function trackFavoriteGame() {
+            const favCount = parseInt(localStorage.getItem('coreus_favorite_count') || '0') + 1;
+            localStorage.setItem('coreus_favorite_count', favCount.toString());
+            
+            const unlocked = getUnlockedAchievements();
+            if (favCount >= 5 && !unlocked.includes('collector')) {
+                unlockAchievement('collector');
+            }
+            if (favCount >= 10 && !unlocked.includes('bookmarker')) {
+                unlockAchievement('bookmarker');
+            }
+            
+            if (currentAccount) {
+                currentAccount.favoriteCount = favCount;
+                setCurrentAccount(currentAccount);
+            }
+        }
+
+        function trackFavoriteRemove() {
+            const favCount = Math.max(0, parseInt(localStorage.getItem('coreus_favorite_count') || '0') - 1);
+            localStorage.setItem('coreus_favorite_count', favCount.toString());
+            
+            if (currentAccount) {
+                currentAccount.favoriteCount = favCount;
+                setCurrentAccount(currentAccount);
+            }
+        }
+
+        function trackTimeAchievements() {
+            const now = new Date();
+            const hour = now.getHours();
+            const unlocked = getUnlockedAchievements();
+            
+            if (hour >= 0 && hour < 5 && !unlocked.includes('night_owl')) {
+                unlockAchievement('night_owl');
+            }
+            if (hour >= 5 && hour < 7 && !unlocked.includes('early_bird')) {
+                unlockAchievement('early_bird');
+            }
+        }
+
+        function trackVeteran() {
+            const now = new Date();
+            const today = now.toDateString();
+            const lastVisit = localStorage.getItem('coreus_last_visit');
+            
+            if (lastVisit !== today) {
+                const daysCount = parseInt(localStorage.getItem('coreus_days_used') || '0') + 1;
+                localStorage.setItem('coreus_days_used', daysCount.toString());
+                localStorage.setItem('coreus_last_visit', today);
+                
+                const unlocked = getUnlockedAchievements();
+                if (daysCount >= 7 && !unlocked.includes('veteran')) {
+                    unlockAchievement('veteran');
+                }
+                
+                if (currentAccount) {
+                    currentAccount.daysUsed = daysCount;
+                    setCurrentAccount(currentAccount);
+                }
+            }
+        }
+
+        let timeAchievementsChecked = false;
+        function trackFirstVisitAndVeteran() {
+            const hasVisited = localStorage.getItem('coreus_has_visited');
+            if (!hasVisited) {
+                localStorage.setItem('coreus_has_visited', 'true');
+                trackVeteran();
+                trackTimeAchievements();
+                timeAchievementsChecked = true;
+                setTimeout(() => {
+                    unlockAchievement('welcome');
+                }, 1000);
+            } else {
+                trackVeteran();
+                if (!timeAchievementsChecked) {
+                    trackTimeAchievements();
+                    timeAchievementsChecked = true;
+                }
+            }
+        }
+
+        function hideAchievementsView() {
+            document.getElementById('achievementsView').style.display = 'none';
+            document.getElementById('gamesView').style.display = 'none';
+            document.getElementById('toolsView').style.display = 'none';
+            document.getElementById('chatView').style.display = 'none';
+            document.getElementById('settingsView').style.display = 'none';
+            document.getElementById('aiView').style.display = 'none';
+            document.getElementById('accountView').style.display = 'none';
+            document.getElementById('aboutView').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+        }
+
+        async function showToolsView() {
+            hideAllViews();
+            document.getElementById('toolsView').style.display = 'block';
+            await loadTools();
+            previousView = 'tools';
+        }
+
+        function showRandomThingsView() {
+            hideAllViews();
+            document.getElementById('randomThingsView').style.display = 'block';
+            previousView = 'randomThings';
+        }
+
+        function hideToolsView() {
+            document.getElementById('toolsView').style.display = 'none';
+            document.getElementById('gamesView').style.display = 'none';
+            document.getElementById('aboutView').style.display = 'none';
+            document.getElementById('chatView').style.display = 'none';
+            document.getElementById('settingsView').style.display = 'none';
+            document.getElementById('aiView').style.display = 'none';
+            document.getElementById('accountView').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+        }
+
+        async function loadTools() {
+            try {
+                const response = await fetch('./tools.json');
+                const tools = await response.json();
+
+                const toolsGrid = document.getElementById('toolsGrid');
+                toolsGrid.innerHTML = '';
+
+                const favorites = getToolFavorites();
+                tools.sort((a, b) => {
+                    const titleA = a.title || a.name || '';
+                    const titleB = b.title || b.name || '';
+                    const aFav = favorites.includes(titleA);
+                    const bFav = favorites.includes(titleB);
+                    if (aFav && !bFav) return -1;
+                    if (!aFav && bFav) return 1;
+                    return titleA.toLowerCase().localeCompare(titleB.toLowerCase());
+                });
+
+                if (favorites.length > 0) {
+                    const favHeader = document.createElement('div');
+                    favHeader.style.cssText = 'grid-column: 1 / -1; color: #fff; font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; padding: 10px 0; border-bottom: 2px solid #333;';
+                    favHeader.textContent = '★ Favorites';
+                    toolsGrid.appendChild(favHeader);
+                }
+
+                tools.forEach(tool => {
+                    const title = tool.title || tool.name || 'Unknown Tool';
+                    const imagePath = tool.image || tool.img || '';
+                    const toolPath = tool.toolPath || tool.href || tool.path || tool.url || '';
+                    const isFavorite = favorites.includes(title);
+
+                    const toolCard = document.createElement('div');
+                    toolCard.className = 'tool-card';
+                    toolCard.setAttribute('data-tool-name', title.toLowerCase());
+                    toolCard.style.cssText = `
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                        background: transparent;
+                        border-radius: 10px;
+                        padding: 15px;
+                        cursor: pointer;
+                        transition: transform 0.3s;
+                    `;
+
+                    toolCard.innerHTML = `
+                        <div style="position: relative; width: 150px; height: 150px;">
+                            <img src="./${imagePath}"
+                                 alt="${title}"
+                                 style="width: 150px; height: 150px; object-fit: cover; border-radius: 15px; border: 1px solid var(--border-color);"
+                                 onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'150\' viewBox=\'0 0 150 150\'><rect width=\'150\' height=\'150\' fill=\'%23333\'/><text x=\'75\' y=\'85\' font-family=\'Arial\' font-size=\'14\' fill=\'%23fff\' text-anchor=\'middle\'>No Image</text></svg>';">
+                            <button class="tool-favorite-btn" data-title="${title}" style="position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; color: ${isFavorite ? '#FFD700' : '#666'}; transition: transform 0.2s;">
+                                ${isFavorite ? '★' : '☆'}
+                            </button>
+                        </div>
+                        <span style="color: var(--primary-text); font-size: 1.2rem; margin-top: 10px;">${title}</span>
+                    `;
+
+                    const favBtn = toolCard.querySelector('.tool-favorite-btn');
+                    favBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        toggleToolFavorite(title);
+                    });
+
+                    toolCard.addEventListener('click', () => {
+                        if (toolPath) {
+                            showToolPopup(toolPath, title);
+                        }
+                    });
+
+                    toolCard.addEventListener('mouseenter', () => {
+                        toolCard.style.transform = 'scale(1.05)';
+                    });
+
+                    toolCard.addEventListener('mouseleave', () => {
+                        toolCard.style.transform = 'scale(1)';
+                    });
+
+                    toolsGrid.appendChild(toolCard);
+                });
+
+                const toolsSearchInput = document.getElementById('toolsSearchInput');
+                if (toolsSearchInput) {
+                    toolsSearchInput.addEventListener('input', function() {
+                        filterTools(this.value);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading tools:', error);
+                document.getElementById('toolsGrid').innerHTML = '<p style="color: var(--primary-text); width: 100%; text-align: center;">Error loading tools. Please try again later.</p>';
+            }
+        }
+
+        function filterTools(searchTerm) {
+            const searchLower = searchTerm.toLowerCase();
+            const toolCards = document.querySelectorAll('.tool-card');
+
+            toolCards.forEach(card => {
+                const toolName = card.getAttribute('data-tool-name');
+                if (toolName.includes(searchLower)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+    function showToolPopup(toolPath, popupTitle) {
+            previousView = 'tools';
+
+            document.getElementById('toolsView').style.display = 'none';
+
+            document.getElementById('gamePopup').style.display = 'block';
+
+            const toolUrl = `./${toolPath}`;
+            document.getElementById('gameUrlDisplay').textContent = popupTitle || toolUrl;
+
+            trackToolUse(popupTitle);
+
+            const gameIframe = document.getElementById('gameIframe');
+                    const gameLoadingOverlay = document.getElementById('gameLoadingOverlay');
+
+            gameLoadingOverlay.classList.remove('hidden');
+
+            gameIframe.onload = null;
+            gameIframe.onerror = null;
+
+            const handleLoadCompletion = function() {
+                gameLoadingOverlay.classList.add('hidden');
+            };
+
+            gameIframe.src = toolUrl;
+            document.getElementById('currentLoadUrl').textContent = `Trying: ${toolUrl}`;
+
+            gameIframe.onload = handleLoadCompletion;
+
+            gameIframe.onerror = function() {
+                console.log("direct load failed, trying embeddr...");
+                const embeddrUrl = `https://embeddr.rhw.one/embed#${encodeURIComponent(toolUrl)}`;
+
+                gameLoadingOverlay.classList.remove('hidden');
+                document.getElementById('currentLoadUrl').textContent = `Trying: ${embeddrUrl}`;
+                gameIframe.src = embeddrUrl;
+
+                gameIframe.onerror = function() {
+                    console.log("embeddr also failed to load the tool");
+                    gameLoadingOverlay.classList.add('hidden');
+                };
+
+                gameIframe.onload = function() {
+                    gameLoadingOverlay.classList.add('hidden');
+                };
+            };
+        }
+
+        async function loadGames() {
+            let games = [];
+            let isSelenite = false;
+
+            if (gameBackend === 'selenite') {
+                isSelenite = true;
+                try {
+                    const seleniteUrl = seleniteConfig.baseUrl + seleniteConfig.gamesManifest;
+                    const response = await fetch(seleniteUrl);
+                    const seleniteData = await response.json();
+
+                    games = seleniteData.map(game => ({
+                        title: game.name,
+                        image: seleniteConfig.gameFolderBase + '/' + game.directory + '/' + game.image,
+                        gamePath: seleniteConfig.gameFolderBase + '/' + game.directory + '/index.html',
+                        category: game.category || 'Casual'
+                    }));
+                    console.log('Selenite Games loaded:', games.length);
+                } catch (error) {
+                    console.error('Error loading Selenite games:', error);
+                    document.getElementById('gamesGrid').innerHTML = '<p style="color: var(--primary-text); width: 100%; text-align: center;">Error loading games from Selenite backend.</p>';
+                    return;
+                }
+            } else {
+                try {
+                    const response = await fetch('./games.json');
+                    games = await response.json();
+                    console.log('Games data:', games);
+                } catch (error) {
+                    console.error('Error loading games:', error);
+                    document.getElementById('gamesGrid').innerHTML = '<p style="color: var(--primary-text); width: 100%; text-align: center;">Error loading games. Please try again later.</p>';
+                    return;
+                }
+            }
+
+            // Selenite backend has no categories in games payload
+            if (isSelenite) {
+                currentCategory = 'all';
+                document.getElementById('categoriesSection').style.display = 'none';
+            } else {
+                document.getElementById('categoriesSection').style.display = 'block';
+            }
+
+            // Keep a cache for lookups (e.g., last played thumbnails)
+            gamesCache = games;
+
+            // Set featured games (random 5 each load)
+            const shuffledGames = games.slice().sort(() => Math.random() - 0.5);
+            featuredGames = shuffledGames.slice(0, 5);
+
+            // Load featured carousel
+            loadFeaturedCarousel();
+
+            // Filter by category
+            let filteredGames = currentCategory === 'all' ? games : games.filter(game => (game.category || game.tags || '').toLowerCase().includes(currentCategory.toLowerCase()));
+
+            const favorites = getGameFavorites();
+            filteredGames.sort((a, b) => {
+                const titleA = (a.title || a.name || '').toLowerCase();
+                const titleB = (b.title || b.name || '').toLowerCase();
+                return titleA.localeCompare(titleB);
+            });
+
+            // Golden zone favorites block
+            const favoriteZone = document.getElementById('favoriteZone');
+            if (favoriteZone) {
+                const favoriteGames = filteredGames.filter(g => favorites.includes((g.title || g.name || '').toString()));
+                if (favoriteGames.length > 0) {
+                    favoriteZone.innerHTML = '<div class="favorite-slot-title">Favorites</div>';
+                    const favSlot = document.createElement('div');
+                    favSlot.className = 'favorite-slot';
+                    favoriteGames.forEach(favGame => {
+                        favSlot.appendChild(createGameCard(favGame, isSelenite, true, true));
+                    });
+                    favoriteZone.appendChild(favSlot);
+                } else {
+                    favoriteZone.innerHTML = '';
+                }
+            }
+
+            const gamesGrid = document.getElementById('gamesGrid');
+            gamesGrid.innerHTML = '';
+
+            filteredGames.forEach(game => {
+                const isFavorite = favorites.includes((game.title || game.name || '').toString());
+                const gameCard = createGameCard(game, isSelenite, isFavorite, false);
+                gamesGrid.appendChild(gameCard);
+            });
+
+            const gamesSearchInput = document.getElementById('gamesSearchInput');
+            if (gamesSearchInput) {
+                gamesSearchInput.addEventListener('input', (e) => {
+                    filterGameCards(e.target.value);
+                });
+            }
+
+            const clearLastPlayedBtn = document.getElementById('clearLastPlayedBtn');
+            if (clearLastPlayedBtn) {
+                clearLastPlayedBtn.addEventListener('click', () => {
+                    const key = getLastPlayedStorageKey(gameBackend);
+                    localStorage.removeItem(key);
+                    renderLastPlayedGames(gameBackend);
+                });
+            }
+
+            renderLastPlayedGames(gameBackend);
+        }
+
+        function filterGameCards(searchTerm) {
+            const searchLower = searchTerm.toLowerCase();
+            const gameCards = document.querySelectorAll('.game-card');
+
+            gameCards.forEach(card => {
+                const gameName = card.getAttribute('data-game-name');
+                const category = card.getAttribute('data-category') || '';
+                const matchesSearch = gameName.includes(searchLower);
+                const matchesCategory = currentCategory === 'all' || category.includes(currentCategory.toLowerCase());
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function loadFeaturedCarousel() {
+            const carousel = document.getElementById('featuredCarousel');
+            const indicators = document.getElementById('featuredIndicators');
+            carousel.innerHTML = '';
+            indicators.innerHTML = '';
+
+            featuredGames.forEach((game, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'featured-slide';
+                const imageSrc = gameBackend === 'selenite' ? (seleniteConfig.baseUrl + game.image) : ('./' + game.image);
+                slide.style.backgroundImage = `url('${imageSrc}')`;
+                slide.innerHTML = `
+                    <div class="featured-content">
+                        <div class="featured-title">${game.title || game.name}</div>
+                        <button class="featured-play-btn">Play Now</button>
+                    </div>
+                `;
+                carousel.appendChild(slide);
+
+                const playBtn = slide.querySelector('.featured-play-btn');
+                playBtn.addEventListener('click', () => {
+                    const gameImageSrc = gameBackend === 'selenite' ? (seleniteConfig.baseUrl + game.image) : ('./' + game.image);
+                    showGamePopup(game.gamePath || game.href || '', game.title || game.name, gameBackend === 'selenite', gameImageSrc);
+                });
+
+                const indicator = document.createElement('div');
+                indicator.style.cssText = `width: 12px; height: 12px; border-radius: 50%; background: ${index === 0 ? 'var(--accent-color)' : '#666'}; cursor: pointer; transition: background 0.3s;`;
+                indicator.addEventListener('click', () => goToFeaturedSlide(index));
+                indicators.appendChild(indicator);
+            });
+
+            // Auto-slide every 5 seconds
+            setInterval(() => {
+                currentFeaturedIndex = (currentFeaturedIndex + 1) % featuredGames.length;
+                updateFeaturedCarousel();
+            }, 5000);
+        }
+
+        function updateFeaturedCarousel() {
+            const carousel = document.getElementById('featuredCarousel');
+            const indicators = document.getElementById('featuredIndicators').children;
+            carousel.style.transform = `translateX(-${currentFeaturedIndex * 100}%)`;
+            
+            for (let i = 0; i < indicators.length; i++) {
+                indicators[i].style.background = i === currentFeaturedIndex ? 'var(--accent-color)' : '#666';
+            }
+        }
+
+        function goToFeaturedSlide(index) {
+            currentFeaturedIndex = index;
+            updateFeaturedCarousel();
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            loadGames();
+        }
+
+        function hideAllViews() {
+            document.querySelector('.container').style.display = 'none';
+            stopFpsCounter();
+            ['gamesView','toolsView','aboutView','settingsView','chatView','aiView','accountView', 'proxyView', 'achievementsView', 'privacyPolicyView', 'disclaimerView', 'dmcaView', 'statsView', 'gamePopup', 'animeView', 'animePlayerView', 'terminalView', 'randomThingsView'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+            });
+        }
+
+        function showChatView() {
+
+            hideAllViews();
+
+            document.getElementById('chatView').style.display = 'block';
+
+            previousView = 'chat';
+
+            trackChatVisit();
+        }
+
+        function hideChatView() {
+            document.getElementById('chatView').style.display = 'none';
+            document.getElementById('gamesView').style.display = 'none';
+            document.getElementById('toolsView').style.display = 'none';
+            document.getElementById('aboutView').style.display = 'none';
+            document.getElementById('settingsView').style.display = 'none';
+            document.getElementById('aiView').style.display = 'none';
+            document.getElementById('accountView').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+        }
+
+        function showProxyView() {
+            hideAllViews();
+            previousView = 'proxy';
+            openProxyHome();
+        }
+
+        let proxyHistory = [];
+        let proxyHistoryIndex = -1;
+
+        function proxyNavigate() {
+            document.getElementById('proxyHomeView').style.display = 'none';
+            const urlInput = document.getElementById('proxyUrlInput');
+            const inputUrl = urlInput.value.trim();
+            
+            if (!inputUrl) {
+                return;
+            }
+
+            if (inputUrl === 'coreus://home') {
+                openProxyHome();
+                return;
+            }
+
+            let targetUrl;
+            const domainPattern = /\.(com|org|net|io|gov|edu|int|mil|arpa|co|uk|de|jp|fr|au|ca|ru|br|in|it|nl|se|no|dk|fi|es|pl|be|ch|at|cz|ie|pt|hu|gr|il|cn|hk|kr|sg|mx|ar|cl|pe|ve|uy|py|bo|ec|gt|hn|sv|ni|cr|pa|do|cu|jm|ht|bs|bz|sr|gy|fk|gg|je|im|ai|bm|ky|lc|vc|ag|gd|kn|ms|tc|vg|vi|pr|as|gu|mp|pw|fm|mh|ws|to|vu|sb|nc|pf|wf|ck|nu|tk|pn|nf|cc|cx|hm|aq|gs|fun|lol|tf)$/i;
+            
+            if (domainPattern.test(inputUrl)) {
+                if (!inputUrl.startsWith('http://') && !inputUrl.startsWith('https://')) {
+                    targetUrl = 'https://' + inputUrl;
+                } else {
+                    targetUrl = inputUrl;
+                }
+            } else {
+                targetUrl = 'https://duckduckgo.com/?q=' + encodeURIComponent(inputUrl);
+            }
+
+            if (proxyHistoryIndex < proxyHistory.length - 1) {
+                proxyHistory = proxyHistory.slice(0, proxyHistoryIndex + 1);
+            }
+            proxyHistory.push(targetUrl);
+            proxyHistoryIndex = proxyHistory.length - 1;
+
+            proxyLoadUrl(targetUrl);
+        }
+
+        function proxyLoadUrl(targetUrl) {
+            const iframe = document.getElementById('proxyIframe');
+            const loading = document.getElementById('proxyLoading');
+            const emptyState = document.getElementById('proxyEmptyState');
+            const urlInput = document.getElementById('proxyUrlInput');
+            const tabTitle = document.getElementById('proxyTabTitle');
+            const lockIcon = document.getElementById('proxyLockIcon');
+            
+            loading.style.display = 'block';
+            emptyState.style.display = 'none';
+
+            try {
+                const urlObj = new URL(targetUrl);
+                urlInput.value = urlObj.hostname + urlObj.pathname;
+                tabTitle.textContent = urlObj.hostname;
+                lockIcon.className = targetUrl.startsWith('https') ? 'fas fa-lock' : 'fas fa-lock-open';
+                lockIcon.style.color = targetUrl.startsWith('https') ? '#28c840' : '#febc2e';
+            } catch(e) {
+                urlInput.value = targetUrl;
+                tabTitle.textContent = targetUrl;
+            }
+
+            const proxyUrl = selectedProxy + encodeUrl(targetUrl);
+            iframe.src = proxyUrl;
+            
+            iframe.onload = function() {
+                loading.style.display = 'none';
+            };
+            
+            iframe.onerror = function() {
+                loading.style.display = 'none';
+            };
+        }
+
+        function proxyGoBack() {
+            if (proxyHistoryIndex > 0) {
+                proxyHistoryIndex--;
+                proxyLoadUrl(proxyHistory[proxyHistoryIndex]);
+            }
+        }
+
+        function proxyGoForward() {
+            if (proxyHistoryIndex < proxyHistory.length - 1) {
+                proxyHistoryIndex++;
+                proxyLoadUrl(proxyHistory[proxyHistoryIndex]);
+            }
+        }
+
+        function proxyReload() {
+            const iframe = document.getElementById('proxyIframe');
+            if (iframe.src) {
+                iframe.src = iframe.src;
+            }
+        }
+
+        function proxyClearUrl() {
+            document.getElementById('proxyUrlInput').value = '';
+            document.getElementById('proxyTabTitle').textContent = 'New Tab';
+            document.getElementById('proxyIframe').src = 'about:blank';
+            document.getElementById('proxyEmptyState').style.display = 'block';
+            proxyHistory = [];
+            proxyHistoryIndex = -1;
+        }
+
+        function openProxyHome() {
+            hideAllViews();
+            document.getElementById('proxyView').style.display = 'block';
+            document.getElementById('proxyHomeView').style.display = 'none';
+            document.getElementById('proxyEmptyState').style.display = 'none';
+            document.getElementById('proxyTabTitle').textContent = 'Coreus Proxy';
+            document.getElementById('proxyUrlInput').value = 'coreus://home';
+            
+            const iframe = document.getElementById('proxyIframe');
+            const homeHtml = getProxyHomeHtml();
+            iframe.src = 'data:text/html;charset=utf-8,' + encodeURIComponent(homeHtml);
+            
+            if (proxyHistoryIndex < proxyHistory.length - 1) {
+                proxyHistory = proxyHistory.slice(0, proxyHistoryIndex + 1);
+            }
+            proxyHistory.push('coreus://home');
+            proxyHistoryIndex = proxyHistory.length - 1;
+        }
+
+        function getProxyHomeHtml() {
+            const bookmarks = JSON.parse(localStorage.getItem('coreus_proxy_bookmarks') || '[]');
+            let bookmarksHtml = '';
+            if (bookmarks.length === 0) {
+                bookmarksHtml = '<div style="color: #555; font-size: 0.9rem; grid-column: 1/-1; text-align: center; padding: 20px;">No bookmarks yet</div>';
+            } else {
+                bookmarks.forEach((b, i) => {
+                    bookmarksHtml += `<div onclick="window.parent.postMessage({type:'bookmark',url:'${b.url}'},'*')" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 8px;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><div style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:1rem;color:#888;"><i class="fas fa-bookmark"></i></div><div style="font-size:0.75rem;color:#888;">${b.title}</div></div>`;
+                });
+            }
+            return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;background:#0a0a0a;background-image:radial-gradient(circle,#333 1px,transparent 1px);background-size:40px 40px;color:#fff;display:flex;flex-direction:column;align-items:center;padding:60px 20px}.logo{font-size:2.5rem;font-weight:300;letter-spacing:0.1em;margin-bottom:8px}.logo i{margin-right:10px}.subtitle{color:#555;font-size:0.8rem;margin-bottom:35px;text-transform:uppercase;letter-spacing:0.1em}.search{position:relative;width:100%;max-width:500px;margin-bottom:40px}.search input{width:100%;padding:16px 50px 16px 50px;font-size:1rem;background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.1);border-radius:50px;color:#fff;outline:none;transition:all 0.3s}.search input:focus{background:rgba(255,255,255,0.08);border-color:rgba(76,175,80,0.5)}.search input::placeholder{color:#555}.search i{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:#555}.section-title{color:#666;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:15px;align-self:flex-start;max-width:500px;width:100%}.bookmarks{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px;max-width:500px;width:100%;margin-bottom:25px}.quick-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:500px}.quick-links a{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);padding:10px 18px;border-radius:25px;color:#777;font-size:0.85rem;text-decoration:none;transition:all 0.3s}.quick-links a:hover{background:rgba(255,255,255,0.1);color:#fff}</style></head><body><div class="logo"><i class="fas fa-globe"></i>Coreus Proxy</div><div class="subtitle">Your Gateway to the Web</div><div class="search"><i class="fas fa-search"></i><input type="text" placeholder="Search the web..." onkeypress="if(event.key==='Enter'){const q=this.value.trim();if(q)window.parent.postMessage({type:'search',query:q},'*')}"></input></div><div class="section-title">Bookmarks</div><div class="bookmarks">${bookmarksHtml}</div><div class="quick-links"><a href="https://youtube.com" onclick="window.parent.postMessage({type:'bookmark',url:this.href},'*');return false"><i class="fab fa-youtube"></i> YouTube</a><a href="https://reddit.com" onclick="window.parent.postMessage({type:'bookmark',url:this.href},'*');return false"><i class="fab fa-reddit"></i> Reddit</a><a href="https://discord.com" onclick="window.parent.postMessage({type:'bookmark',url:this.href},'*');return false"><i class="fab fa-discord"></i> Discord</a><a href="https://github.com" onclick="window.parent.postMessage({type:'bookmark',url:this.href},'*');return false"><i class="fab fa-github"></i> GitHub</a></div></body></html>`;
+        }
+
+        function proxyOpenUrl(url) {
+            document.getElementById('proxyHomeView').style.display = 'none';
+            document.getElementById('proxyTabTitle').textContent = new URL(url).hostname;
+            document.getElementById('proxyUrlInput').value = url;
+            document.getElementById('proxyEmptyState').style.display = 'none';
+            
+            const iframe = document.getElementById('proxyIframe');
+            const proxyUrl = selectedProxy + encodeUrl(url);
+            iframe.src = proxyUrl;
+            
+            if (proxyHistoryIndex < proxyHistory.length - 1) {
+                proxyHistory = proxyHistory.slice(0, proxyHistoryIndex + 1);
+            }
+            proxyHistory.push(url);
+            proxyHistoryIndex = proxyHistory.length - 1;
+        }
+
+        window.addEventListener('message', function(e) {
+            if (e.data && e.data.type === 'search') {
+                const searchUrl = 'https://duckduckgo.com/?q=' + encodeURIComponent(e.data.query);
+                proxyOpenUrl(searchUrl);
+            } else if (e.data && e.data.type === 'bookmark') {
+                proxyOpenUrl(e.data.url);
+            }
+        });
+
+        let proxyBookmarks = JSON.parse(localStorage.getItem('coreus_proxy_bookmarks') || '[]');
+
+        function renderProxyBookmarks() {
+            const grid = document.getElementById('proxyBookmarksGrid');
+            grid.innerHTML = '';
+            
+            if (proxyBookmarks.length === 0) {
+                grid.innerHTML = '<div style="color: #444; font-size: 0.85rem; grid-column: 1/-1; text-align: center;">No bookmarks yet</div>';
+                return;
+            }
+            
+            proxyBookmarks.forEach((bookmark, index) => {
+                const card = document.createElement('div');
+                card.style.cssText = 'background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 15px; cursor: pointer; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative;';
+                card.onclick = () => proxyOpenUrl(bookmark.url);
+                
+                const icon = document.createElement('div');
+                icon.style.cssText = 'width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;';
+                icon.innerHTML = getProxyFavicon(bookmark.title);
+                
+                const title = document.createElement('div');
+                title.style.cssText = 'font-size: 0.75rem; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; text-align: center;';
+                title.textContent = bookmark.title;
+                
+                const delBtn = document.createElement('button');
+                delBtn.innerHTML = '<i class="fas fa-times" style="font-size: 0.6rem;"></i>';
+                delBtn.style.cssText = 'position: absolute; top: 4px; right: 4px; opacity: 0; background: rgba(239,68,68,0.8); border: none; color: #fff; width: 18px; height: 18px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: opacity 0.2s;';
+                delBtn.onclick = (e) => { e.stopPropagation(); deleteProxyBookmark(index); };
+                card.onmouseenter = () => delBtn.style.opacity = '1';
+                card.onmouseleave = () => delBtn.style.opacity = '0';
+                
+                card.appendChild(delBtn);
+                card.appendChild(icon);
+                card.appendChild(title);
+                grid.appendChild(card);
+            });
+        }
+
+        function getProxyFavicon(title) {
+            const icons = { youtube: '<i class="fab fa-youtube" style="color:#ff0000;font-size:1rem;"></i>', reddit: '<i class="fab fa-reddit" style="color:#ff4500;font-size:1rem;"></i>', discord: '<i class="fab fa-discord" style="color:#5865f2;font-size:1rem;"></i>', github: '<i class="fab fa-github" style="color:#fff;font-size:1rem;"></i>', twitter: '<i class="fab fa-twitter" style="color:#1da1f2;font-size:1rem;"></i>', spotify: '<i class="fab fa-spotify" style="color:#1db954;font-size:1rem;"></i>' };
+            const t = title.toLowerCase();
+            for (let k in icons) if (t.includes(k)) return icons[k];
+            return '<i class="fas fa-bookmark" style="color:#888;font-size:0.9rem;"></i>';
+        }
+
+        function showAddProxyBookmarkModal() {
+            document.getElementById('proxyBookmarkModal').style.display = 'flex';
+            document.getElementById('proxyBookmarkTitle').value = '';
+            document.getElementById('proxyBookmarkUrl').value = '';
+        }
+
+        function closeProxyBookmarkModal() {
+            document.getElementById('proxyBookmarkModal').style.display = 'none';
+        }
+
+        function saveProxyBookmark() {
+            const title = document.getElementById('proxyBookmarkTitle').value.trim();
+            let url = document.getElementById('proxyBookmarkUrl').value.trim();
+            if (!title || !url) return;
+            if (!url.startsWith('http://') && !url.startsWith('https://')) url = 'https://' + url;
+            proxyBookmarks.push({ title, url });
+            localStorage.setItem('coreus_proxy_bookmarks', JSON.stringify(proxyBookmarks));
+            renderProxyBookmarks();
+            closeProxyBookmarkModal();
+        }
+
+        function deleteProxyBookmark(index) {
+            proxyBookmarks.splice(index, 1);
+            localStorage.setItem('coreus_proxy_bookmarks', JSON.stringify(proxyBookmarks));
+            renderProxyBookmarks();
+        }
+
+        function showSettingsView() {
+            hideAllViews();
+            document.getElementById('settingsView').style.display = 'block';
+            loadCurrentSettings();
+            loadCursorSetting();
+            updateCursorOptionsLockState();
+            previousView = 'settings';
+        }
+
+        function hideSettingsView() {
+            document.getElementById('settingsView').style.display = 'none';
+            document.getElementById('gamesView').style.display = 'none';
+            document.getElementById('toolsView').style.display = 'none';
+            document.getElementById('aboutView').style.display = 'none';
+            document.getElementById('chatView').style.display = 'none';
+            document.getElementById('aiView').style.display = 'none';
+            document.getElementById('accountView').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+        }
+
+        function changeTheme(theme) {
+            const body = document.body;
+            body.className = '';
+            if (theme !== 'default') {
+                body.classList.add(`theme-${theme}`);
+            }
+
+            if (currentAccount && !isApplyingAccount) {
+                currentAccount.settings = currentAccount.settings || {};
+                currentAccount.settings.theme = theme;
+                setCurrentAccount(currentAccount);
+            }
+        }
+
+        function checkUrlFormat(url) {
+            var pattern = /^https?:\/\/(?:[-\w.])+(?:\:[0-9]+)?(?:\/(?:[\w\/_.])*(?:\?(?:[\w&=%.])*)?(?:\#(?:[\w.])*)?)?$/;
+            return pattern.test(url);
+        }
+
+        let currentAccount = null;
+        let isApplyingAccount = false;
+
+        function setCurrentAccountVar(val) {
+            currentAccount = val;
+        }
+
+        function encodeAccount(obj) {
+            const json = JSON.stringify(obj);
+            let result = '';
+            for (let c of json) {
+                const code = c.charCodeAt(0);
+
+                const encoded = code.toString(36).padStart(3, '0');
+
+                const prefix = String.fromCharCode(97 + (code % 26));
+                result += prefix + encoded;
+            }
+            return result;
+        }
+
+        function decodeAccount(hash) {
+            if (!/^[a-z0-9]+$/.test(hash)) return null;
+            try {
+                let str = '';
+
+                for (let i = 0; i < hash.length; i += 4) {
+                    const encoded = hash.substring(i + 1, i + 4);
+                    if (encoded.length === 3) {
+                        const code = parseInt(encoded, 36);
+                        str += String.fromCharCode(code);
+                    }
+                }
+                return JSON.parse(str);
+            } catch(e) {
+                return null;
+            }
+        }
+
+        async function saveAccount(acc) {
+            try {
+                suppressHashTrigger = true;
+                window.localStorage.setItem('coreus_account', JSON.stringify(acc));
+                console.log('Account saved:', acc);
+            } catch(e) {
+                console.error('Error saving account:', e);
+            } finally {
+                suppressHashTrigger = false;
+            }
+        }
+
+        function getLocalStorageData() {
+            const data = {};
+            try {
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+
+                    if (key !== 'coreus_account') {
+                        data[key] = localStorage.getItem(key);
+                    }
+                }
+            } catch (e) {}
+            return data;
+        }
+
+        function dumpDatabase(name) {
+            return new Promise(resolve => {
+                const req = indexedDB.open(name);
+                req.onsuccess = function() {
+                    const db = req.result;
+                    const out = {};
+                    const promises = [];
+                    if (!db.objectStoreNames || db.objectStoreNames.length === 0) {
+                        db.close();
+                        resolve(out);
+                        return;
+                    }
+                    const txn = db.transaction(Array.from(db.objectStoreNames), 'readonly');
+                    for (let storeName of db.objectStoreNames) {
+                        const store = txn.objectStore(storeName);
+                        const p = new Promise(res => {
+                            const getAllReq = store.getAll();
+                            getAllReq.onsuccess = () => { out[storeName] = getAllReq.result; res(); };
+                            getAllReq.onerror = () => { out[storeName] = null; res(); };
+                        });
+                        promises.push(p);
+                    }
+                    txn.oncomplete = () => {
+                        Promise.all(promises).then(() => { db.close(); resolve(out); });
+                    };
+                    txn.onerror = () => { db.close(); resolve(out); };
+                };
+                req.onerror = () => { resolve({}); };
+            });
+        }
+
+        async function getIndexedDBData() {
+            const dbs = {};
+            if (!indexedDB) return dbs;
+            if (indexedDB.databases) {
+                try {
+                    const list = await indexedDB.databases();
+                    for (const info of list) {
+                        if (!info.name) continue;
+                        dbs[info.name] = await dumpDatabase(info.name);
+                    }
+                } catch (e) {
+
+                }
+            }
+            return dbs;
+        }
+
+        async function restoreDatabase(name, stores) {
+            return new Promise(resolve => {
+                const delReq = indexedDB.deleteDatabase(name);
+                delReq.onsuccess = () => {
+                    const openReq = indexedDB.open(name, 1);
+                    openReq.onupgradeneeded = e => {
+                        const db = e.target.result;
+                        for (let storeName in stores) {
+                            if (!db.objectStoreNames.contains(storeName)) {
+                                db.createObjectStore(storeName, { autoIncrement: true });
+                            }
+                        }
+                    };
+                    openReq.onsuccess = e => {
+                        const db = e.target.result;
+                        const storeNames = Object.keys(stores || {});
+                        if (storeNames.length === 0) {
+                            db.close();
+                            resolve();
+                            return;
+                        }
+                        const txn = db.transaction(storeNames, 'readwrite');
+                        txn.oncomplete = () => { db.close(); resolve(); };
+                        txn.onerror = () => { db.close(); resolve(); };
+                        for (let storeName of storeNames) {
+                            const store = txn.objectStore(storeName);
+                            (stores[storeName] || []).forEach(item => store.put(item));
+                        }
+                    };
+                    openReq.onerror = () => { resolve(); };
+                };
+                delReq.onerror = () => { resolve(); };
+            });
+        }
+
+        async function restoreStorage(snapshot) {
+            if (!snapshot) return;
+
+            try {
+                window.localStorage.clear();
+                for (let k in snapshot.localStorage) {
+                    window.localStorage.setItem(k, snapshot.localStorage[k]);
+                }
+            } catch (e) {}
+
+            if (snapshot.indexedDB) {
+                for (let dbName in snapshot.indexedDB) {
+                    await restoreDatabase(dbName, snapshot.indexedDB[dbName]);
+                }
+            }
+        }
+
+        let suppressHashTrigger = false;
+        let hashUpdateTimeout = null;
+        function triggerHashUpdate() {
+            if (suppressHashTrigger) return;
+            if (hashUpdateTimeout) clearTimeout(hashUpdateTimeout);
+            hashUpdateTimeout = setTimeout(() => {
+                if (currentAccount) setCurrentAccount(currentAccount);
+            }, 100);
+        }
+
+        ['setItem', 'removeItem', 'clear'].forEach(fn => {
+            const orig = window.localStorage[fn];
+            window.localStorage[fn] = function(...args) {
+                const res = orig.apply(this, args);
+                triggerHashUpdate();
+                return res;
+            };
+        });
+
+        ['add', 'put', 'delete', 'clear'].forEach(fn => {
+            const proto = IDBObjectStore && IDBObjectStore.prototype;
+            if (proto && proto[fn]) {
+                const orig = proto[fn];
+                proto[fn] = function(...args) {
+                    const req = orig.apply(this, args);
+                    req.addEventListener('success', triggerHashUpdate);
+                    req.addEventListener('error', triggerHashUpdate);
+                    return req;
+                };
+            }
+        });
+
+        function loadAccount() {
+            try {
+                const raw = window.localStorage.getItem('coreus_account');
+                if (raw) {
+                    setCurrentAccountVar(JSON.parse(raw));
+                    applyAccount();
+                }
+            } catch(e) {
+                setCurrentAccountVar(null);
+            }
+        }
+
+        function applyAccount() {
+            if (!currentAccount) return;
+            
+            try {
+                isApplyingAccount = true;
+                
+                if (currentAccount.achievements) {
+                    window.localStorage.setItem('coreus_achievements', JSON.stringify(currentAccount.achievements));
+                }
+                if (currentAccount.playedGames) {
+                    window.localStorage.setItem('coreus_played_games', JSON.stringify(currentAccount.playedGames));
+                }
+                if (currentAccount.usedTools) {
+                    window.localStorage.setItem('coreus_used_tools', JSON.stringify(currentAccount.usedTools));
+                }
+                if (currentAccount.proxyVisits) {
+                    window.localStorage.setItem('coreus_proxy_visits', JSON.stringify(currentAccount.proxyVisits));
+                }
+                if (currentAccount.searchCount) {
+                    window.localStorage.setItem('coreus_search_count', currentAccount.searchCount.toString());
+                }
+                if (currentAccount.chatVisits) {
+                    window.localStorage.setItem('coreus_chat_visits', currentAccount.chatVisits.toString());
+                }
+                if (currentAccount.favoriteCount) {
+                    window.localStorage.setItem('coreus_favorite_count', currentAccount.favoriteCount.toString());
+                }
+                if (currentAccount.daysUsed) {
+                    window.localStorage.setItem('coreus_days_used', currentAccount.daysUsed.toString());
+                }
+                if (currentAccount.totalTimeOnSite) {
+                    window.localStorage.setItem('coreus_total_time', currentAccount.totalTimeOnSite.toString());
+                    totalTimeOnSite = currentAccount.totalTimeOnSite;
+                }
+                if (currentAccount.gameFavorites) {
+                    window.localStorage.setItem('coreus_game_favorites_vrtx', JSON.stringify(currentAccount.gameFavorites.vrtx || []));
+                    window.localStorage.setItem('coreus_game_favorites_selenite', JSON.stringify(currentAccount.gameFavorites.selenite || []));
+                }
+                if (currentAccount.toolFavorites) {
+                    window.localStorage.setItem('coreus_tool_favorites', JSON.stringify(currentAccount.toolFavorites));
+                }
+                
+                if (currentAccount.settings && currentAccount.settings.theme) {
+                    changeTheme(currentAccount.settings.theme);
+                }
+                
+                isApplyingAccount = false;
+                updateAccountView();
+                updateProfileCard();
+            } catch(e) {
+                isApplyingAccount = false;
+            }
+        }
+
+        async function setCurrentAccount(acc) {
+            setCurrentAccountVar(acc);
+            if (acc) {
+                const sessionTime = Math.floor((Date.now() - sessionStartTime) / 1000);
+                acc.achievements = getUnlockedAchievements();
+                acc.playedGames = JSON.parse(window.localStorage.getItem('coreus_played_games') || '[]');
+                acc.usedTools = JSON.parse(window.localStorage.getItem('coreus_used_tools') || '[]');
+                acc.proxyVisits = JSON.parse(window.localStorage.getItem('coreus_proxy_visits') || '[]');
+                acc.searchCount = parseInt(window.localStorage.getItem('coreus_search_count') || '0');
+                acc.chatVisits = parseInt(window.localStorage.getItem('coreus_chat_visits') || '0');
+                acc.favoriteCount = parseInt(window.localStorage.getItem('coreus_favorite_count') || '0');
+                acc.daysUsed = parseInt(window.localStorage.getItem('coreus_days_used') || '0');
+                acc.totalTimeOnSite = totalTimeOnSite + sessionTime;
+                acc.gameFavorites = getAllGameFavorites();
+                acc.toolFavorites = getToolFavorites();
+                await saveAccount(acc);
+            } else {
+                window.localStorage.removeItem('coreus_account');
+            }
+            updateAccountView();
+            updateProfileCard();
+        }
+
+        function ensureNavbarProfileButton() {
+            document.querySelectorAll('.bottom-navbar').forEach(nav => {
+                if (nav.querySelector('.nav-profile-btn')) return;
+
+                const settingsBtn = Array.from(nav.querySelectorAll('.nav-icon-btn')).find(btn => 
+                    btn.innerHTML.includes('fa-cog')
+                );
+                if (!settingsBtn) return;
+
+                const sep = document.createElement('div');
+                sep.style.cssText = 'width: 1px; height: 24px; margin: 0 10px;';
+
+                const btn = document.createElement('button');
+                btn.className = 'nav-icon-btn nav-profile-btn';
+                btn.style.cssText = 'background: none; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;';
+                btn.innerHTML = "<i class='fas fa-user' style='color:white;font-size:20px;'></i>";
+                btn.addEventListener('click', showAccountView);
+
+                settingsBtn.parentNode.insertBefore(sep, settingsBtn.nextSibling);
+                settingsBtn.parentNode.insertBefore(btn, sep.nextSibling);
+            });
+        }
+
+        function showAccountView() {
+            console.log('showAccountView currentAccount:', currentAccount);
+            console.trace('Stack trace');
+            hideAllViews();
+            document.getElementById('accountView').style.display = 'block';
+            updateAccountView();
+        }
+
+        function hideAccountView() {
+            document.getElementById('accountView').style.display = 'none';
+        }
+
+        function updateAccountView() {
+            const notLogged = document.getElementById('accountNotLogged');
+            const logged = document.getElementById('accountLogged');
+            if (currentAccount) {
+                notLogged.style.display = 'none';
+                logged.style.display = 'block';
+                document.getElementById('accUsername').value = currentAccount.username || '';
+                document.getElementById('accHash').value = encodeAccount(currentAccount);
+            } else {
+                notLogged.style.display = 'block';
+                logged.style.display = 'none';
+            }
+            updateProfileCard();
+        }
+
+        async function createAccount() {
+            let name = document.getElementById('newUsername').value.trim();
+            if (!name) {
+                name = 'guest' + Math.floor(1000 + Math.random()*9000);
+            }
+            const sessionTime = Math.floor((Date.now() - sessionStartTime) / 1000);
+            const totalSeconds = totalTimeOnSite + sessionTime;
+            const acc = { 
+                username: name, 
+                settings: { theme: getCurrentTheme() },
+                achievements: getUnlockedAchievements(),
+                playedGames: JSON.parse(localStorage.getItem('coreus_played_games') || '[]'),
+                usedTools: JSON.parse(localStorage.getItem('coreus_used_tools') || '[]'),
+                proxyVisits: JSON.parse(localStorage.getItem('coreus_proxy_visits') || '[]'),
+                searchCount: parseInt(localStorage.getItem('coreus_search_count') || '0'),
+                chatVisits: parseInt(localStorage.getItem('coreus_chat_visits') || '0'),
+                favoriteCount: parseInt(localStorage.getItem('coreus_favorite_count') || '0'),
+                daysUsed: parseInt(localStorage.getItem('coreus_days_used') || '0'),
+                totalTimeOnSite: totalSeconds,
+                gameFavorites: getAllGameFavorites(),
+                toolFavorites: getToolFavorites()
+            };
+            await setCurrentAccount(acc);
+            alert('Account created! Your hash is:\n' + encodeAccount(acc));
+        }
+
+        function showLoginSection() {
+            document.getElementById('loginSection').style.display = 'block';
+        }
+
+        async function loginWithHash() {
+            const hash = document.getElementById('loginHash').value.trim();
+            const acc = decodeAccount(hash);
+            if (acc && acc.username) {
+                await setCurrentAccount(acc);
+                alert('Logged in as ' + acc.username);
+            } else {
+                alert('Invalid hash');
+            }
+        }
+
+        function saveAccountUsername() {
+            const name = document.getElementById('accUsername').value.trim();
+            if (currentAccount) {
+                currentAccount.username = name || currentAccount.username;
+                setCurrentAccount(currentAccount); // will snapshot storage and update hash
+
+                setTimeout(() => {
+                    document.getElementById('accHash').value = encodeAccount(currentAccount);
+                }, 100);
+            }
+        }
+
+        function logout() {
+            setCurrentAccount(null);
+            document.getElementById('accountNotLogged').style.display = 'block';
+            document.getElementById('accountLogged').style.display = 'none';
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('newUsername').value = '';
+            document.getElementById('loginHash').value = '';
+        }
+
+        function copyHash() {
+            const hashEl = document.getElementById('accHash');
+            hashEl.select();
+            document.execCommand('copy');
+            alert('Hash copied to clipboard');
+        }
+
+        function getCurrentTheme() {
+            const body = document.body;
+            if (body.classList.contains('theme-blue')) return 'blue';
+            if (body.classList.contains('theme-purple')) return 'purple';
+            if (body.classList.contains('theme-green')) return 'green';
+            return 'default';
+        }
+
+        function updateNavbarTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            const timeElements = document.querySelectorAll('.navbar-time');
+            timeElements.forEach(el => {
+                el.textContent = timeString;
+            });
+
+            ensureNavbarProfileButton();
+        }
+
+        setInterval(updateNavbarTime, 1000);
+
+        updateNavbarTime();
+
+        // Time tracking (must be before loadAccount)
+        let sessionStartTime = Date.now();
+        let totalTimeOnSite = parseInt(localStorage.getItem('coreus_total_time') || '0');
+
+        function updateTimeOnSite() {
+            const sessionTime = Math.floor((Date.now() - sessionStartTime) / 1000);
+            const totalSeconds = totalTimeOnSite + sessionTime;
+            localStorage.setItem('coreus_total_time', totalSeconds.toString());
+            localStorage.setItem('coreus_last_session_start', sessionStartTime.toString());
+        }
+
+        setInterval(updateTimeOnSite, 1000);
+
+        loadAccount();
+
+        // Random search placeholder
+        const searchPlaceholders = [
+            "lmaooooooo",
+            "The Dark Side",
+            "bruh",
+            "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH",
+            '"geekHUMtravailler"',
+            "SIX SEVEN 67 67 67 67 67",
+            "MUHAHAHAHAHAHAHA",
+            "ask your cat",
+            "rm -rf /",
+            "ctr+c ctrl+v",
+            "technoblade never dies",
+            "wsgvuisdmvhio",
+            "WTF?"
+        ];
+        const urlInput = document.getElementById('urlInput');
+        if (urlInput) {
+            urlInput.placeholder = searchPlaceholders[Math.floor(Math.random() * searchPlaceholders.length)];
+        }
+
+        // Custom Cursor System
+        (function() {
+            const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            
+            // Create cursor dot (desktop only)
+            if (!isMobile) {
+                const cursor = document.createElement('div');
+                cursor.className = 'cursor-dot';
+                document.body.appendChild(cursor);
+                
+                // Load saved cursor style
+                const savedCursor = localStorage.getItem('coreus_cursor_style') || 'default';
+                if (savedCursor !== 'default') {
+                    cursor.classList.add(savedCursor);
+                }
+                
+                document.addEventListener('mousemove', (e) => {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                });
+                
+                document.addEventListener('mouseleave', () => {
+                    cursor.style.opacity = '0';
+                });
+                
+                document.addEventListener('mouseenter', () => {
+                    cursor.style.opacity = '1';
+                });
+            }
+            
+            // Click ripple effect (always enabled, but styled differently for mobile)
+            function createRipple(x, y) {
+                const ripple = document.createElement('div');
+                ripple.className = 'click-ripple';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                document.body.appendChild(ripple);
+                
+                ripple.addEventListener('animationend', () => {
+                    ripple.remove();
+                });
+            }
+            
+            let touchTriggered = false;
+            
+            // Mouse click
+            document.addEventListener('mousedown', (e) => {
+                if (touchTriggered) {
+                    touchTriggered = false;
+                    return;
+                }
+                createRipple(e.clientX, e.clientY);
+            });
+            
+            // Touch tap
+            document.addEventListener('touchstart', (e) => {
+                touchTriggered = true;
+                if (e.touches.length > 0) {
+                    const touch = e.touches[0];
+                    createRipple(touch.clientX, touch.clientY);
+                }
+            });
+        })();
+
+        window.addEventListener('load', function() {
+            document.getElementById('urlInput').focus();
+            ensureNavbarProfileButton();
+        });
+
+        function isCursorSkinUnlocked(style) {
+            if (!style || style === 'default' || style === 'fire' || style === 'ice' || style === 'gold' || style === 'geek' || style === 'pink' || style === 'dark' || style === 'red' || style === 'purple') {
+                return true;
+            }
+            const unlocked = getUnlockedAchievements();
+            const requirements = {
+                rainbow: 'master_gamer',
+                neon: 'tool_master',
+                matrix: 'veteran'
+            };
+            const required = requirements[style];
+            return required ? unlocked.includes(required) : true;
+        }
+
+        function getCursorSkinLockDescription(style) {
+            const desc = {
+                rainbow: 'Unlock Master Gamer by playing 50 games',
+                neon: 'Unlock Tool Master by using 10 different tools',
+                matrix: 'Unlock Veteran by using Coreus for 7 days'
+            };
+            return desc[style] || 'Unlock via achievements';
+        }
+
+        function setCursor(style) {
+            if (!isCursorSkinUnlocked(style)) {
+                showCursorLockModal(style);
+                const savedCursor = localStorage.getItem('coreus_cursor_style') || 'default';
+                if (!isCursorSkinUnlocked(savedCursor)) {
+                    style = 'default';
+                    localStorage.setItem('coreus_cursor_style', style);
+                } else {
+                    style = savedCursor;
+                }
+            } else {
+                localStorage.setItem('coreus_cursor_style', style);
+            }
+
+            const cursor = document.querySelector('.cursor-dot');
+            if (cursor) {
+                cursor.className = 'cursor-dot';
+                if (style !== 'default') {
+                    cursor.classList.add(style);
+                }
+            }
+
+            document.querySelectorAll('.cursor-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            document.querySelector(`.cursor-option[data-cursor="${style}"]`)?.classList.add('selected');
+            updateCursorOptionsLockState();
+        }
+
+        function updateCursorOptionsLockState() {
+            document.querySelectorAll('.cursor-option').forEach(opt => {
+                const style = opt.getAttribute('data-cursor');
+                const isUnlocked = isCursorSkinUnlocked(style);
+                if (!isUnlocked) {
+                    opt.classList.add('locked');
+                    opt.querySelector('.lock-label')?.remove();
+                    const lockLabel = document.createElement('div');
+                    lockLabel.className = 'lock-label';
+                    lockLabel.textContent = '🔒';
+                    lockLabel.style.fontSize = '10px';
+                    lockLabel.style.color = '#ff9f43';
+                    lockLabel.style.marginTop = '4px';
+                    opt.appendChild(lockLabel);
+                } else {
+                    opt.classList.remove('locked');
+                    opt.querySelector('.lock-label')?.remove();
+                }
+            });
+        }
+
+        function loadCursorSetting() {
+            const savedCursor = localStorage.getItem('coreus_cursor_style') || 'default';
+            setCursor(savedCursor);
+        }
+
+        function showCursorLockModal(style) {
+            const modal = document.getElementById('cursorLockModal');
+            if (!modal) return;
+            const lockText = document.getElementById('cursorLockText');
+            if (lockText) {
+                lockText.textContent = `The "${style}" cursor is locked. ${getCursorSkinLockDescription(style)}.`;
+            }
+            modal.style.display = 'flex';
+        }
+
+        function closeCursorLockModal() {
+            const modal = document.getElementById('cursorLockModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function formatTime(seconds) {
+            const hrs = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            if (hrs > 0) {
+                return `${hrs}h ${mins}m ${secs}s`;
+            } else if (mins > 0) {
+                return `${mins}m ${secs}s`;
+            }
+            return `${secs}s`;
+        }
+
+        function formatTimeShort(seconds) {
+            const hrs = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Analytics data
+        let analyticsData = {};
+
+        function loadVisitorCount() {
+            $.ajax({
+                url: 'https://dashboard.simpleanalytics.com/noodlelover1.github.io.json?version=6&fields=pageviews,visitors,histogram,pages,countries&_=' + Date.now(),
+                dataType: 'jsonp',
+                success: function(data1) {
+                    $.ajax({
+                        url: 'https://dashboard.simpleanalytics.com/n00dle.is-a.dev.json?version=6&fields=pageviews,visitors,histogram,pages,countries&_=' + Date.now(),
+                        dataType: 'jsonp',
+                        success: function(data2) {
+                            const pageviews1 = data1.pageviews || 0;
+                            const pageviews2 = data2.pageviews || 0;
+                            const totalPageviews = pageviews1 + pageviews2;
+                            analyticsData = {
+                                pageviews: totalPageviews,
+                                visitors: (data1.visitors || 0) + (data2.visitors || 0),
+                                histogram: data1.histogram || [],
+                                pages: (data1.pages || []).concat(data2.pages || []),
+                                countries: data1.countries || []
+                            };
+                            const visitorCountText = document.getElementById('visitorCountText');
+                            if (visitorCountText) {
+                                visitorCountText.textContent = totalPageviews.toLocaleString() + ' visits this month';
+                            }
+                            updateStatsView();
+                        },
+                        error: function() {
+                            const pageviews = data1.pageviews || 0;
+                            const visitorCountText = document.getElementById('visitorCountText');
+                            if (visitorCountText) {
+                                visitorCountText.textContent = pageviews.toLocaleString() + ' visits this month';
+                            }
+                            analyticsData = data1;
+                            updateStatsView();
+                        }
+                    });
+                },
+                error: function() {
+                    $.ajax({
+                        url: 'https://dashboard.simpleanalytics.com/n00dle.is-a.dev.json?version=6&fields=pageviews,visitors,histogram,pages,countries&_=' + Date.now(),
+                        dataType: 'jsonp',
+                        success: function(data2) {
+                            const pageviews = data2.pageviews || 0;
+                            const visitorCountText = document.getElementById('visitorCountText');
+                            if (visitorCountText) {
+                                visitorCountText.textContent = pageviews.toLocaleString() + ' visits this month';
+                            }
+                            analyticsData = data2;
+                            updateStatsView();
+                        },
+                        error: function() {
+                            const visitorCountText = document.getElementById('visitorCountText');
+                            if (visitorCountText) {
+                                visitorCountText.textContent = 'Stats unavailable';
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function updateStatsView() {
+            const sessionTime = Math.floor((Date.now() - sessionStartTime) / 1000);
+            const totalSeconds = totalTimeOnSite + sessionTime;
+            
+            const totalTimeEl = document.getElementById('statsTotalTime');
+            const sessionTimeEl = document.getElementById('statsSessionTime');
+            const gamesPlayedEl = document.getElementById('statsGamesPlayed');
+            const toolsUsedEl = document.getElementById('statsToolsUsed');
+            const searchesEl = document.getElementById('statsSearches');
+            const proxyVisitsEl = document.getElementById('statsProxyVisits');
+            const favoritesEl = document.getElementById('statsFavorites');
+            const achievementsEl = document.getElementById('statsAchievements');
+            const pageviewsEl = document.getElementById('statsPageviews');
+            const visitorsEl = document.getElementById('statsVisitors');
+            const countriesEl = document.getElementById('statsCountries');
+
+            if (totalTimeEl) totalTimeEl.textContent = formatTimeShort(totalSeconds);
+            if (sessionTimeEl) sessionTimeEl.textContent = formatTimeShort(sessionTime);
+            
+            const playedGames = JSON.parse(localStorage.getItem('coreus_played_games') || '[]').length;
+            if (gamesPlayedEl) gamesPlayedEl.textContent = playedGames;
+            
+            const usedTools = JSON.parse(localStorage.getItem('coreus_used_tools') || '[]').length;
+            if (toolsUsedEl) toolsUsedEl.textContent = usedTools;
+            
+            const searches = parseInt(localStorage.getItem('coreus_search_count') || '0');
+            if (searchesEl) searchesEl.textContent = searches;
+            
+            const proxyVisits = JSON.parse(localStorage.getItem('coreus_proxy_visits') || '[]').length;
+            if (proxyVisitsEl) proxyVisitsEl.textContent = proxyVisits;
+            
+            const favorites = parseInt(localStorage.getItem('coreus_favorite_count') || '0');
+            if (favoritesEl) favoritesEl.textContent = favorites;
+            
+            const achievements = getUnlockedAchievements().length;
+            if (achievementsEl) achievementsEl.textContent = achievements + '/18';
+            
+            if (analyticsData.pageviews && pageviewsEl) pageviewsEl.textContent = analyticsData.pageviews.toLocaleString();
+            if (analyticsData.visitors && visitorsEl) visitorsEl.textContent = analyticsData.visitors.toLocaleString();
+            
+            if (analyticsData.countries && countriesEl && Array.isArray(analyticsData.countries)) {
+                const topCountries = analyticsData.countries
+                    .sort((a, b) => b.pageviews - a.pageviews)
+                    .slice(0, 5);
+                countriesEl.innerHTML = topCountries.map(c => 
+                    `<span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--tertiary-bg);border-radius:20px;font-size:0.85rem;">${c.value.toUpperCase()} <span style="color:var(--secondary-text);">${c.pageviews}</span></span>`
+                ).join('');
+            }
+        }
+
+        function showStatsView() {
+            closeGamePopup();
+            hideAllViews();
+            updateStatsView();
+            document.getElementById('statsView').style.display = 'block';
+            previousView = 'stats';
+        }
+
+        function updateStatsTime() {
+            const statsView = document.getElementById('statsView');
+            if (statsView && statsView.style.display !== 'none') {
+                const sessionTime = Math.floor((Date.now() - sessionStartTime) / 1000);
+                const totalSeconds = totalTimeOnSite + sessionTime;
+                
+                const totalTimeEl = document.getElementById('statsTotalTime');
+                const sessionTimeEl = document.getElementById('statsSessionTime');
+                
+                if (totalTimeEl) totalTimeEl.textContent = formatTimeShort(totalSeconds);
+                if (sessionTimeEl) sessionTimeEl.textContent = formatTimeShort(sessionTime);
+            }
+        }
+
+        setInterval(updateStatsTime, 1000);
+
+        loadVisitorCount();
+    </script>
+    <div id="accountView" style="display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: var(--primary-bg); background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index:2000; overflow-y:auto; padding:20px 20px 100px 20px;">
+        <div style="max-width:500px; margin:40px auto 0; text-align:center;">
+            <div style="margin-bottom:30px;">
+                <i class="fas fa-user-circle" style="font-size:4rem; color:var(--primary-text); margin-bottom:15px; opacity:0.8;"></i>
+                <h2 style="font-size:2.5rem; font-weight:300; letter-spacing:0.1em; color:var(--primary-text); margin:0;">Account</h2>
+                <p style="color:var(--secondary-text); margin-top:8px; font-size:0.95rem;">Manage your Coreus account</p>
+            </div>
+            
+            <div id="accountNotLogged" style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:24px; padding:40px; backdrop-filter:blur(20px);">
+                <div style="margin-bottom:25px;">
+                    <label style="color:var(--primary-text); display:block; margin-bottom:10px; font-weight:500; text-align:left;">Username (optional)</label>
+                    <input id="newUsername" placeholder="Enter username or leave blank..." style="width:100%; padding:16px 20px; background:var(--tertiary-bg); color:var(--primary-text); border:2px solid var(--border-color); border-radius:14px; font-size:1rem; outline:none; transition:all 0.3s;">
+                </div>
+                <button onclick="createAccount()" style="width:100%; padding:16px 24px; background:var(--primary-text); border:none; border-radius:14px; color:var(--primary-bg); font-weight:600; font-size:1rem; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; justify-content:center; gap:10px;">
+                    <i class="fas fa-plus"></i> Create Account
+                </button>
+                
+                <div style="display:flex; align-items:center; margin:30px 0; gap:15px;">
+                    <div style="flex:1; height:1px; background:var(--border-color);"></div>
+                    <span style="color:var(--secondary-text); font-size:0.85rem;">or login with hash</span>
+                    <div style="flex:1; height:1px; background:var(--border-color);"></div>
+                </div>
+                
+                <div style="margin-bottom:20px;">
+                    <label style="color:var(--primary-text); display:block; margin-bottom:10px; font-weight:500; text-align:left;">Account Hash</label>
+                    <input id="loginHash" placeholder="Paste your account hash here..." style="width:100%; padding:16px 20px; background:var(--tertiary-bg); color:var(--primary-text); border:2px solid var(--border-color); border-radius:14px; font-size:0.95rem; outline:none; transition:all 0.3s; font-family:monospace;">
+                </div>
+                <button onclick="loginWithHash()" style="width:100%; padding:16px 24px; background:var(--tertiary-bg); border:2px solid var(--border-color); border-radius:14px; color:var(--primary-text); font-weight:600; font-size:1rem; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; justify-content:center; gap:10px;">
+                    <i class="fas fa-key"></i> Login
+                </button>
+            </div>
+            
+            <div id="accountLogged" style="display:none; background:var(--card-bg); border:1px solid var(--border-color); border-radius:24px; padding:40px; backdrop-filter:blur(20px);">
+                <div style="text-align:center; margin-bottom:30px;">
+                    <div style="width:80px; height:80px; background:var(--tertiary-bg); border:2px solid var(--border-color); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 15px;">
+                        <i class="fas fa-user" style="font-size:2rem; color:var(--primary-text);"></i>
+                    </div>
+                    <p style="color:var(--secondary-text); font-size:0.9rem;">Logged in as</p>
+                </div>
+                
+                <div style="margin-bottom:25px;">
+                    <label style="color:var(--primary-text); display:block; margin-bottom:10px; font-weight:500; text-align:left;">Username</label>
+                    <input id="accUsername" style="width:100%; padding:16px 20px; background:var(--tertiary-bg); color:var(--primary-text); border:2px solid var(--border-color); border-radius:14px; font-size:1rem; outline:none; transition:all 0.3s;" oninput="saveAccountUsername()">
+                </div>
+                
+                <div style="margin-bottom:25px;">
+                    <label style="color:var(--primary-text); display:block; margin-bottom:10px; font-weight:500; text-align:left;">Account Hash <span style="color:var(--secondary-text); font-weight:400;">(keep it safe)</span></label>
+                    <textarea id="accHash" readonly style="width:100%; padding:16px 20px; background:var(--tertiary-bg); color:var(--secondary-text); border:2px solid var(--border-color); border-radius:14px; font-size:0.85rem; outline:none; height:80px; font-family:monospace; resize:none;"></textarea>
+                </div>
+                
+                <button onclick="copyHash()" style="width:100%; padding:14px 24px; background:var(--tertiary-bg); border:1px solid var(--border-color); border-radius:14px; color:var(--primary-text); font-weight:500; font-size:0.95rem; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:15px;">
+                    <i class="fas fa-copy"></i> Copy Hash
+                </button>
+                
+                <button onclick="logout()" style="width:100%; padding:14px 24px; background:transparent; border:1px solid rgba(239,68,68,0.3); border-radius:14px; color:#ef4444; font-weight:500; font-size:0.95rem; cursor:pointer; transition:all 0.3s; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="statsView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary-bg); background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow-y: auto; padding: 20px 20px 100px 20px;">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <i class="fas fa-chart-line" style="font-size: 4rem; color: var(--primary-text); margin-bottom: 15px; opacity: 0.8;"></i>
+                <h2 style="font-size: 2.5rem; font-weight: 300; letter-spacing: 0.1em; color: var(--primary-text); margin: 0;">Statistics</h2>
+                <p style="color: var(--secondary-text); margin-top: 8px; font-size: 0.95rem;">Your Coreus journey at a glance</p>
+            </div>
+
+            <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 30px; margin-bottom: 25px; backdrop-filter: blur(20px);">
+                <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; color: var(--primary-text); display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-clock"></i> Time Stats
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="background: var(--tertiary-bg); border-radius: 16px; padding: 25px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 700; color: #fff; font-family: monospace;" id="statsTotalTime">00:00:00</div>
+                        <div style="color: var(--secondary-text); font-size: 0.9rem; margin-top: 8px;">Total Time on Coreus</div>
+                    </div>
+                    <div style="background: var(--tertiary-bg); border-radius: 16px; padding: 25px; text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: 700; color: #fff; font-family: monospace;" id="statsSessionTime">00:00:00</div>
+                        <div style="color: var(--secondary-text); font-size: 0.9rem; margin-top: 8px;">Current Session</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 30px; margin-bottom: 25px; backdrop-filter: blur(20px);">
+                <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; color: var(--primary-text); display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-gamepad"></i> Activity Stats
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                    <div style="background: var(--tertiary-bg); border-radius: 16px; padding: 20px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-text);" id="statsGamesPlayed">0</div>
+                        <div style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 5px;">Games Played</div>
+                    </div>
+                    <div style="background: var(--tertiary-bg); border-radius: 16px; padding: 20px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-text);" id="statsToolsUsed">0</div>
+                        <div style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 5px;">Tools Used</div>
+                    </div>
+                    <div style="background: var(--tertiary-bg); border-radius: 16px; padding: 20px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-text);" id="statsSearches">0</div>
+                        <div style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 5px;">Searches</div>
+                    </div>
+                    <div style="background: var(--tertiary-bg); border-radius: 16px; padding: 20px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-text);" id="statsProxyVisits">0</div>
+                        <div style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 5px;">Sites Visited</div>
+                    </div>
+                    <div style="background: var(--tertiary-bg); border-radius: 16px; padding: 20px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-text);" id="statsFavorites">0</div>
+                        <div style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 5px;">Favorites</div>
+                    </div>
+                    <div style="background: var(--tertiary-bg); border-radius: 16px; padding: 20px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-text);" id="statsAchievements">0/18</div>
+                        <div style="color: var(--secondary-text); font-size: 0.85rem; margin-top: 5px;">Achievements</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 30px; margin-bottom: 25px; backdrop-filter: blur(20px);">
+                <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; color: var(--primary-text); display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-globe"></i> Global Analytics
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="background: var(--tertiary-bg); border-radius: 16px; padding: 25px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-text);" id="statsPageviews">-</div>
+                        <div style="color: var(--secondary-text); font-size: 0.9rem; margin-top: 8px;">Total Pageviews</div>
+                    </div>
+                    <div style="background: var(--tertiary-bg); border-radius: 16px; padding: 25px; text-align: center;">
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--primary-text);" id="statsVisitors">-</div>
+                        <div style="color: var(--secondary-text); font-size: 0.9rem; margin-top: 8px;">Unique Visitors</div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <div style="color: var(--secondary-text); font-size: 0.9rem; margin-bottom: 10px;">Top Countries</div>
+                    <div id="statsCountries" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span style="color: var(--secondary-text);">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="aiView" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary-bg); background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 40px 40px; z-index: 2000; overflow: hidden; padding: 0;">
+        <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%; padding-bottom: 100px;">
+            <div style="width: 90%; max-width: 900px; height: 80vh; background: #0d0d0d; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 8px 32px rgba(0,0,0,0.8); border: 2px solid #333333;">
+                <div style="padding: 20px; background: rgba(0,0,0,0.6); border-bottom: 2px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-robot" style="color: white; font-size: 24px;"></i>
+                        <span style="color: var(--primary-text); font-size: 1.3rem; font-weight: 500;">AI Assistant</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <select id="aiModelSelector" style="padding: 8px 14px; background: rgba(255,255,255,0.05); border: 2px solid var(--border-color); color: var(--primary-text); border-radius: 20px; cursor: pointer; outline: none; transition: all 0.3s; font-size: 0.9rem; font-weight: 500;" onchange="updateAiModel(this.value)">
+                            <option value="gpt-5-nano" selected>GPT-5 Nano</option>
+                            <option value="gemini-2.5-flash-lite">Gemini 2.5 Flash Lite</option>
+                            <option value="gemini-2-flash">Gemini 2 Flash</option>
+                            <option value="gemini-2-flash-thinking">Gemini 2 Flash Thinking</option>
+                            <option value="mistral-large">Mistral Large</option>
+                        </select>
+                        <button class="nav-icon-btn" style="background: #000; border: none; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="clearChatHistory()" title="Clear chat history">
+                            <i class="fas fa-trash" style="color: white; font-size: 18px;"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="aiMessagesContainer" style="flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px;">
+                </div>
+                
+                <div style="padding: 20px; background: rgba(0,0,0,0.6); border-top: 2px solid var(--border-color); display: flex; gap: 10px;">
+                    <input type="text" id="aiMessageInput" placeholder="Ask me anything..." style="flex: 1; padding: 12px 16px; background: var(--secondary-bg); border: 2px solid var(--border-color); border-radius: 25px; color: var(--primary-text); outline: none; transition: all 0.3s; font-size: 1rem;" />
+                    <button id="aiSendBtn" style="padding: 8px 24px; background: #051B0B; border: 2px solid #0d3b1f; color: white; border-radius: 25px; cursor: pointer; transition: all 0.3s; font-weight: 500; display: flex; align-items: center; gap: 8px;" onclick="sendAiMessage()">
+                        <i class="fas fa-paper-plane"></i> Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+    <script async src="https://js.puter.com/v2/"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = document.querySelector('.title');
+            if(title) {
+                title.addEventListener('mouseover', function() {
+                    this.style.textShadow = '0 0 10px rgba(255,255,255,0.5)';
+                });
+                
+                title.addEventListener('mouseout', function() {
+                    this.style.textShadow = 'none';
+                });
+            }
+        });
+
+        let currentAiModel = 'gpt-5-nano';
+
+        function updateAiModel(model) {
+            currentAiModel = model;
+            console.log('AI Model changed to:', currentAiModel);
+        }
+
+        function showAiView() {
+            hideAllViews();
+            document.getElementById('aiView').style.display = 'block';
+            previousView = 'ai';
+
+            setTimeout(() => {
+                document.getElementById('aiMessageInput').focus();
+            }, 100);
+        }
+
+        function hideAiView() {
+            document.getElementById('aiView').style.display = 'none';
+            document.getElementById('gamesView').style.display = 'none';
+            document.getElementById('toolsView').style.display = 'none';
+            document.getElementById('aboutView').style.display = 'none';
+            document.getElementById('chatView').style.display = 'none';
+            document.getElementById('settingsView').style.display = 'none';
+            document.getElementById('accountView').style.display = 'none';
+            document.querySelector('.container').style.display = 'block';
+        }
+
+        let pendingAiMessage = null;
+        let puterReady = false;
+
+        function checkPuterReady() {
+            if (typeof puter !== 'undefined' && puter && puter.ai) {
+                puterReady = true;
+            }
+        }
+        checkPuterReady();
+        
+        window.addEventListener('load', checkPuterReady);
+
+        async function isPuterLoggedIn() {
+            if (!puterReady) return false;
+            try {
+                const user = await puter.auth.getUser();
+                return !!user;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        function showPuterLoginModal(message) {
+            pendingAiMessage = message;
+            const modal = document.getElementById('puterLoginModal');
+            if (modal) modal.style.display = 'flex';
+        }
+
+        function closePuterLoginModal() {
+            const modal = document.getElementById('puterLoginModal');
+            if (modal) modal.style.display = 'none';
+            pendingAiMessage = null;
+        }
+
+        async function handlePuterSignIn() {
+            if (!puterReady) {
+                alert('AI service is unavailable. Please try again later.');
+                return;
+            }
+            const signInBtn = document.getElementById('puterSignInBtn');
+            if (!signInBtn) return;
+            signInBtn.disabled = true;
+            signInBtn.innerHTML = '<i class="fas fa-spinner fa-spin" style="margin-right: 0.5rem;"></i> Signing in...';
+
+            try {
+                await puter.auth.signIn();
+                
+                const msg = pendingAiMessage;
+                
+                closePuterLoginModal();
+
+                signInBtn.disabled = false;
+                signInBtn.innerHTML = '<i class="fas fa-sign-in-alt" style="margin-right: 0.5rem;"></i> Login with Puter';
+
+                if (msg) {
+                    await sendAiMessage(msg);
+                }
+            } catch (error) {
+                console.error('Puter sign in error:', error);
+                signInBtn.disabled = false;
+                signInBtn.innerHTML = '<i class="fas fa-sign-in-alt" style="margin-right: 0.5rem;"></i> Login with Puter';
+                alert('Failed to sign in with Puter. Please try again.');
+            }
+        }
+
+        async function sendAiMessage(messageText = null) {
+            if (!puterReady) {
+                alert('AI service is unavailable. Please try again later.');
+                return;
+            }
+
+            const input = document.getElementById('aiMessageInput');
+            let message = messageText || input.value.trim();
+            
+            if (!message) return;
+
+            if (!messageText) {
+                input.value = '';
+            }
+
+            const isLoggedIn = await isPuterLoggedIn();
+            
+            if (!isLoggedIn) {
+
+                if (!messageText && !input.value) {
+                    input.value = message;
+                }
+
+                showPuterLoginModal(message);
+                return;
+            }
+
+            addMessageToChat('user', message);
+
+            const sendBtn = document.getElementById('aiSendBtn');
+            if (sendBtn) sendBtn.disabled = true;
+
+            addLoadingMessage();
+
+            try {
+
+                const response = await puter.ai.chat(message, { 
+                    model: currentAiModel,
+                    stream: false  // Set to false for standard response
+                });
+
+                let aiText = 'No response from Puter AI';
+                if (response) {
+                    if (typeof response === 'string') {
+                        aiText = response;
+                    } else if (typeof response === 'object') {
+
+                        aiText = response.text 
+                            || response.message 
+                            || response.content
+                            || response.choices?.[0]?.message?.content
+                            || response.result
+                            || JSON.stringify(response);
+                    } else {
+                        aiText = String(response);
+                    }
+                }
+
+                removeLoadingMessage();
+                addMessageToChat('ai', aiText);
+            } catch (error) {
+                console.error('Puter AI Error:', error);
+                removeLoadingMessage();
+
+                let errorMsg = 'Error communicating with Puter AI';
+                if (error.message) {
+                    errorMsg += ': ' + error.message;
+                }
+                if (error.status === 401) {
+                    errorMsg = 'Puter authentication failed. Please sign in again.';
+                }
+                if (error.response) {
+                    console.error('Response:', error.response);
+                }
+                
+                addMessageToChat('ai', errorMsg);
+            } finally {
+                sendBtn.disabled = false;
+                document.getElementById('aiMessageInput').focus();
+            }
+        }
+
+        function addLoadingMessage() {
+            const container = document.getElementById('aiMessagesContainer');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.id = 'ai-loading';
+            messageDiv.style.display = 'flex';
+            messageDiv.style.justifyContent = 'flex-start';
+            messageDiv.style.animation = 'fadeIn 0.3s ease-in';
+
+            const bubble = document.createElement('div');
+            bubble.style.maxWidth = '70%';
+            bubble.style.padding = '12px 16px';
+            bubble.style.borderRadius = '15px';
+            bubble.style.wordWrap = 'break-word';
+            bubble.style.fontSize = '0.95rem';
+            bubble.style.lineHeight = '1.5';
+            bubble.style.background = 'rgba(255, 255, 255, 0.05)';
+            bubble.style.color = 'var(--primary-text)';
+            bubble.style.border = '1px solid #333333';
+            bubble.style.textAlign = 'left';
+
+            bubble.innerHTML = '<span class="ai-loading-dot"></span><span class="ai-loading-dot"></span><span class="ai-loading-dot"></span>';
+            messageDiv.appendChild(bubble);
+            container.appendChild(messageDiv);
+
+            setTimeout(() => {
+                container.scrollTop = container.scrollHeight;
+            }, 0);
+        }
+
+        function removeLoadingMessage() {
+            const loadingMsg = document.getElementById('ai-loading');
+            if (loadingMsg) {
+                loadingMsg.remove();
+            }
+        }
+
+        function sanitizeHtml(html) {
+            const div = document.createElement('div');
+            div.textContent = html;
+            return div.innerHTML;
+        }
+
+        function convertMarkdownToHtml(text) {
+            try {
+
+                if (typeof text !== 'string') {
+                    if (typeof text === 'object') {
+                        text = text.text || text.message || text.content || JSON.stringify(text);
+                    } else {
+                        text = String(text);
+                    }
+                }
+
+                marked.setOptions({
+                    breaks: true,
+                    gfm: true,
+                    pedantic: false
+                });
+
+                let html = marked.parse(text);
+
+                const allowedTags = ['p', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'code', 'pre', 'blockquote', 'a', 'br', 'hr'];
+                
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+
+                temp.querySelectorAll('*').forEach(el => {
+                    if (!allowedTags.includes(el.tagName.toLowerCase())) {
+                        while (el.firstChild) {
+                            el.parentNode.insertBefore(el.firstChild, el);
+                        }
+                        el.parentNode.removeChild(el);
+                    }
+                });
+
+                temp.querySelectorAll('a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && !href.startsWith('javascript:')) {
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                    }
+                });
+                
+                return temp.innerHTML;
+            } catch (error) {
+                console.error('Markdown conversion error:', error);
+                return sanitizeHtml(text);
+            }
+        }
+
+        function addMessageToChat(sender, text) {
+            const container = document.getElementById('aiMessagesContainer');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.style.display = 'flex';
+            messageDiv.style.justifyContent = sender === 'user' ? 'flex-end' : 'flex-start';
+            messageDiv.style.animation = 'fadeIn 0.3s ease-in';
+
+            const bubble = document.createElement('div');
+            bubble.style.maxWidth = '70%';
+            bubble.style.padding = '12px 16px';
+            bubble.style.borderRadius = '15px';
+            bubble.style.wordWrap = 'break-word';
+            bubble.style.fontSize = '0.95rem';
+            bubble.style.lineHeight = '1.5';
+
+            if (sender === 'user') {
+                bubble.style.background = '#051B0B';
+                bubble.style.border = '2px solid #0d3b1f';
+                bubble.style.color = 'white';
+                bubble.style.textAlign = 'left';
+                bubble.textContent = text;
+            } else {
+                bubble.style.background = 'rgba(255, 255, 255, 0.05)';
+                bubble.style.color = 'var(--primary-text)';
+                bubble.style.border = '1px solid #333333';
+                bubble.style.textAlign = 'left';
+                bubble.innerHTML = convertMarkdownToHtml(text);
+                bubble.className = 'ai-message-bubble';
+            }
+
+            messageDiv.appendChild(bubble);
+            container.appendChild(messageDiv);
+
+            setTimeout(() => {
+                container.scrollTop = container.scrollHeight;
+            }, 0);
+        }
+
+        function clearChatHistory() {
+            const container = document.getElementById('aiMessagesContainer');
+            container.innerHTML = '';
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes dotGrow {
+                0%, 100% {
+                    opacity: 0.4;
+                    transform: scale(0.7);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            
+            .ai-loading-dot {
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: white;
+                margin: 0 2px;
+                animation: dotGrow 1.4s ease-in-out infinite;
+            }
+            
+            .ai-loading-dot:nth-child(1) {
+                animation-delay: 0s;
+            }
+            
+            .ai-loading-dot:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+            
+            .ai-loading-dot:nth-child(3) {
+                animation-delay: 0.4s;
+            }
+
+            #aiModelSelector {
+                transition: all 0.3s ease !important;
+            }
+
+            #aiModelSelector:hover {
+                border-color: var(--accent-color) !important;
+                background: rgba(255,255,255,0.1) !important;
+                box-shadow: 0 0 10px rgba(76, 175, 80, 0.15) !important;
+            }
+
+            #aiModelSelector:focus {
+                border-color: var(--accent-color) !important;
+                background: rgba(255,255,255,0.15) !important;
+                box-shadow: 0 0 15px rgba(76, 175, 80, 0.25) !important;
+            }
+
+            #aiModelSelector option {
+                background: var(--secondary-bg);
+                color: var(--primary-text);
+            }
+
+            .ai-message-bubble h1,
+            .ai-message-bubble h2,
+            .ai-message-bubble h3,
+            .ai-message-bubble h4,
+            .ai-message-bubble h5,
+            .ai-message-bubble h6 {
+                margin: 12px 0 8px 0;
+                font-weight: 600;
+                color: var(--accent-light);
+            }
+
+            .ai-message-bubble h1 {
+                font-size: 1.5rem;
+                border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+                padding-bottom: 8px;
+            }
+
+            .ai-message-bubble h2 {
+                font-size: 1.3rem;
+                border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+                padding-bottom: 6px;
+            }
+
+            .ai-message-bubble h3 {
+                font-size: 1.15rem;
+            }
+
+            .ai-message-bubble p {
+                margin: 8px 0;
+            }
+
+            .ai-message-bubble strong {
+                color: var(--accent-light);
+                font-weight: 700;
+            }
+
+            .ai-message-bubble em {
+                font-style: italic;
+                opacity: 0.9;
+            }
+
+            .ai-message-bubble code {
+                background: rgba(0, 0, 0, 0.3);
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-family: 'Courier New', monospace;
+                font-size: 0.9rem;
+                color: #4dff4d;
+            }
+
+            .ai-message-bubble pre {
+                background: rgba(0, 0, 0, 0.4);
+                padding: 12px;
+                border-radius: 8px;
+                border-left: 4px solid var(--accent-color);
+                overflow-x: auto;
+                margin: 10px 0;
+                font-family: 'Courier New', monospace;
+                font-size: 0.85rem;
+            }
+
+            .ai-message-bubble pre code {
+                background: transparent;
+                padding: 0;
+                border-radius: 0;
+                color: #4dff4d;
+            }
+
+            .ai-message-bubble blockquote {
+                border-left: 4px solid var(--accent-color);
+                padding-left: 12px;
+                margin: 10px 0;
+                opacity: 0.85;
+                font-style: italic;
+                color: var(--secondary-text);
+            }
+
+            .ai-message-bubble ul,
+            .ai-message-bubble ol {
+                margin: 10px 0;
+                padding-left: 20px;
+            }
+
+            .ai-message-bubble li {
+                margin: 4px 0;
+            }
+
+            .ai-message-bubble ul li:before {
+                content: '▸ ';
+                color: var(--accent-color);
+                margin-right: 6px;
+            }
+
+            .ai-message-bubble ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .ai-message-bubble a {
+                color: var(--accent-color);
+                text-decoration: none;
+                border-bottom: 1px dotted var(--accent-color);
+                transition: all 0.2s;
+            }
+
+            .ai-message-bubble a:hover {
+                opacity: 0.8;
+                border-bottom-style: solid;
+            }
+
+            .ai-message-bubble hr {
+                border: none;
+                height: 2px;
+                background: rgba(76, 175, 80, 0.2);
+                margin: 15px 0;
+            }
+
+            .ai-message-bubble table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 10px 0;
+            }
+
+            .ai-message-bubble th,
+            .ai-message-bubble td {
+                border: 1px solid rgba(76, 175, 80, 0.2);
+                padding: 8px;
+                text-align: left;
+            }
+
+            .ai-message-bubble th {
+                background: rgba(76, 175, 80, 0.1);
+                color: var(--accent-light);
+                font-weight: 600;
+            }
+        `;
+        document.head.appendChild(style);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const aiInput = document.getElementById('aiMessageInput');
+            if (aiInput) {
+                aiInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        sendAiMessage();
+                    }
+                });
+            }
+
+            originalTitle = originalTitle || document.title;
+            originalFaviconHref = originalFaviconHref || (document.querySelector('link[rel="icon"]') || {}).href;
+            cloakingOption = localStorage.getItem('cloakingOption') || cloakingOption || 'No';
+            applyCloaking(cloakingOption);
+
+            checkFirstVisit();
+
+            const cloakingSelectSettings = document.getElementById('cloakingSelectSettings');
+            if (cloakingSelectSettings) {
+                cloakingSelectSettings.value = cloakingOption;
+                cloakingSelectSettings.addEventListener('change', function() {
+                    cloakingOption = this.value;
+                    localStorage.setItem('cloakingOption', cloakingOption);
+                    applyCloaking(cloakingOption);
+                });
+            }
+
+            const proxySelectSettings = document.getElementById('proxySelectSettings');
+            if (proxySelectSettings) {
+                proxySelectSettings.value = selectedProxy;
+                proxySelectSettings.addEventListener('change', function() {
+                    selectedProxy = this.value;
+
+                    const modalSelect = document.getElementById('proxySelect');
+                    if (modalSelect) modalSelect.value = selectedProxy;
+                    showStatus(`Selected proxy: ${selectedProxy}`, 'success');
+                    setTimeout(hideStatus, 1200);
+                });
+            }
+
+            const aboutBlankBtn = document.getElementById('aboutBlankBtn');
+            if (aboutBlankBtn) {
+                aboutBlankBtn.addEventListener('click', openAboutBlankWithIframe);
+            }
+
+            const puterSignInBtn = document.getElementById('puterSignInBtn');
+            if (puterSignInBtn) {
+                puterSignInBtn.addEventListener('click', handlePuterSignIn);
+            }
+        });
+    </script>
+    <script>
+    const pingLinks = [
+    { url: 'https://js.puter.com/v2/', targetClass: 'fas.fa-robot' }
+];
+
+async function checkAndPermanentDelete() {
+    const checks = pingLinks.map(async (item) => {
+        
+        const selector = '.' + item.targetClass.trim().replace(/\s+/g, '.');
+        const elements = document.querySelectorAll(selector);
+        
+        try {
+            await fetch(item.url, { mode: 'no-cors', cache: 'no-store' });
+
+            elements.forEach(el => {
+                const btn = el.closest('button') || el;
+                btn.style.display = 'flex';
+            });
+        } catch (error) {
+            
+            elements.forEach(el => {
+                const btn = el.closest('button') || el;
+
+                const spacer = btn.previousElementSibling;
+                if (spacer && spacer.tagName === 'DIV') {
+                    spacer.remove();
+                }
+
+                btn.remove();
+                console.warn(`Permanently deleted: ${item.targetClass}`);
+            });
+        }
+    });
+
+    await Promise.all(checks);
+}
+
+document.addEventListener('DOMContentLoaded', checkAndPermanentDelete);
+    </script>
+    
+<script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
+</body>
+</html>
